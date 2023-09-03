@@ -53,6 +53,11 @@ header {
     font-weight: 400;
 }
 
+.nav-link:hover {
+    color: #ffb900;
+    transition: 0.2s
+}
+
 .login-button button {
     border: none;
     background-color: #07031A;
