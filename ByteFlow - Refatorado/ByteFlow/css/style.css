@@ -20,6 +20,8 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 1.5rem 6rem;
+    /* background-color: #7f37c9; */
+    margin-bottom: 30px;
 }
 
 .logo {
@@ -34,6 +36,7 @@ header {
 .nav-list {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
 .nav-list ul {
@@ -43,31 +46,75 @@ header {
 }
 
 .nav-item {
-    margin: 0 15px;
+    margin: 0 25px;
+    font: 1.3rem;
+    font-weight: 600;
+    text-shadow: #363636a1 1px 1px 3px;
 }
 
 .nav-link {
     text-decoration: none;
-    font: 1.15rem;
     color: #07031A;
-    font-weight: 400;
 }
 
-.nav-link:hover {
-    color: #ffb900;
-    transition: 0.2s
+.nav-list ul li:hover{
+    transform: translateY(-0.2rem);
+
+}
+.nav-list ul li:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-bottom: solid 2px #ff9807;
+    transition: width 0.3s, background-color 0.3s;
+    z-index: -1;
+}
+.nav-list ul li:hover::before{
+    width: 100%;
+    border-bottom: solid 2px #ffb900;
+
+} 
+.login-button{
+    width: 11%;
+    height: auto;
 }
 
 .login-button button {
     border: none;
     background-color: #07031A;
-    padding: 10px 25px;
-    border-radius: 18px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 1rem;
+    box-shadow: #17171781 3px 3px 3px;
 }
 
-.login-button button:hover {
-    background-color: #ffb900;
-    transition: 0.5s
+.nav-bar .login-button button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ff6b6b00; /* Cor inicial do background */
+    transition: width 0.3s, background-color 0.3s;
+    z-index: -1;
+    border-radius: 1rem;
+
+  }
+  
+  .nav-bar .login-button button:hover::before {
+    width: 100%;
+    background-color: #4267b3;
+}
+
+.nav-bar .login-button button:hover{
+    transform: translateY(-5px);
+    cursor: pointer;
+    /* background-color: #3b3b3b; */
 }
 
 .login-button a {
@@ -86,7 +133,7 @@ header {
 
 @media screen and (max-width: 730px) {
     .nav-bar {
-        padding: 1.5rem 4rem;
+        padding: 1.5rem 2rem 1rem 1rem;
     }
     .nav-item {
         display: none;
@@ -95,7 +142,9 @@ header {
         display: none;
     }
     .mobile-menu-icon {
-        display: block;
+        display: flex;
+        width: 30%;
+        justify-content: flex-end;
     }
     .mobile-menu-icon button {
         background-color: transparent;
@@ -114,7 +163,9 @@ header {
     }
     .mobile-menu .login-button {
         display: block;
-        padding: 1rem 2rem;
+        padding: 1rem ;
+        width: 30%;
+        margin: auto;
     }
     .mobile-menu .login-button button {
         width: 100%;
@@ -127,9 +178,11 @@ header {
 #paginaInicial {
     background-color: #89B6CA;
     height: 100vh;
-    background-image: url(/ByteFlow/imgs/inicio.svg);
+    background-image: url(../imgs/inicio.svg);
     background-repeat: no-repeat;   
     background-size:cover;
+    background-position:  100% -10%;
+
 }
 
 .tela-inicial {
@@ -138,22 +191,32 @@ header {
     align-items: center;
     justify-content: space-around;
     gap: 2rem;
+    
 }
 
 .byteflow {
     text-align: left;
     width: 45vw;
-    justify-self: center;
+    line-height: 42px;
+    /* background-color: #25d366; */
+    
+}
 
+.byteflow p{
+    font-weight: 600;
+    text-shadow: #57575752 2px 2px 2px;
+}
+.byteflow h1, .byteflow h2{
+    text-shadow: #57575752 2px 2px 2px;
 }
 
 h1 {
     color: #07031A;
-    font-size: 2rem;
+    font-size: 2.4rem;
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 1.1'rem;
 }
 
 .vetor-computador {
@@ -161,49 +224,80 @@ p {
 }
 
 .frase-de-efeito {
-    color: #ffb900;
+    color: #ffc014;
+}
+
+#imgFundoSolucao {
+    width: 100%;
+    height: 200vh;
+    /* background-color: #721616; */
+    background-image: url(../imgs/fundoAmarelo.svg);
+    background-size:22%;
+    background-repeat: no-repeat;
+    /* margin-left: -20%; */
+    background-position: 20%;
+    /* background-color: #07031A; */
 }
 
 #solucao{
-    height: 100vh;
-    background-color: #ffffff;
-    background-image: url(/ByteFlow/imgs/tela-solucao.svg);
-    background-size:cover;
-    background-repeat: no-repeat;
+    width: auto;
+    padding: 3%;
+    height: fit-content;
+    box-shadow: 0px 13px 12px -6px rgba(59,59,59,0.57) inset;
     color: #07031A;
 }
 
 .container-solucao {
     width: 90vw;
-    height: 100vh;
+    height: auto;
     margin: auto;
+    /* background-color: #4267b3; */
+    
+}
+.container-solucao section {
+    margin-top: 5%;
+    width: auto;
+    height: auto;
     display: flex;   
     justify-content: space-between;
     gap: 2rem;
     align-items: center;
+    /* background-color: #897fbb; */
+}
+
+.container-solucao h1{
+    width: 100%;
+    text-align: center;
 }
 
 .vetor-computador2 img {
-    width: 40rem;
+    width: 35rem;
+    height: max-content;
 }
 
 .texto-solucao p{
     text-align: end;
+    line-height: 40px;
 }
 
 #beneficio {
     height: 100vh;
-    background-color: #ffffff;
-    background-image: url(/ByteFlow/imgs/tela-beneficio.svg);
-    background-size:cover;
-    background-repeat: no-repeat;
+    width: 100%;
+    
     color: #07031A;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.cardsBeneficio{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    /* background-color: #25d366; */
+}
 .container-beneficio {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -220,22 +314,23 @@ p {
     align-content: center;
 }
 
-.headerCard {
-    width: 290px;
-    height: 45px;
-    border-radius: 30px 0 0 0;
-    background-color: #FFE39A;
-}
+
 
 .card {
-    width: 290px;
-    height: 345px;
+    width: 55%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     background-color: #FFE39A;
     border-radius: 30px 0 30px 0;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.6);
     transition: 300ms;
+}
+.headerCard {
+    width: 100%;
+    height: 45px;
+    border-radius: 30px 0 0 0;
+    background-color: #FFE39A;
 }
 
 .card:hover {
@@ -254,11 +349,14 @@ p {
 .cardTitle {
     font-size: 18px;
     font-weight: 700;
+    /* color: #4267b3 */
 }
 
 .cardContent {
+    padding: 3%;
     font-size: 16px;
     font-weight: 400;
+    line-height: 35px;
 
 }
 
@@ -274,17 +372,46 @@ p {
     color: black;
     font-size: 15px;
 }
-
+.bottomCard a:hover{
+    color: #4267b3;
+}
+.div-botao{
+    width: 30%;
+    height: 8vh;
+}
 .div-botao button {
     border: none;
     background-color: #07031A;
-    padding: 10px 25px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
     border-radius: 18px;
+    font-size: 22px;
+}
+ 
+.div-botao button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ff6b6b00; /* Cor inicial do background */
+    transition: width 0.3s, background-color 0.3s;
+    z-index: -1;
+    border-radius: 1rem;
+
+  }
+  
+  .div-botao button:hover::before {
+    width: 100%;
+    background-color: #4267b3;
 }
 
-.div-botao button:hover {
-    background-color: #ffb900;
-    transition: 0.5s;
+.div-botao button:hover{
+    transform: translateY(-2px);
+    cursor: pointer;
+    /* background-color: #3b3b3b; */
 }
 
 .div-botao a {
@@ -294,47 +421,57 @@ p {
 }
 
 #sobre-nos {
-    height: 100vh;
-    background-color: #ffffff;
-    background-image: url(/ByteFlow/imgs/Design\ sem\ nome\ \(9\).svg);
-    background-size:cover;
+    padding-top: 5%;
+    height: auto;
+    background-color: #89B6CA;
+    background-image: url(../imgs/fundoSobre.svg);
+    background-size:contain;
+    /* background-position-x: 0%; */
+    /* background-position: initial 0%; */
+    background-repeat: no-repeat;
     color: #07031A;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
+    box-shadow: 0px -6px 10px 0 rgba(41, 41, 41, 0.6);
+    /* gap: 2.5rem; */
 }
-
+.titulo-pag{
+    margin-bottom: 3%;
+}
 .container-sobre-nos{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: auto;
+    width: 90vw;
+    margin: auto;
 }
 
 .caixa-sobre-nos p {
     font-size: 18px;
+    line-height: 45px;
+    text-shadow: #666666b6 1px 1px 1px;
 }
 
 .caixa-sobre-nos {
-    background-color: white;
-    width: 25rem;
-    height: 20rem;
-    padding: 1.5rem 3rem 1.5rem 3rem;
+    background-color: #ffffff;
+    width: 40vw;
+    height: 60vh;
+    padding: 2rem;
     border-radius: 8px;
     justify-content: center;
     z-index: 1;
     align-items: center;
     display: flex;
-    -webkit-box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
--moz-box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
-box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
+    box-shadow: -14px 13px 14px -8px rgba(36, 36, 36, 0.479);
 }
 
 .img-trabalhando {
     background-color: #C7EEFF;
-    width: 15rem;
-    height: 15rem;
+    width: 35vw;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -345,14 +482,16 @@ box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
 }
 
 .img-sobre-nos {
-    width: 10rem;
-    height: 10rem;
+    width: 90%;
+    height: 90%;
 }
 
 #visao {
-    height: 100vh;
-    background-color: #ffffff;
-    background-image: url(/ByteFlow/imgs/tela-valores.svg);
+    margin-top: 7vh;
+    height: 93vh;
+    width: 100%;
+    /* background-color: #ffffff; */
+    background-image: url(../imgs/tela-valores.svg);
     background-size:cover;
     color: #07031A;
     display: flex;
@@ -362,10 +501,12 @@ box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
 }
 
 .container-principal {
-    height: 55vh;
-    width: 65vw;
+    height: 65vh;
+    width: 75vw;
     display: flex;
     gap: 3rem;
+    background-color: transparent;
+
 }
 
 .box-missao{
@@ -374,9 +515,8 @@ box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10px;
     width: 40vw;
-    -webkit-box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
-box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
+    margin-top: 5%;
+    box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
 }
 
 .box-missao p {
@@ -393,8 +533,7 @@ box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10px;
     width: 40vw;
-    -webkit-box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
+    height: 50vh;
     box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
 }
 
@@ -407,13 +546,12 @@ box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
 }
 
 .box-valores{
-    background-color: #FFF;
+    background-color: white;
     text-align: center;
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10px;
     width: 40vw;
-    -webkit-box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
+    margin-top: 5%;
     box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
 }
 
@@ -441,13 +579,18 @@ footer {
 .footer-link {
     text-decoration: none;
 }
-
+#footer_contacts img {
+    margin-left: -5px;
+    /* background-color: #07031A; */
+}
 #footer_content {
     background: rgb(0,83,119);
     background: linear-gradient(0deg, rgba(0,83,119,1) 24%, rgba(137,182,202,1) 66%);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding: 3rem 3.5rem;
+    font-weight: 500;
+
 }
 
 #footer_contacts h1 {
@@ -488,13 +631,13 @@ footer {
 }
 
 #whatsapp {
-    background-color: #25d366;
+    background-color: #00e01e;
 }
 
 .footer-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
     list-style: none;
 }
 
@@ -503,9 +646,9 @@ footer {
     transition: all 0.4s;
 }
 
-.footer-list .footer-link:hover {
+/* .footer-list .footer-link:hover {
     color: #ffb900;
-}
+} */
 
 #footer_subscribe {
     display: flex;
@@ -556,16 +699,19 @@ footer {
     font-weight: 100;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 768px) {
     #footer_content {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
 }
 
-@media screen and (max-width: 426px) {
+@media only screen and (max-width: 480px) {
     #footer_content {
-        grid-template-columns: repeat(1, 1fr);
-        padding: 3rem 2rem;
+        grid-template-columns: repeat(1, 2fr);
+        padding: 4rem 2rem;
+        height: auto;
     }
+    
 }
+
