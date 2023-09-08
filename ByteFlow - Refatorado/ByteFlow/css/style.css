@@ -108,11 +108,12 @@ header {
   
   .nav-bar .login-button button:hover::before {
     width: 100%;
-    background: linear-gradient(90deg, #0a2add82 0%, rgba(255, 239, 16, 0.4) 100%, rgba(0, 0, 0, 0) 190%);
+    background-color: #4267b3;
 }
 
 .nav-bar .login-button button:hover{
     transform: translateY(-5px);
+    cursor: pointer;
     /* background-color: #3b3b3b; */
 }
 
@@ -132,7 +133,7 @@ header {
 
 @media screen and (max-width: 730px) {
     .nav-bar {
-        padding: 1.5rem 4rem;
+        padding: 1.5rem 2rem 1rem 1rem;
     }
     .nav-item {
         display: none;
@@ -141,7 +142,9 @@ header {
         display: none;
     }
     .mobile-menu-icon {
-        display: block;
+        display: flex;
+        width: 30%;
+        justify-content: flex-end;
     }
     .mobile-menu-icon button {
         background-color: transparent;
@@ -160,7 +163,9 @@ header {
     }
     .mobile-menu .login-button {
         display: block;
-        padding: 1rem 2rem;
+        padding: 1rem ;
+        width: 30%;
+        margin: auto;
     }
     .mobile-menu .login-button button {
         width: 100%;
@@ -176,6 +181,7 @@ header {
     background-image: url(../imgs/inicio.svg);
     background-repeat: no-repeat;   
     background-size:cover;
+    background-position:  100% -10%;
 
 }
 
@@ -210,7 +216,7 @@ h1 {
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 1.1'rem;
 }
 
 .vetor-computador {
@@ -225,9 +231,11 @@ p {
     width: 100%;
     height: 200vh;
     /* background-color: #721616; */
-    background-image: url(../imgs/tela-solucao.svg);
-    background-size:98%;
+    background-image: url(../imgs/fundoAmarelo.svg);
+    background-size:22%;
     background-repeat: no-repeat;
+    /* margin-left: -20%; */
+    background-position: 20%;
     /* background-color: #07031A; */
 }
 
@@ -310,7 +318,7 @@ p {
 
 .card {
     width: 55%;
-    height: 85%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     background-color: #FFE39A;
@@ -341,6 +349,7 @@ p {
 .cardTitle {
     font-size: 18px;
     font-weight: 700;
+    /* color: #4267b3 */
 }
 
 .cardContent {
@@ -362,6 +371,9 @@ p {
 .bottomCard a {
     color: black;
     font-size: 15px;
+}
+.bottomCard a:hover{
+    color: #4267b3;
 }
 .div-botao{
     width: 30%;
@@ -393,11 +405,12 @@ p {
   
   .div-botao button:hover::before {
     width: 100%;
-    background: linear-gradient(90deg, rgba(10, 42, 221, 0.51) 0%, rgba(253, 237, 4, 0.4) 100%, rgba(0,0,0,1) 190%);
+    background-color: #4267b3;
 }
 
 .div-botao button:hover{
-    transform: translateY(-5px);
+    transform: translateY(-2px);
+    cursor: pointer;
     /* background-color: #3b3b3b; */
 }
 
@@ -411,8 +424,10 @@ p {
     padding-top: 5%;
     height: auto;
     background-color: #89B6CA;
-    background-image: url(../imgs/Design\ sem\ nome\ \(9\).svg);
-    background-size:100%;
+    background-image: url(../imgs/fundoSobre.svg);
+    background-size:contain;
+    /* background-position-x: 0%; */
+    /* background-position: initial 0%; */
     background-repeat: no-repeat;
     color: #07031A;
     display: flex;
@@ -420,7 +435,6 @@ p {
     align-items: center;
     justify-content: center;
     box-shadow: 0px -6px 10px 0 rgba(41, 41, 41, 0.6);
-
     /* gap: 2.5rem; */
 }
 .titulo-pag{
@@ -451,7 +465,7 @@ p {
     z-index: 1;
     align-items: center;
     display: flex;
-    box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
+    box-shadow: -14px 13px 14px -8px rgba(36, 36, 36, 0.479);
 }
 
 .img-trabalhando {
@@ -685,16 +699,19 @@ footer {
     font-weight: 100;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 768px) {
     #footer_content {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
 }
 
-@media screen and (max-width: 426px) {
+@media only screen and (max-width: 480px) {
     #footer_content {
-        grid-template-columns: repeat(1, 1fr);
-        padding: 3rem 2rem;
+        grid-template-columns: repeat(1, 2fr);
+        padding: 4rem 2rem;
+        height: auto;
     }
+    
 }
+
