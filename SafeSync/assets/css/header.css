@@ -192,7 +192,7 @@ header {
 #c3 .text-solucao p {
     font-size: 20px;
     font-weight: 500;
-    padding-left: 4.5rem;
+    padding-left: 4.8rem;
 }
 
 #c3 .img-solucao-oferece {
@@ -204,7 +204,7 @@ header {
 
 #c3 .img-solucao-oferece img {
     margin-bottom: -2.5rem;
-    width: 55%;
+    width: 60%;
 }
 
 #c3 .img-solucao-oferece-left {
@@ -234,6 +234,35 @@ header {
     font-size: 20px;
     font-weight: 500;
     padding-left: 1.5rem;
+}
+
+#c3 .text-solucao2 {
+    width: 60%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    text-align: left;
+}
+
+#c3 .text-solucao2 p {
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 2.5rem;
+}
+
+#c3 .img-solucao-oferece2 {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#c3 .img-solucao-oferece2 img {
+    margin-bottom: -1.5rem;
+    width: 60%;
 }
 
 #separator-solucao {
