@@ -1,0 +1,149 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins';
+    font-weight: bolder;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.card_esquerdo{
+    width: 45%;
+    height: 100vh;
+    background-image: url(../img/como-estruturar-um-rh-do-zero-capa.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.logo{
+    padding: 0 0 0 5%;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.logo a{
+    text-decoration: none;
+    font-size: 32px;
+    color: #102C57;
+}
+
+.card_direito{
+    width: 55%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+}
+
+.card_login{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    /* background-color: red; */
+}
+
+.titulo_login{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    font-size: 32px;
+    color: #102C57;
+}
+input{
+    width: 90%;
+    height: 40px;
+    font-size: 18px;
+    background: none;
+    /* border-radius: 0; */
+    border: none;
+    border-bottom: solid 2px #102c5748;
+    ;
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid #102c57e0;
+    background: none;
+    /* border-radius: 0; */
+    border: none;
+    border-bottom: solid 2px #102C57;
+
+}
+
+.group_input{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0 ;
+}
+
+.botao_logar{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button{
+    height: 100%;
+    width: 30%;
+    font-weight: bolder;
+    font-size: 100%;
+    color: #102C57;
+    border: 2px solid #102C57;
+    background: none;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.center{
+    width: 100%;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center a{
+    padding: 0 0 0 5px;
+}
+
+@media screen and (max-width: 768px){
+
+    .card_direito{
+        width: 100%;
+    }
+    .center{
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }    
+    .center a{
+        padding: 0;
+    }
+    button{
+        width: 50%;
+    }
+    .card_esquerdo{
+        display: none;
+    }
+}
