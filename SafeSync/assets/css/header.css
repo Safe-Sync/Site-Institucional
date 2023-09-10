@@ -516,7 +516,8 @@ footer {
 
 @media screen and (max-width: 730px) {
     header {
-        background: linear-gradient(91deg, #F8F0E5 11.97%, #DAC0A3 114.07%);
+        background: linear-gradient(91deg, #e7d5c0 11.97%, #e7d5c0 114.07%);
+        box-shadow: #102C57 0px 8px 10px ;
     }
     .nav-bar {
         display: flex;
@@ -559,9 +560,11 @@ footer {
     }
     .mobile-menu .login-button button {
         border: none;
-        border-radius: 0;
+        border-radius: 10px;
         background-color: #102C57;
-        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        /* box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25); */
+        box-shadow: 8px 8px 0px -1px rgba(0, 0, 0, 0.945);
+
         width: 100%;
     }
     .mobile-menu .login-button button a {
@@ -574,6 +577,8 @@ footer {
     }
     .mobile-menu .register-button button {
         width: 100%;
+        box-shadow: 8px 8px 0px -1px rgba(0, 0, 0, 0.945);
+        
     }
     .open {
         display: block;
