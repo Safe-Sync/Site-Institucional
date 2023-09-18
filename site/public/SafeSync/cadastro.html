@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styleCadastro.css">
+    <title>ByteFlow</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card_esquerdo">
+            <div class="card_cadastro">
+                <div class="titulo_cadastro">Cadastro</div>
+
+                <!-- barra de progresso -->
+                <div class="progressbar">
+                    <div class="progress" id="progress"></div>
+                    <div class="progress-step progress-step-active"></div>
+                    <div class="progress-step"></div>
+                    <div class="progress-step"></div>
+                    <!-- <div class="progress-step"></div> -->
+                </div>
+
+                <!-- Primeira etapa do formulario -->
+                <div class="form-step form-step-active">
+                    <div class="group_input">
+                        <input id="input_nome_fantasia" type="text" placeholder="Nome fantasia">
+                    </div>
+                    <div class="group_input">
+                        <input id="input_razao_social" type="text" placeholder="Razão social">
+                    </div>
+                    <div class="group_input">
+                        <input id="input_cnpj" type="text" placeholder="Cnpj">
+                    </div>
+
+                    <div class="button_right">
+                        <button onclick="validarEtapa1()" href="#" class="btn btn-next width-50 ">Proximo</button>
+                    </div>
+                </div>
+
+                <!-- Segunda etapa do formulario -->
+                <div class="form-step">
+                    <div class="group_input">
+                        <input id="input_cep" type="text" placeholder="Cep">
+                    </div>
+                    <div class="group_input">
+                        <input id="input_numero" type="text" placeholder="Nº">
+                    </div>
+                    <div class="group_input">
+                        <input id="input_complemento" type="text" placeholder="Complemento">
+                    </div>
+
+                    <div class="btns-group">
+                        <button onclick="voltarEtapas()" href="#" class="btn btn-prev ">Voltar</button>
+                        <button onclick="validarEtapa2()" href="#" class="btn btn-next ">Proximo</button>
+                    </div>
+                </div>
+
+                <!-- Terceira etapa do formulario -->
+                <div class="form-step">
+                    <div class="group_input">
+                        <input id="input_telefone" type="text" placeholder="Telefone">
+                    </div>
+                    <div class="group_input">
+                        <input id="input_email" type="text" placeholder="Email">
+                    </div>
+                    <div class="group_input">
+                        <input id="input_senha" type="text" placeholder="Senha">
+                    </div>
+
+                    <div class="btns-group">
+                        <button onclick="voltarEtapas()" href="#" class="btn btn-prev ">Voltar</button>
+                        <button onclick="validarEtapa3()" href="#" class="btn btn-next ">Cadastrar</button>
+                    </div>
+                </div>
+
+                <!-- <div class="botao_cadastro"><button>Cadastrar</button></div> -->
+            </div>
+        </div>
+        <div class="card_direito">
+            <div class="logo_cadastro"><a href="./index.html">SafeSync</a></div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    const progresso = document.getElementById("progress");
+    const EtapaDoFormulario = document.querySelectorAll(".form-step");
+    const ProgressoEtapas = document.querySelectorAll(".progress-step");
+    const BotaoVoltar = document.querySelectorAll(".btn-prev");
+
+    var NumeroDaEtapa = 0;
+
+    function validar1() {
+
+        var NomeFantasiaValue = input_razao_social.value
+        var RazaoSocialValue = input_nome_fantasia.value
+        var cnpjValue = input_cnpj.value
+
+        if ((NomeFantasiaValue == '') || (RazaoSocialValue == '') || (cnpjValue == '')) {
+            console.log("erro na validação 1");
+            alert("campos vazios")
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+
+
+    }
+
+    function validarEtapa1() {
+        validar1()
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+
+    }
+
+    function validar2() {
+        var cepValue = input_cep.value
+        var numeroValue = input_numero.value
+        var complementoValue = input_complemento.value
+
+        if ((cepValue == '') || (numeroValue == '') || (complementoValue == '')) {
+            console.log("erro na validação 2");
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+    }
+
+
+    function validarEtapa2() {
+        validar2();
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+    }
+
+    function validar3() {
+        var telefoneValue = input_telefone.value
+        var emailValue = input_email.value
+        var senhaValue = input_senha.value
+
+        if ((telefoneValue == '') || (emailValue == '') || (senhaValue == '')) {
+            console.log("erro na validação 3");
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+    }
+
+    function validarEtapa3() {
+        validar3();
+        if (validar3 == false){
+            return false;
+        }else{
+        cadastrar();
+        }
+    }
+
+
+
+
+    function voltarEtapas() {
+        NumeroDaEtapa--;
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+    }
+
+    function AvancarEtapas() {
+        EtapaDoFormulario.forEach((formStep) => {
+            formStep.classList.contains("form-step-active") &&
+                formStep.classList.remove("form-step-active");
+        });
+
+        EtapaDoFormulario[NumeroDaEtapa].classList.add("form-step-active");
+    }
+
+
+    function AvancarBarraDeProgresso() {
+        ProgressoEtapas.forEach((EtapasFormulario, indice) => {
+            if (indice < NumeroDaEtapa + 1) {
+                EtapasFormulario.classList.add("progress-step-active");
+            } else {
+                EtapasFormulario.classList.remove("progress-step-active");
+            }
+        });
+
+        const progressActive = document.querySelectorAll(".progress-step-active");
+
+        progresso.style.width =
+            ((progressActive.length - 1) / (ProgressoEtapas.length - 1)) * 100 + "%";
+    }
+
+    function cadastrar() {
+        var Nome_fantasiaVar = input_nome_fantasia.value;
+        var RazaoSocialVar = input_razao_social.value;
+        var CnpjVar = input_cnpj.value;
+        var CepVar = input_cep.value;
+        var NumeroVar = input_numero.value;
+        var ComplementoVar = input_complemento.value;
+        var TelefoneVar = input_telefone.value;
+        var EmailVar = input_email.value;
+        var SenhaVar = input_senha.value;
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                RazaoSocialServer: RazaoSocialVar,
+                Nome_fantasiaServer: Nome_fantasiaVar,
+                CnpjServer: CnpjVar,
+                CepServer: CepVar,
+                ComplementoServer: ComplementoVar,
+                NumeroServer: NumeroVar,
+                TelefoneServer: TelefoneVar,
+                EmailServer: EmailVar,
+                SenhaServer: SenhaVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+            
+
+            if (resposta.ok) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Cadastro realizado com sucesso!',
+                    text: 'Redirecionando para tela de Login!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+
+                setTimeout(() => {
+                    window.location = "./login.html";
+                }, "2000")
+
+            } else {
+                console.log("Erro ao fazer o cadastro");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro!',
+                    text: 'Erro no cadastro!',
+                    showConfirmButton: true
+                })
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+</script>
