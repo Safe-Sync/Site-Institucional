@@ -75,8 +75,6 @@
                         <button onclick="validarEtapa3()" href="#" class="btn btn-next ">Cadastrar</button>
                     </div>
                 </div>
-
-                <!-- <div class="botao_cadastro"><button>Cadastrar</button></div> -->
             </div>
         </div>
         <div class="card_direito">
@@ -103,14 +101,6 @@
 
         if ((NomeFantasiaValue == '') || (RazaoSocialValue == '') || (cnpjValue == '')) {
             console.log("erro na validação 1");
-            alert("campos vazios")
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Erro',
-                text: 'Algum campo foi preenchido incorretamente!',
-                showConfirmButton: true,
-            })
             return false
         } else {
             NumeroDaEtapa++
@@ -133,13 +123,6 @@
 
         if ((cepValue == '') || (numeroValue == '') || (complementoValue == '')) {
             console.log("erro na validação 2");
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Erro',
-                text: 'Algum campo foi preenchido incorretamente!',
-                showConfirmButton: true,
-            })
             return false
         } else {
             NumeroDaEtapa++
@@ -160,13 +143,6 @@
 
         if ((telefoneValue == '') || (emailValue == '') || (senhaValue == '')) {
             console.log("erro na validação 3");
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Erro',
-                text: 'Algum campo foi preenchido incorretamente!',
-                showConfirmButton: true,
-            })
             return false
         } else {
             NumeroDaEtapa++
@@ -251,14 +227,6 @@
             
 
             if (resposta.ok) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Cadastro realizado com sucesso!',
-                    text: 'Redirecionando para tela de Login!',
-                    showConfirmButton: false,
-                    timer: 2000
-                })
 
                 setTimeout(() => {
                     window.location = "./login.html";
@@ -266,13 +234,6 @@
 
             } else {
                 console.log("Erro ao fazer o cadastro");
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Erro!',
-                    text: 'Erro no cadastro!',
-                    showConfirmButton: true
-                })
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);

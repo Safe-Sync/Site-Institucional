@@ -16,9 +16,6 @@
             <div class="card_login">
                 <div class="titulo_login">Login</div>
                 <div class="group_input">
-                    <input type="text" placeholder="Cargo">
-                </div>
-                <div class="group_input">
                     <input id="input_email" type="text" placeholder="Email">
                 </div>
                 <div class="group_input">
@@ -41,9 +38,6 @@ function entrar() {
 var emailVar = input_email.value;
 var senhaVar = input_senha.value;
 
-console.log("FORM LOGIN: ", emailVar);
-console.log("FORM SENHA: ", senhaVar);
-
 fetch("/usuarios/autenticar", {
     method: "POST",
     headers: {
@@ -63,22 +57,15 @@ fetch("/usuarios/autenticar", {
         resposta.json().then(json => {
             console.log(json);
             console.log(JSON.stringify(json));
-
-            sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.ID_USUARIO = json.id;
-            sessionStorage.TIPO_USUARIO = json.tipo;
-            sessionStorage.EMPRESA = json.nomeFantasia;
-            sessionStorage.FK_EMPRESA = json.fkEmpresa;
-
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Sucesso!',
-                text: 'Redirecionando para dashboards!',
-                showConfirmButton: false,
-                timer: 2000
-            })
+            console.log("Login success");
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'success',
+            //     title: 'Sucesso!',
+            //     text: 'Redirecionando para dashboards!',
+            //     showConfirmButton: false,
+            //     timer: 2000
+            // })
             setTimeout(function () {
                 window.location = "./index.html"
             }, 2000);
@@ -93,13 +80,15 @@ fetch("/usuarios/autenticar", {
             console.error(texto);
         });
 
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Erro',
-            text: 'Email ou senha preenchido incorretamente!',
-            showConfirmButton: true,
-        })
+        console.log("Erro no login");
+
+        // Swal.fire({
+        //     position: 'center',
+        //     icon: 'error',
+        //     title: 'Erro',
+        //     text: 'Email ou senha preenchido incorretamente!',
+        //     showConfirmButton: true,
+        // })
     }
 
 }).catch(function (erro) {
