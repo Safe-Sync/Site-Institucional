@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+body {
+    height: 80vh;
+    background-color: #F1F1F1;
+    color: #102C57;
+    overflow: hidden scroll;
+}
+
+nav.menu-lateral {
+    width: 80px;
+    height: 100vh;
+    background-color: #ffff;
+    padding: 40px 0 40px 1%;
+    -webkit-box-shadow: 4px 0px 23px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 0px 23px -4px rgba(0,0,0,0.75);
+box-shadow: 4px 0px 23px -4px rgba(0,0,0,0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .7s;
+    z-index: 2;
+}
+
+nav.menu-lateral.expandir {
+    width: 250px;
+    backdrop-filter: blur(8px);
+}
+
+.botao_expandir {
+    width: 100%;
+    margin-bottom: 60px;
+
+}
+
+.botao_expandir img {
+    cursor: pointer;
+}
+
+.botao_expandir > i {
+    color: #ffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.ativo {
+    background-color: #a6bcdfbb;
+    border-radius: 10px;
+}
+
+ul li.item-menu:hover{
+    background-color: #c5d8f7bb;
+    border-radius: 10px;
+}
+
+ul li.item-menu{
+    transition: .2s;
+}
+
+ul li.item-menu a{
+    color: #ffff;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 25px;
+}
+
+.txt-link{
+    margin-left: 40px;
+    color: #102C57;
+    font-weight: 600;
+}
+
+.txt-link-sair{
+    margin-left: 40px;
+    color: rgb(151, 16, 16);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.icon > i{
+    font-size: 25px;
+}
+
+.icon-sair > i {
+    font-size: 25px;
+    color: rgb(151, 16, 16);
+    margin-left: 8px;
+}
+
+.icon {
+    margin-left: 14px;
+    color: black;
+}
