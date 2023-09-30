@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    color: #102C57;
+}
+
+.barra_lateral{
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 100%;
+    box-shadow: 13px -1px 8px -6px rgba(0,0,0,0.38);
+}
+
+.barra_lateral-header{
+    width: 100%;
+    min-height: 25vh;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid #102C57;
+}
+
+.barra_lateral-nav{
+    height: 100%;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    width:20%;
+    min-height: 50px;
+}
+
+.divs_group{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divs_group a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #102C57;
+}
+
+.divs_group h4{
+    cursor: pointer;
+}
+
+.divs_group img{
+    cursor: pointer;
+}
+
+.text_underline{
+    text-decoration: underline ;
+}
+
+.text_none{
+    text-decoration: none;
+}
+
+.sair{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sair_img{
+    width: 20%;
+    height: 150px;
+    cursor: pointer;
+}
+
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.separador{
+    width: 300px;
+}
+
+.card_cadastro{
+    width: 30%;
+}
+
+.titulo_cadastro{
+    font-size: 32px;
+    color: #102C57;
+}
+
+input{
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    background: none;
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid #102c57e0;
+    background: none;
+    /* border-radius: 0; */
+    border: none;
+    border-bottom: solid 2px #102C57;
+}
+
+.group_input{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: 30px 0 25px 0 ;
+}
+
+.botao_cadastro{
+    width: 100%;
+    margin: 5% 0 0 0;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 50px;
+}
+
+button{
+    height: 100%;
+    width: 40%;
+    font-size: 100%;
+    color: #102C57;
+    border: 2px solid #102C57;
+    background: none;
+    border-radius: 100px;
+    cursor: pointer;
+}
