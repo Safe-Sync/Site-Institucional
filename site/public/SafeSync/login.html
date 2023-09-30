@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styleLogin.css">
+    <title>ByteFlow</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card_esquerdo">
+            <!-- <img src="./css/imgs/mulher_de_fundo.svg" alt=""> -->
+            <div class="logo"><a href="./index.html">SafeSync</a></div>
+        </div>
+        <div class="card_direito">
+            <div class="card_login">
+                <div class="titulo_login">Login</div>
+                <div class="group_input">
+                    <input id="input_email" type="text" placeholder="Email">
+                </div>
+                <div class="group_input">
+                    <input id="input_senha" type="text" placeholder="Senha" >
+                </div>
+                <div class="center">
+                    Ainda não tem conta?<a href="./cadastro.html">Cadastre-se</a>
+                </div>
+                <div class="botao_logar"><button onclick="entrar()">Logar</button></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+function entrar() {
+
+var emailVar = input_email.value;
+var senhaVar = input_senha.value;
+
+fetch("/usuarios/autenticar", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+    })
+}).then(function (resposta) {
+    console.log("ESTOU NO THEN DO entrar()!")
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            console.log("Login success");
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'success',
+            //     title: 'Sucesso!',
+            //     text: 'Redirecionando para dashboards!',
+            //     showConfirmButton: false,
+            //     timer: 2000
+            // })
+            setTimeout(function () {
+                window.location = "./index.html"
+            }, 2000);
+        }
+
+        );
+
+    } else {
+
+
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+
+        console.log("Erro no login");
+
+        // Swal.fire({
+        //     position: 'center',
+        //     icon: 'error',
+        //     title: 'Erro',
+        //     text: 'Email ou senha preenchido incorretamente!',
+        //     showConfirmButton: true,
+        // })
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})
+
+return false;
+}
+</script>

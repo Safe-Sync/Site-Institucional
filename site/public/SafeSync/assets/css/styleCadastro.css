@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --primary-color: #102C57;
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins';
+    font-weight: bolder;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    
+    /* background-color: red; */
+}
+
+.card_direito{
+    width: 45%;
+    min-height: 100vh;
+    background-image: url(../img/img-fundo-cadastro.svg);
+    background-size: cover;
+    background-position: center ;
+}
+
+.logo_cadastro{
+    padding: 0 0 0 5%;
+    width: 90%;
+    height: 5rem;
+    font-size: 35px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.logo_cadastro a{
+    text-decoration: none;
+    color: #102C57;
+}
+
+
+.card_esquerdo{
+    width: 55%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card_cadastro{
+    width: 60%;
+}
+
+.titulo_cadastro{
+    font-size: 32px;
+    color: #102C57;
+}
+
+input{
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    background: none;
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid #102c57e0;
+    background: none;
+    /* border-radius: 0; */
+    border: none;
+    border-bottom: solid 2px #102C57;
+}
+
+.group_input{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: 30px 0 25px 0 ;
+}
+
+
+
+button{
+    height: 100%;
+    width: 80%;
+    font-weight: bolder;
+    font-size: 100%;
+    color: #102C57;
+    border: 2px solid #102C57;
+    background: none;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
+    .card_esquerdo{
+        width: 100%;
+    }
+    button{
+        width: 60%;
+        font-size: 100%;
+    }
+    .card_direito{
+        display: none;
+    }
+} 
+
+.width-50 {
+    width: 40%;
+}
+
+.button_right{
+    height: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.btns-group {
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    /* background-color: red; */
+}
+
+.form-step {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
+}
+
+.form-step-active {
+    display: block;
+}
+
+.progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 1rem 0 1rem;
+}
+
+.progress-step {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: 0;
+  
+}
+
+.progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+    z-index: 1;
+}
+
+.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.progress-step-active {
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
+    z-index: 1;
+}
+
+
+.progress {
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: 0.3s;
+}
+
+@keyframes animate {
+    from {
+      transform: scale(1, 0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1, 1);
+      opacity: 1;
+    }
+}
