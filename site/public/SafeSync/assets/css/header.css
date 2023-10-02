@@ -4,6 +4,7 @@
     font-family: 'Poppins', sans-serif;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -28,6 +29,14 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    width: 25%;
+    height: fit-content;
+    margin-left: 1%;
+}
+.logo img {
+    width: 80%;
+    margin: auto;
+    height: auto;
 }
 
 .logo img:hover {
@@ -441,10 +450,14 @@ footer {
 }
 
 .footer-main .logo {
-    width: 33%;
+    width: 17%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.footer-main .logo img{
+    width: 100%;
+    height: auto;
 }
 
 .footer-main .footer-termos {
@@ -517,7 +530,7 @@ footer {
 @media screen and (max-width: 730px) {
     header {
         background: linear-gradient(91deg, #e7d5c0 11.97%, #e7d5c0 114.07%);
-        box-shadow: #102C57 0px 8px 10px ;
+        box-shadow: #102c57ab 0px 8px 5px ;
     }
     .nav-bar {
         display: flex;
@@ -525,8 +538,21 @@ footer {
         align-items: center;   
         padding: 1.5rem 4rem;
     }
+    
     .logo {
         margin-left: -3rem;
+
+        display: flex;
+        align-items: center;
+        width: 50%;
+        height: fit-content;
+        /* margin-left: 1%; */
+        /* background-color: pink; */
+    }
+    .logo img {
+        width: 80%;
+        /* margin: auto; */
+        height: auto;
     }
     .nav-item {
         display: none;

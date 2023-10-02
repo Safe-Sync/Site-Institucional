@@ -182,4 +182,20 @@ body {
         padding-left: 3%;
         
     }
+    .footer-main{
+        padding: auto 10%;
+    }
+    footer .footer-main .logo{
+        /* background-color: green; */
+        width: 37%;
+        display: flex;
+        align-items: center ;
+        justify-content: center ;
+        margin-left: 0%;
+    }
+    footer .footer-main .logo img{
+        width: 80%;
+        height: auto;
+        /* margin-left: 50%; */
+    }
 }
