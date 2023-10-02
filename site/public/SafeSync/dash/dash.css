@@ -164,7 +164,7 @@ ul li.item-menu a{
 #dash #areaGraficos section {
     /* background-color: pink; */
     width: 98%;
-    height: 100%;
+    height: 94%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -176,6 +176,7 @@ ul li.item-menu a{
     border-radius: 1.7rem;
     box-shadow: 1px 3px 5px #2222225d;
     padding: 5px 15px;
+    margin-bottom: 3%;
 }
 #dash #areaGraficos section .cpu{
     width: 480px;
