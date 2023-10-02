@@ -38,6 +38,7 @@ body{
     min-height: 75vh;
     display: flex;
     flex-direction: column;
+    width: 80%;
 }
 
 .logo{
@@ -54,10 +55,12 @@ body{
 }
 
 .divs_group a{
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     color: #102C57;
+    /* background-color: aqua; */
 }
 
 .divs_group h4{
@@ -77,15 +80,15 @@ body{
 }
 
 .sair{
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .sair_img{
-    width: 20%;
-    height: 150px;
+    width: 18%;
+    height: 130px;
     cursor: pointer;
 }
 
@@ -104,7 +107,7 @@ body{
 }
 
 .card_cadastro{
-    width: 30%;
+    width: 40%;
 }
 
 .titulo_cadastro{

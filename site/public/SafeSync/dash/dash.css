@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+  
+}
+
+body {
+    background-color: #f1f1f1;
+ 
+    max-width: 100vw;
+    
+}
+main {
+    width: 100%;
+    height: auto;
+}
+nav.menu-lateral {
+    width: 80px;
+    height: 100vh;
+    background-color: #ffff;
+    padding: 40px 1% 40px 1%;
+    box-shadow: 4px 0px 23px -4px rgba(31, 31, 31, 0.65);
+    box-shadow: 4px 0px 23px -4px rgba(31, 31, 31, 0.65);
+    box-shadow: 4px 0px 23px -4px rgba(31, 31, 31, 0.65);
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .7s;
+    z-index: 2;
+}
+
+nav.menu-lateral.expandir {
+    width: 250px;
+    backdrop-filter: blur(8px);
+}
+
+.botao_expandir {
+    width: 100%;
+    margin-bottom: 60px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 3px 3px 22px #5e5e5e1c; */
+    
+    cursor: pointer;
+}
+
+.botao_expandir img {
+    cursor: pointer;
+}
+
+.botao_expandir > i {
+    color: #ffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style-type: none;
+    /* background-color: blue; */
+    padding: 0;
+}
+
+ul li.ativo {
+    background-color: #a6bcdfbb;
+    border-radius: 10px;
+
+}
+
+ul li.item-menu:hover{
+    background-color: #c5d8f7bb;
+    border-radius: 10px;
+}
+
+ul li.item-menu{
+    transition: .2s;
+    /* background-color: aqua; */
+    
+}
+
+ul li.item-menu a{
+    color: #ffff;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 25px;
+}
+
+
+.txt-link{
+    margin-left: 40px;
+    color: #102C57;
+    font-weight: 600;
+}
+
+.txt-link-sair{
+    margin-left: 40px;
+    color: rgb(151, 16, 16);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.icon-sair{
+    /* font-size: 25px; */
+    color: rgb(151, 16, 16);
+    margin-left: 1.5rem;
+
+    /* margin-left: 0.8rem; */
+}
+
+.icon {
+    margin-left: 1.5rem;
+    color: #000d22;
+}
+
+
+#dash{
+    margin-left: 10vw;
+    height: 95vh;
+    /* background-color: antiquewhite; */
+}
+#dash header{
+    width: 100%;
+    display: flex;
+    /* background-color: #ddeaaa; */
+    justify-content: space-between;
+    height: auto;
+}
+#dash header h1{
+    color: #102C57;
+    text-shadow: 3px 3px 3px #0f0f0f69;
+}
+#dash header .opcoesTopo{
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#dash header .opcoesTopo div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    width: 30%;
+    border-radius: 100%;
+    cursor: pointer;
+}
+#dash header .opcoesTopo div:hover{
+    transition: all 0.5s;
+    background-color: #e6e6e6;
+}
+#dash #areaGraficos{
+    /* background-color: rgb(104, 104, 67) ; */
+    width: 100%;
+    height: 80vh;
+    padding-top: 5vh;
+}
+#dash #areaGraficos section {
+    /* background-color: pink; */
+    width: 98%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#dash #areaGraficos section .graficos{
+    background-color: #fdfdfd;
+    width: 320px;
+    height: 45%;
+    border-radius: 1.7rem;
+    box-shadow: 1px 3px 5px #2222225d;
+    padding: 5px 15px;
+}
+#dash #areaGraficos section .cpu{
+    width: 480px;
+}
+#dash #areaGraficos section .ram{
+    width: 350px;
+}
+#dash #areaGraficos section .teclas{
+    width: 200px;
+}
+#dash #areaGraficos section .processos{
+    width: 700px;
+}
+#dash #areaGraficos section .disco{
+    width: 390px;
+}
+#dash #areaGraficos section .graficos div{
+    width: 100%;
+    /* background-color: green !important; */
+    height: 65%;
+    background-image: url(../assets/img/testeDash1.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+#dash #areaGraficos section .teclas div{
+    background-image: url(../assets/img/testeDash2.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+#dash #areaGraficos section .processos div{
+    background-image: url(../assets/img/testeDash3.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}

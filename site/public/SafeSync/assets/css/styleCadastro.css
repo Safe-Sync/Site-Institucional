@@ -28,21 +28,32 @@
     background-image: url(../img/img-fundo-cadastro.svg);
     background-size: cover;
     background-position: center ;
+    display: flex;
+    justify-content: end;
 }
 
 .logo_cadastro{
     padding: 0 0 0 5%;
-    width: 90%;
-    height: 5rem;
+    width: 40%;
+    height: fit-content;
     font-size: 35px;
     display: flex;
     justify-content: end;
     align-items: center;
+    /* background-color: #666; */
 }
 
 .logo_cadastro a{
     text-decoration: none;
     color: #102C57;
+}
+
+.logo_cadastro a{
+    width: 100%;
+}
+.logo_cadastro a img{
+    width: 80%;
+    height: auto;
 }
 
 

@@ -18,10 +18,10 @@ nav.menu-lateral {
     width: 80px;
     height: 100vh;
     background-color: #ffff;
-    padding: 40px 0 40px 1%;
-    -webkit-box-shadow: 4px 0px 23px -4px rgba(0,0,0,0.75);
--moz-box-shadow: 4px 0px 23px -4px rgba(0,0,0,0.75);
-box-shadow: 4px 0px 23px -4px rgba(0,0,0,0.75);
+    padding: 40px 1% 40px 1%;
+    box-shadow: 4px 0px 23px -4px rgba(31, 31, 31, 0.65);
+    box-shadow: 4px 0px 23px -4px rgba(31, 31, 31, 0.65);
+    box-shadow: 4px 0px 23px -4px rgba(31, 31, 31, 0.65);
     position: fixed;
     top: 0;
     left: 0;
@@ -59,6 +59,7 @@ ul{
 ul li.ativo {
     background-color: #a6bcdfbb;
     border-radius: 10px;
+
 }
 
 ul li.item-menu:hover{
@@ -68,6 +69,8 @@ ul li.item-menu:hover{
 
 ul li.item-menu{
     transition: .2s;
+    /* background-color: aqua; */
+    
 }
 
 ul li.item-menu a{
@@ -78,6 +81,9 @@ ul li.item-menu a{
     display: flex;
     margin-bottom: 20px;
     line-height: 25px;
+}
+ul li.item-menu a .icon i{
+   margin-left: -10%;
 }
 
 .txt-link{

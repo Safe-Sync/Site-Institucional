@@ -22,22 +22,26 @@
     background-image: url(../img/como-estruturar-um-rh-do-zero-capa.svg);
     background-size: cover;
     background-position: center;
+    /* box-shadow: 18px 0px 44px -15px rgb(7, 7, 7); */
 }
 
 
 
 .logo{
     padding: 0 0 0 5%;
-    width: 100%;
-    height: 5rem;
+    width: 40%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: start;
+    /* background-color: blue; */
 }
 .logo a{
-    text-decoration: none;
-    font-size: 32px;
-    color: #102C57;
+    width: 100%;
+}
+.logo a img{
+    width: 80%;
+    height: auto;
 }
 
 .card_direito{
