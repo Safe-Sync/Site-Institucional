@@ -75,7 +75,9 @@ ul li.item-menu:hover{
     background-color: #c5d8f7bb;
     border-radius: 10px;
 }
-
+#item-menu-sair:hover{
+    background-color: #e67973;
+}
 ul li.item-menu{
     transition: .2s;
     /* background-color: aqua; */
@@ -114,6 +116,7 @@ ul li.item-menu a{
     /* margin-left: 0.8rem; */
 }
 
+
 .icon {
     margin-left: 1.5rem;
     color: #000d22;
@@ -132,9 +135,21 @@ ul li.item-menu a{
     justify-content: space-between;
     height: auto;
 }
-#dash header h1{
+#dash header #titulosDash{
+    display: flex;
+    flex-direction: column;
+    /* background-color: #e67973; */
+}
+#dash header #titulosDash h1{
     color: #102C57;
     text-shadow: 3px 3px 3px #0f0f0f69;
+    margin: 0;
+    margin-bottom: 3%;
+}
+#dash header #titulosDash h3{
+    color: #213f6d;
+    margin: 0;
+    text-shadow: 3px 3px 3px #32323269;
 }
 #dash header .opcoesTopo{
     width: 20%;
@@ -179,19 +194,19 @@ ul li.item-menu a{
     margin-bottom: 3%;
 }
 #dash #areaGraficos section .cpu{
-    width: 480px;
+    width: 38%;
 }
 #dash #areaGraficos section .ram{
-    width: 350px;
+    width: 25%;
 }
 #dash #areaGraficos section .teclas{
-    width: 200px;
+    width: 25%;
 }
 #dash #areaGraficos section .processos{
-    width: 700px;
+    width: 55%;
 }
 #dash #areaGraficos section .disco{
-    width: 390px;
+    width: 38%;
 }
 #dash #areaGraficos section .graficos div{
     width: 100%;
@@ -200,6 +215,12 @@ ul li.item-menu a{
     background-image: url(../assets/img/testeDash1.svg);
     background-size: 100%;
     background-repeat: no-repeat;
+    border-radius: 15px;
+    margin: auto;
+   
+}
+#dash #areaGraficos section .ram div{
+    margin-top: 18%;
 }
 #dash #areaGraficos section .teclas div{
     background-image: url(../assets/img/testeDash2.svg);
@@ -210,4 +231,18 @@ ul li.item-menu a{
     background-image: url(../assets/img/testeDash3.svg);
     background-size: contain;
     background-repeat: no-repeat;
+    
 }
+
+/* area do menu lateral */
+
+.sectionsSumir {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+
+/*  */
