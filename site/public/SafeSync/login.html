@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <link rel="icon" type="imagem/png" href="../SafeSync/assets/img/logotipo.svg">
     <title>Login</title>
 </head>
+
 <body>
     <div class="container">
         <div class="card_esquerdo">
             <!-- <img src="./css/imgs/mulher_de_fundo.svg" alt=""> -->
-            <div class="logo"><a href="./index.html"><img src="../SafeSync/assets/img/LogoSafeSync.svg" alt=""></a></div>
+            <div class="logo"><a href="./index.html"><img src="../SafeSync/assets/img/LogoSafeSync.svg" alt=""></a>
+            </div>
         </div>
         <div class="card_direito">
             <div class="card_login">
@@ -20,7 +23,14 @@
                     <input id="input_email" type="text" placeholder="Email">
                 </div>
                 <div class="group_input">
-                    <input id="input_senha" type="text" placeholder="Senha" >
+                    <input id="input_senha" type="text" placeholder="Senha">
+                </div>
+                <div>
+                    <label for="tipo_login">Tipo de login</label>
+                    <select name="tipo_login" id="input_tipo_login">
+                        <option value="empresa">Empresa</option>
+                        <option value="funcionario">Funcionário</option>
+                    </select>
                 </div>
                 <div class="center">
                     Ainda não tem conta?<a href="./cadastro.html">Cadastre-se</a>
@@ -30,72 +40,120 @@
         </div>
     </div>
 </body>
+
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    function entrar() {
+        var select = document.getElementById("input_tipo_login");
 
-function entrar() {
+        var tipoLogin = select.options[select.selectedIndex].value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
 
-var emailVar = input_email.value;
-var senhaVar = input_senha.value;
+        if (tipoLogin == "funcionario") {
+            fetch("/funcionario/entrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO funcionario THEN DO entrar()!")
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        console.log("Login success");
+                        // Swal.fire({
+                        //     position: 'center',
+                        //     icon: 'success',
+                        //     title: 'Sucesso!',
+                        //     text: 'Redirecionando para dashboards!',
+                        //     showConfirmButton: false,
+                        //     timer: 2000
+                        // })
+                        setTimeout(function () {
+                            window.location = "./dash/dashFuncionario.html"
+                        }, 2000);
+                    }
+                    );
 
-fetch("/usuarios/autenticar", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        emailServer: emailVar,
-        senhaServer: senhaVar
-    })
-}).then(function (resposta) {
-    console.log("ESTOU NO THEN DO entrar()!")
+                } else {
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
 
-    if (resposta.ok) {
-        console.log(resposta);
+                    console.log("Erro no login");
 
+                    // Swal.fire({
+                    //     position: 'center',
+                    //     icon: 'error',
+                    //     title: 'Erro',
+                    //     text: 'Email ou senha preenchido incorretamente!',
+                    //     showConfirmButton: true,
+                    // })
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+            return false;
 
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-            console.log("Login success");
-            // Swal.fire({
-            //     position: 'center',
-            //     icon: 'success',
-            //     title: 'Sucesso!',
-            //     text: 'Redirecionando para dashboards!',
-            //     showConfirmButton: false,
-            //     timer: 2000
-            // })
-            setTimeout(function () {
-                window.location = "./dash/dashFuncionario.html"
-            }, 2000);
+        } else if (tipoLogin == "empresa") {
+            fetch("/empresa/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO empresa THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        console.log("Login success");
+                        // Swal.fire({
+                        //     position: 'center',
+                        //     icon: 'success',
+                        //     title: 'Sucesso!',
+                        //     text: 'Redirecionando para dashboards!',
+                        //     showConfirmButton: false,
+                        //     timer: 2000
+                        // })
+                        setTimeout(function () {
+                            window.location = "./cadastroFunc.html"
+                        }, 2000);
+                    }
+                    );
+
+                } else {
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+
+                    console.log("Erro no login");
+
+                    // Swal.fire({
+                    //     position: 'center',
+                    //     icon: 'error',
+                    //     title: 'Erro',
+                    //     text: 'Email ou senha preenchido incorretamente!',
+                    //     showConfirmButton: true,
+                    // })
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
         }
-
-        );
-
-    } else {
-
-
-        resposta.text().then(texto => {
-            console.error(texto);
-        });
-
-        console.log("Erro no login");
-
-        // Swal.fire({
-        //     position: 'center',
-        //     icon: 'error',
-        //     title: 'Erro',
-        //     text: 'Email ou senha preenchido incorretamente!',
-        //     showConfirmButton: true,
-        // })
     }
-
-}).catch(function (erro) {
-    console.log(erro);
-})
-
-return false;
-}
 </script>

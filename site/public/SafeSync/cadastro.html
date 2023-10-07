@@ -106,8 +106,6 @@
         } else {
             NumeroDaEtapa++
         }
-
-
     }
 
     function validarEtapa1() {
@@ -129,7 +127,6 @@
             NumeroDaEtapa++
         }
     }
-
 
     function validarEtapa2() {
         validar2();
@@ -159,9 +156,6 @@
         }
     }
 
-
-
-
     function voltarEtapas() {
         NumeroDaEtapa--;
         AvancarEtapas();
@@ -176,7 +170,6 @@
 
         EtapaDoFormulario[NumeroDaEtapa].classList.add("form-step-active");
     }
-
 
     function AvancarBarraDeProgresso() {
         ProgressoEtapas.forEach((EtapasFormulario, indice) => {
@@ -200,46 +193,37 @@
         var CepVar = input_cep.value;
         var NumeroVar = input_numero.value;
         var ComplementoVar = input_complemento.value;
-        var TelefoneVar = input_telefone.value;
         var EmailVar = input_email.value;
+        var TelefoneVar = input_telefone.value;
         var SenhaVar = input_senha.value;
 
-        fetch("/usuarios/cadastrar", {
+        fetch("/empresa/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
                 RazaoSocialServer: RazaoSocialVar,
                 Nome_fantasiaServer: Nome_fantasiaVar,
                 CnpjServer: CnpjVar,
                 CepServer: CepVar,
                 ComplementoServer: ComplementoVar,
                 NumeroServer: NumeroVar,
-                TelefoneServer: TelefoneVar,
                 EmailServer: EmailVar,
+                TelefoneServer: TelefoneVar,
                 SenhaServer: SenhaVar,
             })
         }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-            
-
             if (resposta.ok) {
-
                 setTimeout(() => {
                     window.location = "./login.html";
                 }, "2000")
-
             } else {
                 console.log("Erro ao fazer o cadastro");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
-
         return false;
     }
 
