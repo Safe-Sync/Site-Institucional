@@ -15,8 +15,9 @@ main {
     width: 100%;
     height: auto;
 }
+
 nav.menu-lateral {
-    width: 80px;
+    width: 6%;
     height: 100vh;
     background-color: #ffff;
     padding: 40px 1% 40px 1%;
@@ -80,15 +81,16 @@ ul li.item-menu:hover{
 }
 ul li.item-menu{
     transition: .2s;
-    /* background-color: aqua; */
-    
+    /* background-color: rgb(43, 85, 85); */
+    /* padding: 0; */
+
 }
 
 ul li.item-menu a{
     color: #ffff;
     text-decoration: none;
     font-size: 17px;
-    padding: 20px 4%;
+    padding: 20px 2%;
     display: flex;
     margin-bottom: 20px;
     line-height: 25px;
@@ -96,7 +98,7 @@ ul li.item-menu a{
 
 
 .txt-link{
-    margin-left: 40px;
+    margin-left: 2.8rem;
     color: #102C57;
     font-weight: 600;
 }
@@ -111,14 +113,14 @@ ul li.item-menu a{
 .icon-sair{
     /* font-size: 25px; */
     color: rgb(151, 16, 16);
-    margin-left: 1.5rem;
+    margin-left: 1.8rem;
 
     /* margin-left: 0.8rem; */
 }
 
 
 .icon {
-    margin-left: 1.5rem;
+    margin-left: 1.8rem;
     color: #000d22;
 }
 
@@ -220,7 +222,7 @@ ul li.item-menu a{
    
 }
 #dash #areaGraficos section .ram div{
-    margin-top: 18%;
+    margin-top: 15%;
 }
 #dash #areaGraficos section .teclas div{
     background-image: url(../assets/img/testeDash2.svg);
@@ -245,4 +247,208 @@ ul li.item-menu a{
 }
 
 
+/*  */
+
+/* area do modal notificaçao */
+
+/* Estilo do modal */
+.notificacaoModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 98%;
+    height: 92%;
+    /* margin-top: 5%; */
+    padding-top: 8%;
+    padding-left: 2%;
+    overflow: auto;
+   
+    background-color: rgba(0,0,0,0.4);
+}
+.notificacaoModal-content {
+    background-color: #fefefe00;
+    /* margin: 15% auto; */
+    /* padding: 20px; */
+    /* border: 1px solid #888; */
+    width: 90%;
+    height: 100%;
+    margin-left: 8vw;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Estilo da barra de rolagem */
+.notificacaoModal-content::-webkit-scrollbar {
+    width: 12px; /* Ajusta a largura da barra de rolagem conforme necessário */
+}
+
+/* Estilo do "thumb" (o indicador da barra de rolagem) */
+.notificacaoModal-content::-webkit-scrollbar-thumb {
+    background-color: #B5B8BA; /* Cor da barra de rolagem */
+    border-radius: 6px; /* Border radius para criar cantos arredondados */
+}
+
+.notificacaoModal-content section div{
+    margin-bottom: 1.5%;
+}
+.notificacaoModal-content section div p{
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #000d22;
+    cursor: pointer;
+}
+.notificacaoModal-content section .notificacaoCritico{
+    width: 88%;
+    padding-left: 2%;
+    /* margin: auto; */
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: #FF6961;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.notificacaoModal-content section .notificacaoAlerta{
+    width: 88%;
+    padding-left: 2%;
+    /* margin: auto; */
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: #FDFD96;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.notificacaoModal-content section .notificacaoBom{
+    width: 88%;
+    padding-left: 2%;
+    /* margin: auto; */
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: #77DD77;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.closeNotificacao {
+    color: #313131;
+    float: right;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-right: 5%;
+    position: fixed;
+    right: 0%;
+}
+
+.closeNotificacao:hover,
+.closeNotificacao:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/*  */
+
+/* modal usuario */
+
+.usuarioModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 98%;
+    height: 100%;
+    /* margin-top: 5%; */
+    /* padding-top: 3%; */
+    padding-left: 2%; 
+    overflow: auto;
+   
+    /* background-color: rgba(0,0,0,0.4); */
+    backdrop-filter: blur(5px);
+
+}
+.usuarioModal-content {
+    background-color: #fefefe;
+    width: 50%;
+    height: 90%;
+    padding: 0 5%;
+    margin: auto;
+    /* overflow-y: auto; */
+    /* scrollbar-width: thin; */
+    box-shadow: #5050509c 5px 5px 10px ;
+    border-radius: 2rem;
+}
+
+/* Estilo da barra de rolagem */
+.usuarioModal-content::-webkit-scrollbar {
+    width: 12px; /* Ajusta a largura da barra de rolagem conforme necessário */
+}
+
+/* Estilo do "thumb" (o indicador da barra de rolagem) */
+.usuarioModal-content::-webkit-scrollbar-thumb {
+    background-color: #B5B8BA; /* Cor da barra de rolagem */
+    border-radius: 6px; /* Border radius para criar cantos arredondados */
+}
+
+.usuarioModal-content section h1{
+    text-align: center;
+    width: 100%;
+    color: #102C57;
+    text-shadow: 3px 3px 5px #4e4e4e85;
+    font-size: 2rem;
+}
+.usuarioModal-content section article #imgPerfil{
+    width: 10rem;
+    height: 10rem;
+    background-color: #213f6d;
+    border-radius: 50%;
+}
+.usuarioModal-content section article #imgPerfil img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.usuarioModal-content section article .conteudoPerfil{
+    width: 90%;
+    height: fit-content;
+    background-color: #D4E2F8;
+    padding: 2% 3%;
+    border-radius: 15px;
+    /* margin-top: 1%; */
+}
+.usuarioModal-content section article .iconeEditarPerfil{
+    background-color: #EDEDED ;
+    box-shadow: 2px 2px 5px #919191cc;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: fixed;
+    right: 28%;
+    top: 41%; */
+    margin-left: 90%;
+    margin-top: -5%;
+}
+.usuarioModal-content section article .conteudoPerfil .legendaPerfil{
+    color: #000d22;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 10px 0;
+}
+.usuarioModal-content section article .conteudoPerfil .primeiraLegenda{
+    margin-top: 0;
+}
+.usuarioModal-content section article .conteudoPerfil .campoPerfil{
+    color: #102C57;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
 /*  */

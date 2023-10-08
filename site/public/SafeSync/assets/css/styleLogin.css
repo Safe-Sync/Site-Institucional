@@ -71,15 +71,36 @@
     font-size: 32px;
     color: #102C57;
 }
+.tipoLogin{
+    width: 100%;
+    /* background-color: #102C57; */
+  
+}
+.tipoLogin:focus{
+    border: none;
+    border-bottom: solid 2px #102C57;
+}
+.tipoLogin select{
+    width: 90%;
+    height: 2.5rem;
+    border-bottom: solid 2px #102c5748;
+    border: none;
+    /* background-color: aqua; */
+    font-size: 1rem;
+    color: #102c579d;
+    outline: none;
+    border-bottom: solid 2px #102c5748;
+    padding: 0;
+}
 input{
     width: 90%;
-    height: 40px;
-    font-size: 18px;
+    height: 2.5rem;
+    font-size: 1.125rem;
     background: none;
     /* border-radius: 0; */
     border: none;
     border-bottom: solid 2px #102c5748;
-    ;
+    
 }
 
 input:focus{
@@ -129,6 +150,7 @@ button{
 
 .center a{
     padding: 0 0 0 5px;
+    color: #214d8f;
 }
 
 @media screen and (max-width: 768px){

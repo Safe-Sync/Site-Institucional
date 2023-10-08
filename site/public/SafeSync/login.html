@@ -19,19 +19,20 @@
         <div class="card_direito">
             <div class="card_login">
                 <div class="titulo_login">Login</div>
+                <div class="tipoLogin">
+                    <select name="tipo_login" id="input_tipo_login">
+                        <option value=""  disabled selected>Tipo de Login</option>
+                        <option value="empresa">Empresa</option>
+                        <option value="funcionario">Funcionário</option>
+                    </select>
+                </div>
                 <div class="group_input">
                     <input id="input_email" type="text" placeholder="Email">
                 </div>
                 <div class="group_input">
                     <input id="input_senha" type="text" placeholder="Senha">
                 </div>
-                <div>
-                    <label for="tipo_login">Tipo de login</label>
-                    <select name="tipo_login" id="input_tipo_login">
-                        <option value="empresa">Empresa</option>
-                        <option value="funcionario">Funcionário</option>
-                    </select>
-                </div>
+                
                 <div class="center">
                     Ainda não tem conta?<a href="./cadastro.html">Cadastre-se</a>
                 </div>
