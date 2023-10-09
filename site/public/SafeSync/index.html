@@ -11,74 +11,78 @@
 </head>
 
 <body>
-    <header>
-        <nav class="nav-bar">
-            <div class="logo">
-                <img src="./assets/img/LogoSafeSyncEscura.svg" alt="">
-            </div>
+    <section id="fundoTopo">
+        <header>
+            <nav class="nav-bar">
+                <div class="logo">
+                    <img src="./assets/img/LogoSafeSyncEscura.svg" alt="">
+                </div>
 
-            <div class="nav-list">
+                <div class="nav-list">
+                    <ul>
+                        <li class="nav-item"><a class="nav-link" href="#INICIO"><u>Início</u> </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#SOLUCAO">Solução</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#CONTATO">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="buttons">
+                    <div class="login-button">
+                        <button><a href="./login.html">Login</a></button>
+                    </div>
+                    <div class="separator">
+                        <img src="./assets/img/separator.svg" alt="">
+                    </div>
+                    <div class="register-button">
+                        <button><a href="./cadastro.html">Cadastro</a></button>
+                    </div>
+                </div>
+
+                <div class="mobile-menu-icon">
+                    <button onclick="menuShow()"><img class="icon" src="./assets/img/menu.svg" alt=""></button>
+                </div>
+            </nav>
+
+            <div class="mobile-menu">
                 <ul>
-                    <li class="nav-item"><a class="nav-link" href="#INICIO">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#SOLUCAO">Solução</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#CONTATO">Contato</a></li>
+                    <li class="nav-item"><a href="#INICIO" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="#SOLUCAO" class="nav-link">Solução</a></li>
+                    <li class="nav-item"><a href="#CONTATO" class="nav-link">Contato</a></li>
                 </ul>
-            </div>
 
-            <div class="buttons">
                 <div class="login-button">
                     <button><a href="./login.html">Login</a></button>
-                </div>
-                <div class="separator">
-                    <img src="./assets/img/separator.svg" alt="">
                 </div>
                 <div class="register-button">
                     <button><a href="./cadastro.html">Cadastro</a></button>
                 </div>
             </div>
+        </header>
 
-            <div class="mobile-menu-icon">
-                <button onclick="menuShow()"><img class="icon" src="./assets/img/menu.svg" alt=""></button>
-            </div>
-        </nav>
+        <a name="INICIO"></a>
+        <section>
+            <div class="container" id="c1">
+                <div class="texto_header">
+                    <div class="sub_classe_texto">
+                        <h2>SafeSync</h2>
+                        <h3><span>Elevando a</span> produtividade, <span>Respeitando a</span> privacidade.</h3><br>
+                        <h4>SafeSync é a solução de monitoramento <br> inteligente que impulsiona a produtividade no
+                            home
+                            office,
+                            oferecendo análise de desempenho e insights privados.</h4> <br>
+                        <div class="img_headerMobile" style="display: none;"><img
+                                src="./assets/img/img-first-section.svg" alt="img_header"></div>
 
-        <div class="mobile-menu">
-            <ul>
-                <li class="nav-item"><a href="#INICIO" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="#SOLUCAO" class="nav-link">Solução</a></li>
-                <li class="nav-item"><a href="#CONTATO" class="nav-link">Contato</a></li>
-            </ul>
-
-            <div class="login-button">
-                <button><a href="./login.html">Login</a></button>
-            </div>
-            <div class="register-button">
-                <button><a href="./cadastro.html">Cadastro</a></button>
-            </div>
-        </div>
-    </header>
-
-    <a  name="INICIO"></a>
-    <section>
-        <div class="container" id="c1">
-            <div class="texto_header">
-                <div class="sub_classe_texto">
-                    <h2>SafeSync</h2>
-                    <h3><span>Elevando a</span> produtividade, <span>Respeitando a</span> privacidade.</h3><br>
-                    <h4>SafeSync é a solução de monitoramento <br> inteligente que impulsiona a produtividade no home
-                        office,
-                        oferecendo análise de desempenho e insights privados.</h4> <br>
-            <div class="img_headerMobile" style="display: none;"><img src="./assets/img/img-first-section.svg" alt="img_header"></div>
-
-                    <div class="start_button">
-                        <div class="button_comece"><a href="./login.html">Comece agora</a></div>
+                        <div class="start_button">
+                            <div class="button_comece"><a href="./login.html">Comece agora</a></div>
+                        </div>
                     </div>
                 </div>
+                <div class="img_header"><img src="./assets/img/img-first-section.svg" alt="img_header"></div>
             </div>
-            <div class="img_header"><img src="./assets/img/img-first-section.svg" alt="img_header"></div>
-        </div>
+        </section>
     </section>
-    <a  name="SOLUCAO"></a>
+    <a name="SOLUCAO"></a>
     <section>
         <div class="container" id="c2">
             <div class="title">
@@ -127,7 +131,8 @@
                     <p>Monitoramos a performance da máquina e <br class="breakLine">
                         do colaborador, por meio de gráficos e <br class="breakLine">
                         dashboards, com indicadores úteis.</p>
-                <div style="display: none;" class="img-solucao-oferece-leftMobile"><img src="./assets/img/img-solucao3.svg" alt=""></div>
+                    <div style="display: none;" class="img-solucao-oferece-leftMobile"><img
+                            src="./assets/img/img-solucao3.svg" alt=""></div>
 
                 </div>
             </div>
@@ -148,7 +153,7 @@
         </div>
     </section>
 
-    <a  name="CONTATO"></a>
+    <a name="CONTATO"></a>
     <footer>
         <div class="footer-section">
             <div class="footer-main">
