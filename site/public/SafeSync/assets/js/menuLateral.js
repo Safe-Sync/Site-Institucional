@@ -7,7 +7,29 @@ btnExpandir.addEventListener('click', function(){
     menuExpandir.classList.toggle('expandir')
 })
 
-const dashboardLink = document.querySelector('#dashboard-link')
-const tarefasLink = document.querySelector('#tarefas-link');
-const areaGraficos = document.querySelector('#areaGraficos');
-const areaTarefas = document.querySelector('#areaTarefas');
+const funcionario = document.querySelector('#funcionario')
+const cadFunc = document.querySelector('#cadFunc');
+const areaFuncionarios = document.querySelector('#areaFuncionarios');
+const areaCadFunc = document.querySelector('#areaCadFunc');
+
+
+function mostrarFunc() {
+    areaFuncionarios.style.display = 'block';
+    areaCadFunc.style.display = 'none';
+    cadFunc.classList.remove('ativo');
+    funcionario.classList.toggle('ativo');
+}
+
+function mostrarCadFunc() {
+    areaFuncionarios.style.display = 'none';
+    areaCadFunc.style.display = 'block';
+    cadFunc.classList.toggle('ativo');
+    funcionario.classList.remove('ativo');
+}
+
+// Chama as funções para inicializar o estado
+mostrarFunc();
+
+funcionario.addEventListener('click', mostrarFunc);
+cadFunc.addEventListener('click', mostrarCadFunc);
+document.addEventListener('DOMContentLoaded', mostrarFunc);

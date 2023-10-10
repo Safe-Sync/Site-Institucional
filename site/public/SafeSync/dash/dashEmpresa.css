@@ -7,6 +7,7 @@
 
 body {
     background-color: #f1f1f1;
+    overflow: hidden;
  
     max-width: 100vw;
     
@@ -14,6 +15,7 @@ body {
 main {
     width: 100%;
     height: auto;
+
 }
 
 nav.menu-lateral {
@@ -83,14 +85,10 @@ ul li.item-menu{
     transition: .2s;
     /* background-color: rgb(43, 85, 85); */
     /* padding: 0; */
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.3rem;
 }
 
-ul  #item-menu-sair{
-    margin-top: 20vh;
-    /* background-color: #102C57; */
 
-}
 
 ul li.item-menu a{
     color: #ffff;
@@ -109,11 +107,11 @@ ul li.item-menu a{
 }
 
 .txt-link-sair{
+
     margin-left: 40px;
     color: rgb(151, 16, 16);
     text-decoration: underline;
     font-weight: 600;
-
 }
 
 .icon-sair{
