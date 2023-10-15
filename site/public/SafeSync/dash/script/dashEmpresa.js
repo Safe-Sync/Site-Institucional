@@ -100,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
 // area modal usuario
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -117,6 +116,36 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("click", function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+    });
+});
+
+// modal funcionarios
+const btnAbrirModalFuncionarios = document.querySelectorAll('.btnAbrirModalFuncionario');
+
+btnAbrirModalFuncionarios.forEach(btnAbrirModalFuncionario => {
+    btnAbrirModalFuncionario.addEventListener('click', () => {
+        const divFuncionario = btnAbrirModalFuncionario.closest('.infosFuncionario');
+        const iconeEdit = divFuncionario.querySelectorAll('.iconeEditar');
+        const labelFuncionario = divFuncionario.querySelectorAll('.labelFuncionario');
+
+        divFuncionario.classList.toggle('expandido');
+        labelFuncionario.forEach(label => {
+            label.classList.toggle('expandido');
+        });
+
+        if (divFuncionario.classList.contains('expandido')) {
+            btnAbrirModalFuncionario.textContent = '-';
+            // Itera sobre cada íconeEditar e define seu estilo para 'block'
+            iconeEdit.forEach(icone => {
+                icone.style.display = 'block';
+            });
+        } else {
+            btnAbrirModalFuncionario.textContent = '+';
+            // Itera sobre cada íconeEditar e define seu estilo para 'none'
+            iconeEdit.forEach(icone => {
+                icone.style.display = 'none';
+            });
         }
     });
 });

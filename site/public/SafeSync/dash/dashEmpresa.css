@@ -19,7 +19,9 @@ main {
 }
 
 nav.menu-lateral {
+    min-width: 5vw;
     width: 6%;
+    max-width: 90px;
     height: 100vh;
     background-color: #ffff;
     padding: 40px 1% 40px 1%;
@@ -129,7 +131,7 @@ ul li.item-menu a{
 
 #dash{
     margin-left: 10vw;
-    height: 95vh;
+    height: auto;
     /* background-color: antiquewhite; */
 }
 #dash header{
@@ -237,6 +239,7 @@ ul li.item-menu a{
     background-repeat: no-repeat;
     
 }
+
 
 /* area do menu lateral */
 
