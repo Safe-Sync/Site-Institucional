@@ -61,6 +61,19 @@ document.addEventListener('DOMContentLoaded', mostrarGraficos);
     });
 });
 
+// area do header
+
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    // Calcula a opacidade com base na posição de rolagem
+    const scrollPosition = window.scrollY;
+    const opacity = 1 - scrollPosition / 50; // Você pode ajustar o valor 300 conforme necessário
+
+    // Define a opacidade do cabeçalho
+    header.style.opacity = opacity >= 0 ? opacity : 0;
+});
+
 
 // area modal usuario
 

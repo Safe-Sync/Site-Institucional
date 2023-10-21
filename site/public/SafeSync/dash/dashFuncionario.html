@@ -68,7 +68,7 @@
         </article>
 
         <article id="dash">
-            <header>
+            <header id="header">
                 <div id="titulosDash"> 
                     <h1 class="titulo">Dashboard</h1>
                     <h3>Nome do funcionário - Nome da empresa</h3>
@@ -93,34 +93,34 @@
 
             <section id="areaGraficos">
                 <section>
-
                     <div class="graficos cpu">
                         <h3>% Cpu</h3>
                         <div>
+                            <canvas id="myChartLineCpu"></canvas>
                         </div>
                     </div>
                     <div class="graficos ram">
                         <h3>% Ram</h3>
                         <div>
-                        </div>
-                    </div>
-                    <div class="graficos teclas">
-                        <h3>Teclas por hora</h3>
-                        <div>
-                        </div>
-                    </div>
-                    <div class="graficos processos">
-                        <h3>% Processos</h3>
-                        <div>
+                            <canvas id="myChartLineRam"></canvas>
                         </div>
                     </div>
                     <div class="graficos disco">
                         <h3>% Disco</h3>
                         <div>
+                            <canvas id="myChartLineDisco"></canvas>
+                        </div>
+
+                    </div>
+                    <div class="graficos processos">
+                        <h3>% Processos</h3>
+                        <div>
+                            <canvas id="myChartLineProcessos"></canvas>
                         </div>
                     </div>
-
                 </section>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
             </section>
 
             <section id="areaTarefas" class="sectionsSumir" style="display: none;">
@@ -180,3 +180,250 @@
 
 </html>
 <script src="./script/dash.js"></script>
+
+
+<script>
+    const ctxCpu = document.getElementById('myChartLineCpu');
+
+    new Chart(ctxCpu, {
+        type: 'line',
+        data: {
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:08', '11:09', '11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', ],
+            font: {
+                size: 8
+            },
+            datasets: [{
+                label: 'Uso da Cpu',
+                data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
+                borderColor: 'rgb(75, 192, 192)',
+                pointRadius: 3,
+                tension: 0.4,
+            }],
+
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 40, // Define o número máximo de rótulos a serem exibidos
+                        callback: function (value) {
+                            return value; // Ou qualquer função de formatação que você desejar
+                        },
+                        maxRotation: 0, // Rotaciona os rótulos em graus (0 para horizontal, 90 para vertical, -45 para inclinado, etc.)
+                        minRotation: 0 // Define a rotação mínima dos rótulos
+                        ,
+                        callback: function (value, index, values) {
+                            if (index % 2 === 0) {
+                                return value; // Exibe rótulos apenas para índices pares
+                            } else {
+                                return '';
+                            }
+                        },
+                        font: {
+                            size: 9
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctxRam = document.getElementById('myChartLineRam');
+
+    new Chart(ctxRam, {
+        type: 'line',
+        data: {
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
+            font: {
+                size: 8
+            },
+            datasets: [{
+                label: 'Uso da Ram',
+                data: [5, 10, 8, 3, 10, 15, 20],
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
+                borderColor: 'rgb(75, 192, 192)',
+                pointRadius: 2,
+                tension: 0.4,
+            }],
+
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctxProcessos = document.getElementById('myChartLineProcessos');
+
+    new Chart(ctxProcessos, {
+        type: 'line',
+        data: {
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
+            font: {
+                size: 8
+            },
+            datasets: [{
+                label: 'Uso do disco',
+                data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
+                borderColor: 'rgb(75, 192, 192)',
+                pointRadius: 2,
+                tension: 0.4,
+            }],
+
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctxDisco = document.getElementById('myChartLineDisco');
+
+    new Chart(ctxDisco, {
+        type: 'line',
+        data: {
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
+            font: {
+                size: 8
+            },
+            datasets: [{
+                label: 'Processos',
+                data: [5, 10, 8, 3, 10, 15, 20],
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
+                borderColor: 'rgb(75, 192, 192)',
+                pointRadius: 2,
+                tension: 0.4,
+            }],
+
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+

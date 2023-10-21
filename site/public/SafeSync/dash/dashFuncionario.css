@@ -14,6 +14,7 @@ body {
 main {
     width: 100%;
     height: auto;
+    overflow: hidden;
 }
 
 nav.menu-lateral {
@@ -129,17 +130,22 @@ ul li.item-menu a{
 }
 
 
+
 #dash{
     margin-left: 10vw;
-    height: 95vh;
+    height: auto;
     /* background-color: antiquewhite; */
+    overflow: hidden;
 }
-#dash header{
-    width: 100%;
+#dash header {
+    width: 90%;
     display: flex;
     /* background-color: #ddeaaa; */
     justify-content: space-between;
     height: auto;
+    position: fixed;
+    transition: opacity 0.3s ease; /* Adicione uma transição suave de 0.3 segundos */
+    opacity: 1; /* Defina a opacidade inicial como 1 (totalmente visível) */
 }
 #dash header #titulosDash{
     display: flex;
@@ -148,47 +154,48 @@ ul li.item-menu a{
 }
 #dash header #titulosDash h1{
     color: #102C57;
-    text-shadow: 3px 3px 3px #0f0f0f69;
+    /* text-shadow: 3px 3px 3px #0f0f0f69; */
     margin: 0;
     margin-bottom: 3%;
 }
 #dash header #titulosDash h3{
     color: #213f6d;
     margin: 0;
-    text-shadow: 3px 3px 3px #32323269;
+    /* text-shadow: 3px 3px 3px #32323269; */
 }
 #dash header .opcoesTopo{
     width: 20%;
     display: flex;
     justify-content: space-around;
+    /* background-color: red; */
 }
+
 
 #dash header .opcoesTopo div{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
-    width: 30%;
-    border-radius: 100%;
+    background-color: #fff;
+    width: 35%;
+    border-radius: 50%;
     cursor: pointer;
-}
-#dash header .opcoesTopo div:hover{
-    transition: all 0.5s;
-    background-color: #e6e6e6;
+    z-index: 200;
 }
 #dash #areaGraficos{
     /* background-color: rgb(104, 104, 67) ; */
     width: 100%;
-    height: 80vh;
+    height: auto;
     padding-top: 5vh;
+    margin-top:10vh;
 }
 #dash #areaGraficos section {
     /* background-color: pink; */
     width: 98%;
-    height: 94%;
+    min-width: 95vh;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    height: auto;
 }
 #dash #areaGraficos section .graficos{
     background-color: #fdfdfd;
@@ -199,45 +206,33 @@ ul li.item-menu a{
     padding: 5px 15px;
     margin-bottom: 3%;
 }
-#dash #areaGraficos section .cpu{
-    width: 38%;
+#dash #areaGraficos section .cpu, #dash #areaGraficos section .processos{
+    width: 57%;
+    height: 60vh;
 }
-#dash #areaGraficos section .ram{
-    width: 25%;
-}
-#dash #areaGraficos section .teclas{
-    width: 25%;
-}
-#dash #areaGraficos section .processos{
-    width: 55%;
-}
-#dash #areaGraficos section .disco{
-    width: 38%;
+#dash #areaGraficos section .ram, #dash #areaGraficos section .disco{
+    width: 34%;
+    height: 60vh;
+    /* background-color: #77DD77; */
 }
 #dash #areaGraficos section .graficos div{
     width: 100%;
-    /* background-color: green !important; */
-    height: 65%;
-    background-image: url(../assets/img/testeDash1.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
+    height: 67%;
     border-radius: 15px;
     margin: auto;
-   
 }
-#dash #areaGraficos section .ram div{
-    margin-top: 15%;
+#dash #areaGraficos section .graficos div #myChartLineCpu, #dash #areaGraficos section .graficos div #myChartLineProcessos {
+    min-width: 97%;
+    min-height: 110%;
 }
-#dash #areaGraficos section .teclas div{
-    background-image: url(../assets/img/testeDash2.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
+#dash #areaGraficos section .graficos div #myChartLineRam, #dash #areaGraficos section .graficos div #myChartLineDisco {
+    min-width: 65%;
 }
-#dash #areaGraficos section .processos div{
-    background-image: url(../assets/img/testeDash3.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    
+
+
+#dash #areaTarefas{
+    margin-top: 15vh;
+    background-color: #6e8ab4;
 }
 
 /* area do menu lateral */
