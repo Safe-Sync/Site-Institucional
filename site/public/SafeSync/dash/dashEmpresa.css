@@ -36,6 +36,7 @@ nav.menu-lateral {
 }
 
 nav.menu-lateral.expandir {
+    min-width: 250px;
     width: 250px;
     backdrop-filter: blur(8px);
 }

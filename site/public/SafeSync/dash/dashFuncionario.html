@@ -124,7 +124,33 @@
             </section>
 
             <section id="areaTarefas" class="sectionsSumir" style="display: none;">
-                aqui teremos a parte das tarefas
+                <div class="accordion-container">
+                    <div class="nomeLista">
+                        <h1>GESTÃO DE TAREFAS</h1>
+                    </div>
+                    <div class="task-input">
+                        <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
+                        <button onclick="addTask()">Adicionar Tarefa</button>
+                    </div>
+                    <div class="accordion" id="accordion">
+                        <div class="accordion-item" id="tarefas" ondragover="allowDrop(event)" ondrop="drop(event)">
+                            <div class="accordion-header" id="headerTarefas">Tarefas</div>
+                            <div class="accordion-content" id="tarefasContent"></div>
+                        </div>
+                        <div class="accordion-item" id="concluido" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div class="accordion-header" id="headerConcluido">Concluído</div>
+                            <div class="accordion-content" id="concluidoContent"></div>
+                        </div>
+                        <div class="accordion-item" id="andamento" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div class="accordion-header" id="headerAndamento">Em Andamento</div>
+                            <div class="accordion-content" id="andamentoContent"></div>
+                        </div>
+                        <div class="accordion-item" id="afazer" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div class="accordion-header" id="headerAfazer">A Fazer</div>
+                            <div class="accordion-content" id="afazerContent"></div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <div id="modalNotificacao" class="notificacaoModal">
@@ -176,6 +202,7 @@
 
         </article>
     </main>
+    <script src="./script/tarefas.js"></script>
 </body>
 
 </html>

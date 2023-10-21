@@ -30,7 +30,7 @@
                     <input id="input_email" type="text" placeholder="Email">
                 </div>
                 <div class="group_input">
-                    <input id="input_senha" type="text" placeholder="Senha">
+                    <input id="input_senha" type="password" placeholder="Senha">
                 </div>
                 
                 <div class="center">
@@ -69,14 +69,6 @@
                         console.log(json);
                         console.log(JSON.stringify(json));
                         console.log("Login success");
-                        // Swal.fire({
-                        //     position: 'center',
-                        //     icon: 'success',
-                        //     title: 'Sucesso!',
-                        //     text: 'Redirecionando para dashboards!',
-                        //     showConfirmButton: false,
-                        //     timer: 2000
-                        // })
                         setTimeout(function () {
                             window.location = "./dash/dashFuncionario.html"
                         }, 2000);
@@ -89,14 +81,6 @@
                     });
 
                     console.log("Erro no login");
-
-                    // Swal.fire({
-                    //     position: 'center',
-                    //     icon: 'error',
-                    //     title: 'Erro',
-                    //     text: 'Email ou senha preenchido incorretamente!',
-                    //     showConfirmButton: true,
-                    // })
                 }
             }).catch(function (erro) {
                 console.log(erro);
@@ -121,16 +105,8 @@
                         console.log(json);
                         console.log(JSON.stringify(json));
                         console.log("Login success");
-                        // Swal.fire({
-                        //     position: 'center',
-                        //     icon: 'success',
-                        //     title: 'Sucesso!',
-                        //     text: 'Redirecionando para dashboards!',
-                        //     showConfirmButton: false,
-                        //     timer: 2000
-                        // })
                         setTimeout(function () {
-                            window.location = "./cadastroFunc.html"
+                            window.location = "./dash/dashEmpresa.html"
                         }, 2000);
                     }
                     );
@@ -141,14 +117,6 @@
                     });
 
                     console.log("Erro no login");
-
-                    // Swal.fire({
-                    //     position: 'center',
-                    //     icon: 'error',
-                    //     title: 'Erro',
-                    //     text: 'Email ou senha preenchido incorretamente!',
-                    //     showConfirmButton: true,
-                    // })
                 }
             }).catch(function (erro) {
                 console.log(erro);

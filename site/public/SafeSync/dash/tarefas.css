@@ -1,0 +1,123 @@
+
+
+.accordion-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+
+.accordion-item {
+  border: 1px solid #111;
+  margin-bottom: 10px;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  height: 35px;
+
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#headerTarefas:hover, #headerConcluido:hover, #headerAndamento:hover, #headerAfazer:hover{
+  background-color: #1111111f;
+}
+
+#headerTarefas{
+  background-color: #102c579d;
+}
+
+#headerConcluido{
+  background-color: #77DD77;
+}
+
+#headerAndamento{
+  background-color: #ffd900d8;
+}
+
+#headerAfazer{
+  background-color: #FF6961;
+}
+
+.accordion-content {
+  padding: 10px;
+  min-height: 50px;
+  display: none;
+}
+
+.active .accordion-content {
+  display: block;
+}
+
+.task-input {
+  margin-bottom: 35px;
+}
+
+.task-input input{
+  padding: 12px;
+  margin-right: 12px;
+  width: 225px;
+
+  border-radius: 4px;
+  border: none;
+
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  background: white;
+
+  font-size: 14px;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.task-input button{
+    
+  padding: 12px 32px;
+
+  border-radius: 4px;
+  border: none; 
+
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  background: #102C57;
+  color: #ffffff;
+
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.task-input button:hover{
+  background: #1111111f;
+  color: #102C57;
+}
+
+.task{
+  height: 50px;
+  padding-left: 20px;
+
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+
+  color: #111111;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  margin-bottom: 5px;
+}
+
+.task:hover{
+  color: #010f22;
+  background: #1111111f;
+  cursor: pointer;
+}
+
+.nomeLista{
+  cursor: default;
+}
+.nomeLista h1{
+  border-bottom: 1px solid #010f22;
+}

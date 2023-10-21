@@ -27,7 +27,7 @@
                 <!-- Primeira etapa do formulario -->
                 <div class="form-step form-step-active">
                     <div class="group_input">
-                        <input id="input_nome_fantasia" type="text" placeholder="Nome fantasia">
+                        <input id="input_nome_fantasia" type="text" placeholder="Nome fantasia" required="required">
                     </div>
                     <div class="group_input">
                         <input id="input_razao_social" type="text" placeholder="Razão social">
@@ -47,7 +47,7 @@
                         <input id="input_cep" type="text" placeholder="Cep">
                     </div>
                     <div class="group_input">
-                        <input id="input_numero" type="text" placeholder="Nº">
+                        <input id="input_numero" type="number" placeholder="Nº">
                     </div>
                     <div class="group_input">
                         <input id="input_complemento" type="text" placeholder="Complemento">
@@ -62,13 +62,13 @@
                 <!-- Terceira etapa do formulario -->
                 <div class="form-step">
                     <div class="group_input">
-                        <input id="input_telefone" type="text" placeholder="Telefone">
+                        <input id="input_telefone" type="tel" placeholder="Telefone">
                     </div>
                     <div class="group_input">
-                        <input id="input_email" type="text" placeholder="Email">
+                        <input id="input_email" type="email" placeholder="Email">
                     </div>
                     <div class="group_input">
-                        <input id="input_senha" type="text" placeholder="Senha">
+                        <input id="input_senha" type="password" placeholder="Senha">
                     </div>
 
                     <div class="btns-group">
@@ -82,10 +82,20 @@
             <div class="logo_cadastro"><a href="./index.html"><img src="../SafeSync/assets/img/LogoSafeSync.svg" alt=""></a></div>
         </div>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    //-------------------------------------------------------------------
+
+    $('#input_cep').mask('00000-000');
+    $('#input_cnpj').mask('00.000.000/0000-00');
+    $('#input_telefone').mask('(00)00000-0000');
+
+    //-------------------------------------------------------------------
 
     const progresso = document.getElementById("progress");
     const EtapaDoFormulario = document.querySelectorAll(".form-step");
@@ -96,12 +106,13 @@
 
     function validar1() {
 
-        var NomeFantasiaValue = input_razao_social.value
-        var RazaoSocialValue = input_nome_fantasia.value
+        var NomeFantasiaValue = input_nome_fantasia.value
+        var RazaoSocialValue = input_razao_social.value
         var cnpjValue = input_cnpj.value
 
         if ((NomeFantasiaValue == '') || (RazaoSocialValue == '') || (cnpjValue == '')) {
             console.log("erro na validação 1");
+            alert("Preencha todos os campos")
             return false
         } else {
             NumeroDaEtapa++
@@ -122,6 +133,7 @@
 
         if ((cepValue == '') || (numeroValue == '') || (complementoValue == '')) {
             console.log("erro na validação 2");
+            alert("Preencha todos os campos")
             return false
         } else {
             NumeroDaEtapa++
@@ -141,6 +153,7 @@
 
         if ((telefoneValue == '') || (emailValue == '') || (senhaValue == '')) {
             console.log("erro na validação 3");
+            alert("Preencha todos os campos")
             return false
         } else {
             NumeroDaEtapa++
