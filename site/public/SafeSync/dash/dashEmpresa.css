@@ -123,6 +123,12 @@ ul li.item-menu a{
 }
 
 
+ul  #item-menu-sair{
+    margin-top: 20vh;
+    /* background-color: #102C57; */
+
+}
+
 .icon {
     margin-left: 1.8rem;
     color: #000d22;
@@ -356,6 +362,7 @@ ul li.item-menu a{
    
     /* background-color: rgba(0,0,0,0.4); */
     backdrop-filter: blur(5px);
+    z-index: 100;
 
 }
 .usuarioModal-content {

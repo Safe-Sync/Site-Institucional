@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="imagem/png" href="../assets/img/logotipo.svg">
     <link rel="stylesheet" href="dashFuncionario.css">
+    <link rel="stylesheet" href="./tarefas.css">
     <title>Dashboard</title>
 </head>
 
@@ -94,28 +95,28 @@
             <section id="areaGraficos">
                 <section>
                     <div class="graficos cpu">
-                        <h3>% Cpu</h3>
+                        <h3>Uso de Cpu</h3>
                         <div>
                             <canvas id="myChartLineCpu"></canvas>
                         </div>
                     </div>
-                    <div class="graficos ram">
-                        <h3>% Ram</h3>
+                    <div class="graficos processos">
+                        <h3>Janelas aberta</h3>
                         <div>
-                            <canvas id="myChartLineRam"></canvas>
+                            <canvas id="myChartLineProcessos"></canvas>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="graficos disco">
-                        <h3>% Disco</h3>
+                        <h3>Uso de  Disco</h3>
                         <div>
                             <canvas id="myChartLineDisco"></canvas>
                         </div>
 
                     </div>
-                    <div class="graficos processos">
-                        <h3>% Processos</h3>
+                    <div class="graficos ram">
+                        <h3>Uso de Ram</h3>
                         <div>
-                            <canvas id="myChartLineProcessos"></canvas>
+                            <canvas id="myChartLineRam"></canvas>
                         </div>
                     </div>
                 </section>
@@ -218,13 +219,13 @@
             labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:08', '11:09', '11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', ],
             font: {
                 size: 8
-            },
+            }, 
             datasets: [{
                 label: 'Uso da Cpu',
                 data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
                 fill: true,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
-                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: '#adbcffa1', // Cor de preenchimento
+                borderColor: '#adbcff',
                 pointRadius: 3,
                 tension: 0.4,
             }],
@@ -287,17 +288,17 @@
     new Chart(ctxRam, {
         type: 'line',
         data: {
-            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:08', '11:09', '11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', ],
             font: {
                 size: 8
-            },
+            }, 
             datasets: [{
-                label: 'Uso da Ram',
-                data: [5, 10, 8, 3, 10, 15, 20],
+                label: 'Uso da Cpu',
+                data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
                 fill: true,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
-                borderColor: 'rgb(75, 192, 192)',
-                pointRadius: 2,
+                backgroundColor: '#adbcffa1', // Cor de preenchimento
+                borderColor: '#adbcff',
+                pointRadius: 3,
                 tension: 0.4,
             }],
 
@@ -342,7 +343,7 @@
     const ctxProcessos = document.getElementById('myChartLineProcessos');
 
     new Chart(ctxProcessos, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
             font: {
@@ -352,9 +353,8 @@
                 label: 'Uso do disco',
                 data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
                 fill: true,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
-                borderColor: 'rgb(75, 192, 192)',
-                pointRadius: 2,
+                backgroundColor: '#fed0df', // Cor de preenchimento
+                // borderColor: 'rgb(75, 192, 192)',
                 tension: 0.4,
             }],
 
@@ -409,8 +409,8 @@
                 label: 'Processos',
                 data: [5, 10, 8, 3, 10, 15, 20],
                 fill: true,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Cor de preenchimento
-                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: '#adbcffa1', // Cor de preenchimento
+                borderColor: '#adbcff',
                 pointRadius: 2,
                 tension: 0.4,
             }],

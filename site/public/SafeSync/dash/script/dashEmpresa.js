@@ -8,66 +8,6 @@ btnExpandir.addEventListener('click', function(){
     
 })
 
-// script dos botoes do menu lateral
-// Obtém os elementos pelos IDs
-const dashboardLink = document.querySelector('#dashboard-link')
-const tarefasLink = document.querySelector('#tarefas-link');
-const areaGraficos = document.querySelector('#areaGraficos');
-const areaTarefas = document.querySelector('#areaTarefas');
-
-const funcionario = document.querySelector('#funcionario')
-const cadFunc = document.querySelector('#cadFunc');
-const areaFuncionarios = document.querySelector('#areaFuncionarios');
-const areaCadFunc = document.querySelector('#areaCadFunc');
-
-function mostrarGraficos() {
-    areaGraficos.style.display = 'block';
-    areaCadFunc.style.display = 'none';
-    areaFuncionarios.style.display = 'none';
-    areaTarefas.style.display = 'none';
-    tarefasLink.classList.remove('ativo');
-    dashboardLink.classList.toggle('ativo');
-    funcionario.classList.remove('ativo');
-    cadFunc.classList.remove('ativo');
-}
-
-function mostrarTarefas() {
-    areaGraficos.style.display = 'none';
-    areaCadFunc.style.display = 'none';
-    areaFuncionarios.style.display = 'none';
-    areaTarefas.style.display = 'block';
-    tarefasLink.classList.toggle('ativo');
-    dashboardLink.classList.remove('ativo');
-    funcionario.classList.remove('ativo');
-    cadFunc.classList.remove('ativo');
-}
-
-function mostrarFunc() {
-    areaGraficos.style.display = 'none';
-    areaCadFunc.style.display = 'none';
-    areaFuncionarios.style.display = 'block';
-    areaTarefas.style.display = 'none';
-    tarefasLink.classList.remove('ativo');
-    dashboardLink.classList.remove('ativo');
-    cadFunc.classList.remove('ativo');
-    funcionario.classList.toggle('ativo');
-}
-
-function mostrarCadFunc() {
-    areaGraficos.style.display = 'none';
-    areaCadFunc.style.display = 'block';
-    areaFuncionarios.style.display = 'none';
-    areaTarefas.style.display = 'none';
-    tarefasLink.classList.remove('ativo');
-    dashboardLink.classList.remove('ativo');
-    cadFunc.classList.toggle('ativo');
-    funcionario.classList.remove('ativo');
-
-}
-// Chama as funções para inicializar o estado
-// mostrarFunc();
-mostrarGraficos();
-
 
 // area do header
 
@@ -83,10 +23,52 @@ window.addEventListener('scroll', () => {
 });
 
 
+// script dos botoes do menu lateral
+// Obtém os elementos pelos IDs
+const tarefasLink = document.querySelector('#tarefas-link');
+const areaTarefas = document.querySelector('#areaTarefas');
+
+const funcionario = document.querySelector('#funcionario')
+const areaFuncionarios = document.querySelector('#areaFuncionarios');
+
+const cadFunc = document.querySelector('#cadFunc');
+const areaCadFunc = document.querySelector('#areaCadFunc');
+
+
+function mostrarTarefas() {
+    areaCadFunc.style.display = 'none';
+    areaFuncionarios.style.display = 'none';
+    areaTarefas.style.display = 'block';
+    tarefasLink.classList.toggle('ativo');
+    funcionario.classList.remove('ativo');
+    cadFunc.classList.remove('ativo');
+}
+
+function mostrarFunc() {
+    areaCadFunc.style.display = 'none';
+    areaFuncionarios.style.display = 'block';
+    areaTarefas.style.display = 'none';
+    tarefasLink.classList.remove('ativo');
+    cadFunc.classList.remove('ativo');
+    funcionario.classList.toggle('ativo');
+}
+
+function mostrarCadFunc() {
+   
+    areaCadFunc.style.display = 'block';
+    areaFuncionarios.style.display = 'none';
+    areaTarefas.style.display = 'none';
+    tarefasLink.classList.remove('ativo');
+    cadFunc.classList.toggle('ativo');
+    funcionario.classList.remove('ativo');
+
+}
+// Chama as funções para inicializar o estado
+// mostrarFunc();
+mostrarFunc();
+
 // Adiciona event listeners
-dashboardLink.addEventListener('click', mostrarGraficos);
 tarefasLink.addEventListener('click', mostrarTarefas);
-document.addEventListener('DOMContentLoaded', mostrarGraficos);
 
 funcionario.addEventListener('click', mostrarFunc);
 cadFunc.addEventListener('click', mostrarCadFunc);

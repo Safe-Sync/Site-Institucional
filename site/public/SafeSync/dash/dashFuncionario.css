@@ -29,13 +29,15 @@ nav.menu-lateral {
     top: 0;
     left: 0;
     overflow: hidden;
-    transition: .7s;
+    transition: .9s;
     z-index: 2;
 }
 
 nav.menu-lateral.expandir {
     width: 250px;
     backdrop-filter: blur(8px);
+    transition: all .7s;
+
 }
 
 .botao_expandir {
@@ -206,13 +208,21 @@ ul li.item-menu a{
     padding: 5px 15px;
     margin-bottom: 3%;
 }
-#dash #areaGraficos section .cpu, #dash #areaGraficos section .processos{
+#dash #areaGraficos section .cpu, #dash #areaGraficos section .ram{
     width: 57%;
-    height: 60vh;
+    height: 47vh;
 }
-#dash #areaGraficos section .ram, #dash #areaGraficos section .disco{
+#dash #areaGraficos section .cpu h3, #dash #areaGraficos section .ram h3{
+    margin-left: 5%;
+    color: #000d22;
+}
+#dash #areaGraficos section .disco h3, #dash #areaGraficos section .processos h3{
+    /* margin-left: 5%; */
+    color: #000d22;
+}
+#dash #areaGraficos section .processos, #dash #areaGraficos section .disco{
     width: 34%;
-    height: 60vh;
+    height: 47vh;
     /* background-color: #77DD77; */
 }
 #dash #areaGraficos section .graficos div{
@@ -221,11 +231,12 @@ ul li.item-menu a{
     border-radius: 15px;
     margin: auto;
 }
-#dash #areaGraficos section .graficos div #myChartLineCpu, #dash #areaGraficos section .graficos div #myChartLineProcessos {
-    min-width: 97%;
+#dash #areaGraficos section .graficos div #myChartLineCpu, #dash #areaGraficos section .graficos div #myChartLineRam{
+    min-width: 90%;
+    margin: auto;
     min-height: 110%;
 }
-#dash #areaGraficos section .graficos div #myChartLineRam, #dash #areaGraficos section .graficos div #myChartLineDisco {
+#dash #areaGraficos section .graficos div #myChartLineProcessos, #dash #areaGraficos section .graficos div #myChartLineDisco {
     min-width: 65%;
 }
 
@@ -452,125 +463,3 @@ ul li.item-menu a{
 }
 /*  */
 
-
-.accordion-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  
-  
-  .accordion-item {
-    border: 1px solid #111;
-    margin-bottom: 10px;
-  }
-  
-  .accordion-header {
-    display: flex;
-    align-items: center;
-    height: 35px;
-  
-    padding: 10px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  #headerTarefas:hover, #headerConcluido:hover, #headerAndamento:hover, #headerAfazer:hover{
-    background-color: #1111111f;
-  }
-  
-  #headerTarefas{
-    background-color: #102c579d;
-  }
-  
-  #headerConcluido{
-    background-color: #77DD77;
-  }
-  
-  #headerAndamento{
-    background-color: #ffd900d8;
-  }
-  
-  #headerAfazer{
-    background-color: #FF6961;
-  }
-  
-  .accordion-content {
-    padding: 10px;
-    min-height: 50px;
-    display: none;
-  }
-  
-  .active .accordion-content {
-    display: block;
-  }
-  
-  .task-input {
-    margin-bottom: 35px;
-  }
-  
-  .task-input input{
-    padding: 12px;
-    margin-right: 12px;
-    width: 225px;
-  
-    border-radius: 4px;
-    border: none;
-  
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-    background: white;
-  
-    font-size: 14px;
-    outline: none;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .task-input button{
-      
-    padding: 12px 32px;
-  
-    border-radius: 4px;
-    border: none; 
-  
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-    background: #102C57;
-    color: #ffffff;
-  
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .task-input button:hover{
-    background: #1111111f;
-    color: #102C57;
-  }
-  
-  .task{
-    height: 50px;
-    padding-left: 20px;
-  
-    display: flex;
-    align-items: center;
-    font-weight: bolder;
-  
-    color: #111111;
-    border: 1px solid black;
-    border-radius: 5px;
-  
-    margin-bottom: 5px;
-  }
-  
-  .task:hover{
-    color: #010f22;
-    background: #1111111f;
-    cursor: pointer;
-  }
-  
-  .nomeLista{
-    cursor: default;
-  }
-  .nomeLista h1{
-    border-bottom: 1px solid #010f22;
-  }

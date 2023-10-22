@@ -1,22 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-
-.accordion-container {
-  max-width: 800px;
-  margin: 0 auto;
+* {
+    font-family: 'Poppins', sans-serif;
+  
 }
 
-
+#areaTarefas{
+  background-image: url(../assets/img/fundoCadFunc.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  min-height: 82vh;
+  height: auto;
+}
+.accordion-container {
+  max-width: 78%;
+  margin: 0 auto;
+ 
+}
 
 .accordion-item {
-  border: 1px solid #111;
+  /* border: 1px solid #222; */
   margin-bottom: 10px;
+  background-color: #e4e4e4;
+  border-radius: 6px;
+  box-shadow: 5px 5px 5px rgba(97, 97, 97, 0.342);
 }
 
 .accordion-header {
   display: flex;
   align-items: center;
   height: 35px;
-
+  border: 1px solid #00000000;
+  border-radius: 6px;
   padding: 10px;
   font-weight: bold;
   cursor: pointer;
@@ -27,19 +43,19 @@
 }
 
 #headerTarefas{
-  background-color: #102c579d;
+  background-color: #102c577e;
 }
 
 #headerConcluido{
-  background-color: #77DD77;
+  background-color: #77dd777e;
 }
 
 #headerAndamento{
-  background-color: #ffd900d8;
+  background-color: #ffd9007e;
 }
 
 #headerAfazer{
-  background-color: #FF6961;
+  background-color: #FF69617e;
 }
 
 .accordion-content {
@@ -119,5 +135,6 @@
   cursor: default;
 }
 .nomeLista h1{
-  border-bottom: 1px solid #010f22;
+  color: #102C57;
+  border-bottom: 1px solid #102C57;
 }
