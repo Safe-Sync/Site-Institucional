@@ -216,12 +216,12 @@
     new Chart(ctxCpu, {
         type: 'line',
         data: {
-            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:08', '11:09', '11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', ],
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
             font: {
                 size: 8
             }, 
             datasets: [{
-                label: 'Uso da Cpu',
+                label: 'Uso da Ram',
                 data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
                 fill: true,
                 backgroundColor: '#adbcffa1', // Cor de preenchimento
@@ -248,25 +248,11 @@
                         display: false
                     },
                     ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 40, // Define o número máximo de rótulos a serem exibidos
-                        callback: function (value) {
-                            return value; // Ou qualquer função de formatação que você desejar
-                        },
-                        maxRotation: 0, // Rotaciona os rótulos em graus (0 para horizontal, 90 para vertical, -45 para inclinado, etc.)
-                        minRotation: 0 // Define a rotação mínima dos rótulos
-                        ,
-                        callback: function (value, index, values) {
-                            if (index % 2 === 0) {
-                                return value; // Exibe rótulos apenas para índices pares
-                            } else {
-                                return '';
-                            }
-                        },
                         font: {
                             size: 9
                         }
-                    }
+                    },
+                   
                 },
                 y: {
                     grid: {
@@ -274,7 +260,7 @@
                     },
                     ticks: {
                         font: {
-                            size: 11
+                            size: 10
                         }
                     },
                     beginAtZero: true
@@ -288,12 +274,12 @@
     new Chart(ctxRam, {
         type: 'line',
         data: {
-            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:08', '11:09', '11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', ],
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
             font: {
                 size: 8
             }, 
             datasets: [{
-                label: 'Uso da Cpu',
+                label: 'Uso da Ram',
                 data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
                 fill: true,
                 backgroundColor: '#adbcffa1', // Cor de preenchimento
@@ -323,7 +309,8 @@
                         font: {
                             size: 9
                         }
-                    }
+                    },
+                   
                 },
                 y: {
                     grid: {
@@ -331,7 +318,7 @@
                     },
                     ticks: {
                         font: {
-                            size: 11
+                            size: 10
                         }
                     },
                     beginAtZero: true
@@ -399,18 +386,21 @@
     const ctxDisco = document.getElementById('myChartLineDisco');
 
     new Chart(ctxDisco, {
-        type: 'line',
+        type: 'doughnut',
         data: {
-            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
+            labels: ['Livre', 'Usados'],
             font: {
-                size: 8
+                size: 10
             },
             datasets: [{
                 label: 'Processos',
-                data: [5, 10, 8, 3, 10, 15, 20],
+                data: [23, 77],
                 fill: true,
-                backgroundColor: '#adbcffa1', // Cor de preenchimento
-                borderColor: '#adbcff',
+                backgroundColor: [
+                                    '#fed0df',
+                                    '#adbcff'
+                                ],
+                // borderColor: '#adbcff',
                 pointRadius: 2,
                 tension: 0.4,
             }],
@@ -422,34 +412,12 @@
                     display: true,
                     labels: {
                         font: {
-                            size: 9
+                            size: 12
                         }
                     }
                 }
             },
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 9
-                        }
-                    }
-                },
-                y: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 11
-                        }
-                    },
-                    beginAtZero: true
-                }
-            }
+          
         }
     });
 </script>

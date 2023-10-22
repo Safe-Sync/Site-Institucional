@@ -210,7 +210,7 @@ ul li.item-menu a{
 }
 #dash #areaGraficos section .cpu, #dash #areaGraficos section .ram{
     width: 57%;
-    height: 47vh;
+    height: 48vh;
 }
 #dash #areaGraficos section .cpu h3, #dash #areaGraficos section .ram h3{
     margin-left: 5%;
@@ -220,9 +220,15 @@ ul li.item-menu a{
     /* margin-left: 5%; */
     color: #000d22;
 }
-#dash #areaGraficos section .processos, #dash #areaGraficos section .disco{
+#dash #areaGraficos section .processos{
     width: 34%;
-    height: 47vh;
+    height: 48vh;
+
+}
+ #dash #areaGraficos section .disco{
+    width: 28%;
+    height: 48vh;
+    padding: 0 4%;
     /* background-color: #77DD77; */
 }
 #dash #areaGraficos section .graficos div{
@@ -232,12 +238,13 @@ ul li.item-menu a{
     margin: auto;
 }
 #dash #areaGraficos section .graficos div #myChartLineCpu, #dash #areaGraficos section .graficos div #myChartLineRam{
-    min-width: 90%;
+    min-width: 85%;
     margin: auto;
     min-height: 110%;
 }
 #dash #areaGraficos section .graficos div #myChartLineProcessos, #dash #areaGraficos section .graficos div #myChartLineDisco {
-    min-width: 65%;
+    min-width: 85%;
+    margin: auto;
 }
 
 
