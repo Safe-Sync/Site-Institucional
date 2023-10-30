@@ -25,8 +25,8 @@ window.addEventListener('scroll', () => {
 
 // script dos botoes do menu lateral
 // Obtém os elementos pelos IDs
-const tarefasLink = document.querySelector('#tarefas-link');
-const areaTarefas = document.querySelector('#areaTarefas');
+const dashLink = document.querySelector('#dash-link');
+const areadash = document.querySelector('#areaDash');
 
 const funcionario = document.querySelector('#funcionario')
 const areaFuncionarios = document.querySelector('#areaFuncionarios');
@@ -35,40 +35,41 @@ const cadFunc = document.querySelector('#cadFunc');
 const areaCadFunc = document.querySelector('#areaCadFunc');
 
 
-function mostrarTarefas() {
+function mostrarDash() {
     areaCadFunc.style.display = 'none';
     areaFuncionarios.style.display = 'none';
-    areaTarefas.style.display = 'block';
-    tarefasLink.classList.toggle('ativo');
+    areadash.style.display = 'block';
+    dashLink.classList.toggle('ativo');
     funcionario.classList.remove('ativo');
     cadFunc.classList.remove('ativo');
+    dashLink.classList.toggle('ativo');
+
 }
 
 function mostrarFunc() {
     areaCadFunc.style.display = 'none';
     areaFuncionarios.style.display = 'block';
-    areaTarefas.style.display = 'none';
-    tarefasLink.classList.remove('ativo');
+    areadash.style.display = 'none';
+    dashLink.classList.remove('ativo');
     cadFunc.classList.remove('ativo');
-    funcionario.classList.toggle('ativo');
 }
 
 function mostrarCadFunc() {
    
     areaCadFunc.style.display = 'block';
     areaFuncionarios.style.display = 'none';
-    areaTarefas.style.display = 'none';
-    tarefasLink.classList.remove('ativo');
+    areadash.style.display = 'none';
+    dashLink.classList.remove('ativo');
     cadFunc.classList.toggle('ativo');
     funcionario.classList.remove('ativo');
 
 }
 // Chama as funções para inicializar o estado
 // mostrarFunc();
-mostrarFunc();
+mostrarDash();
 
 // Adiciona event listeners
-tarefasLink.addEventListener('click', mostrarTarefas);
+dashLink.addEventListener('click', mostrarDash);
 
 funcionario.addEventListener('click', mostrarFunc);
 cadFunc.addEventListener('click', mostrarCadFunc);

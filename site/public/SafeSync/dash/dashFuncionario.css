@@ -170,6 +170,7 @@ ul li.item-menu a{
     display: flex;
     justify-content: space-around;
     /* background-color: red; */
+    margin-right: 2vw;
 }
 
 
@@ -178,10 +179,18 @@ ul li.item-menu a{
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    width: 35%;
+    width: 30%;
+    height: 90%;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 200;
+}
+#dash #areaKpis{
+    background-color: #102C57;
+    width: 100%;
+    height: 100vh;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
 }
 #dash #areaGraficos{
     /* background-color: rgb(104, 104, 67) ; */

@@ -171,14 +171,18 @@ ul  #item-menu-sair{
     width: 20%;
     display: flex;
     justify-content: space-around;
+    /* background-color: red; */
+    margin-right: 2vw;
 }
+
 
 #dash header .opcoesTopo div{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    width: 35%;
+    width: 30%;
+    height: 90%;
     border-radius: 50%;
     cursor: pointer;
 }
