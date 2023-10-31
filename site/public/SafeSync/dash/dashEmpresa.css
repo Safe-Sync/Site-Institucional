@@ -172,9 +172,10 @@ ul  #item-menu-sair{
     display: flex;
     justify-content: space-around;
     /* background-color: red; */
+    /* margin-top: 10px; */
     margin-right: 2vw;
 }
-
+/*  */
 
 #dash header .opcoesTopo div{
     display: flex;
