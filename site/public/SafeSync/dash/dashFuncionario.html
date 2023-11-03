@@ -93,12 +93,24 @@
             </header>
 
             <section id="areaGraficos">
-                <!-- <section id="areaKpis">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </section> -->
+                <article id="areaKpis">
+                    <div class="kpi kpiTarefa">
+                        <span class="tituloKpi">Tarefas Entregues no Mês</span>
+                        <span class="kpiVerde valoresKpi" id="tarefasEntreguesFunc">36</span>
+                    </div>
+                    <div class="kpi kpiTarefa">
+                        <span class="tituloKpi">Tarefas Pendentes</span>
+                        <span class="kpiAmarela valoresKpi" id="tarefasPendentesFunc">10</span>
+                    </div>
+                    <div class="kpi kpiTarefa">
+                        <span class="tituloKpi">Janelas Abertas</span>
+                        <span class="valoresKpi kpiBranca" id="janelasAbertasFunc">7</span>
+                    </div>
+                    <div class="kpi kpiTarefa">
+                        <span class="tituloKpi">N° de Alertas da máquina</span>
+                        <span class="valoresKpi kpiVermelha" id="alertasMaquinaFunc">8</span>
+                    </div>
+                </article>
                 <section>
                     <div class="graficos cpu">
                         <h3>Uso de Cpu</h3>
@@ -106,10 +118,10 @@
                             <canvas id="myChartLineCpu"></canvas>
                         </div>
                     </div>
-                    <div class="graficos processos">
-                        <h3>Janelas aberta</h3>
+                    <div class="graficos tarefas">
+                        <h3>Tarefasn atribuidas e entregues durante a semana </h3>
                         <div>
-                            <canvas id="myChartLineProcessos"></canvas>
+                            <canvas id="myChartLineTarefas"></canvas>
                         </div>
                     </div>                    
                     <div class="graficos disco">
@@ -333,61 +345,61 @@
         }
     });
 
-    const ctxProcessos = document.getElementById('myChartLineProcessos');
+    const ctxTarefas = document.getElementById('myChartLineTarefas');
 
-    new Chart(ctxProcessos, {
-        type: 'bar',
-        data: {
-            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
-            font: {
-                size: 8
-            },
-            datasets: [{
-                label: 'Uso do disco',
-                data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
-                fill: true,
-                backgroundColor: '#fed0df', // Cor de preenchimento
-                // borderColor: 'rgb(75, 192, 192)',
-                tension: 0.4,
-            }],
-
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        font: {
-                            size: 9
-                        }
+new Chart(ctxTarefas, {
+    type: 'bar',
+    data: {
+        labels: ['seg', 'ter', 'qua', 'qui', 'sex'],
+        datasets: [{
+            label: 'Tarefas Atribuidas',
+            data: [4, 5, 10, 8, 7, 3],
+            backgroundColor: '#fed0df', // Cor de preenchimento
+            tension: 0.4,
+        }, {
+            label: 'Tarefas Entregues',
+            data: [3, 6, 9, 9, 7, 3],
+            backgroundColor: '#adbcff', // Cor de preenchimento
+            tension: 0.4,
+        }],
+    },
+    options: {
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    font: {
+                        size: 9
                     }
-                }
-            },
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 9
-                        }
-                    }
-                },
-                y: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 11
-                        }
-                    },
-                    beginAtZero: true
                 }
             }
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 9
+                    }
+                }
+            },
+            y: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 11
+                    }
+                },
+                beginAtZero: true
+            }
         }
-    });
+    }
+});
+
 
     const ctxDisco = document.getElementById('myChartLineDisco');
 
