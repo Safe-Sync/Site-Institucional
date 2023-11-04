@@ -126,6 +126,9 @@ btnAbrirModalFuncionarios.forEach(btnAbrirModalFuncionario => {
         const divFuncionario = btnAbrirModalFuncionario.closest('.infosFuncionario');
         const iconeEdit = divFuncionario.querySelectorAll('.iconeEditar');
         const labelFuncionario = divFuncionario.querySelectorAll('.labelFuncionario');
+        const taskInput = divFuncionario.querySelector('.task-input');
+        const estadoMaquinaText = divFuncionario.querySelector('.estadoMaquinaText');
+        const usoMaquinaText = divFuncionario.querySelector('.usoMaquinaText');
 
         divFuncionario.classList.toggle('expandido');
         labelFuncionario.forEach(label => {
@@ -134,16 +137,30 @@ btnAbrirModalFuncionarios.forEach(btnAbrirModalFuncionario => {
 
         if (divFuncionario.classList.contains('expandido')) {
             btnAbrirModalFuncionario.textContent = '-';
-            // Itera sobre cada íconeEditar e define seu estilo para 'block'
             iconeEdit.forEach(icone => {
                 icone.style.display = 'block';
             });
+            taskInput.style.display = 'block';
+            if (estadoMaquinaText.textContent === 'Manutenção') {
+                estadoMaquinaText.classList.add('vermelho'); // Adiciona classe 'vermelho'
+            }
+            if (usoMaquinaText.textContent === 'Off') {
+                usoMaquinaText.classList.add('vermelho'); // Adiciona classe 'vermelho'
+            }
+            if (estadoMaquinaText.textContent === 'Normal') {
+                estadoMaquinaText.classList.add('verde'); // Adiciona classe 'vermelho'
+            }
+            if (usoMaquinaText.textContent === 'On') {
+                usoMaquinaText.classList.add('verde'); // Adiciona classe 'vermelho'
+            }
         } else {
             btnAbrirModalFuncionario.textContent = '+';
-            // Itera sobre cada íconeEditar e define seu estilo para 'none'
             iconeEdit.forEach(icone => {
                 icone.style.display = 'none';
             });
+            taskInput.style.display = 'none';
+            estadoMaquinaText.classList.remove('vermelho'); // Remove classe 'vermelho'
+            usoMaquinaText.classList.remove('vermelho'); // Remove classe 'vermelho'
         }
     });
 });

@@ -5,3 +5,145 @@
     overflow-y: auto!important;
     /* background-color: aquamarine; */
 }
+
+
+/*  */
+.kpiIniciais {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+
+}
+.kpiInfo {
+    width: 16%;
+    text-align: center;
+    border-radius: 25px;
+    padding: 5px 20px 25px 20px;
+    background-color: white;
+    box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+    -webkit-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+    -moz-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+}
+.kpiInfo p{
+    font-weight: bold;
+    color: #102C57;
+}
+.kpiInfo span {
+    font-weight: bold;
+    font-size: 35px;
+}
+.kpiMaquinas {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    gap: 21px;
+    margin-top: 30px;
+}
+.maquinasInfo {
+    background-color: #ffffff;
+    width: 25%;
+    text-align: center;
+    border-radius: 25px;
+    padding: 15px 20px 15px 20px;
+    box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+    -webkit-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+    -moz-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+}
+.divisaoInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.limiteAlerta {
+    font-size: 12px;
+    color: #102C57;
+}
+.legendaMaquinas {
+    width: 60%;
+    font-weight: bold;
+    color: #102C57;
+}
+.divisaoInfo span {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+#kpi1 {
+    color: #7A9D54;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #bcffbcb6;
+}
+#kpi2 {
+    color:#7A9D54;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #bcffbcb6;
+}
+#kpi3 {
+    color: #ca413a;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #ca413a3f;
+}
+#kpi4 {
+    color: #dfbd00;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #ffe23c4b;
+}
+#kpiMaquina1 {
+    color: #dfbd00;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #ffe23c4b;
+}
+#kpiMaquina2 {
+    color: #dfbd00;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #ffe23c4b;
+}
+#kpiMaquina3 {
+    color: #ca413a;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #ca413a3f;
+}
+
+.tableFuncionario {
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 82%;
+    margin-left: 5%;
+    background-color: white;
+    padding: 10px 0px 10px 40px;
+    border-radius: 20px;
+    box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+    -webkit-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+    -moz-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
+}
+
+.tableFuncionario h3 {
+    color: #102C57;
+    overflow: auto; 
+}
+
+table {
+    width: 80%;
+    border: none;
+    color: #102C57;
+}
+
+th, td {
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f200;
+    font-weight: bold;
+    text-align: start;
+}
