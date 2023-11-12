@@ -119,7 +119,7 @@
                         </div>
                     </div>
                     <div class="graficos tarefas">
-                        <h3>Tarefasn atribuidas e entregues durante a semana </h3>
+                        <h3>Tarefas atribuidas e entregues durante a semana </h3>
                         <div>
                             <canvas id="myChartLineTarefas"></canvas>
                         </div>
@@ -239,12 +239,12 @@
                 size: 8
             }, 
             datasets: [{
-                label: 'Uso da Ram',
+                label: 'Uso da Cpu',
                 data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
                 fill: true,
                 backgroundColor: '#adbcffa1', // Cor de preenchimento
                 borderColor: '#adbcff',
-                pointRadius: 3,
+                pointRadius: 4,
                 tension: 0.4,
             }],
 
@@ -257,6 +257,16 @@
                         font: {
                             size: 9
                         }
+                    }
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    title: function (tooltipItems) {
+                        return 'Legenda:';
+                    },
+                    label: function (context) {
+                        return 'Uso da Cpu: ' + context.parsed.y + '%';
                     }
                 }
             },
@@ -277,73 +287,86 @@
                         display: false
                     },
                     ticks: {
-                        font: {
-                            size: 10
-                        }
+                    font: {
+                        size: 10
                     },
+                    stepSize: 20, // Incremento desejado
+                    max: 100, // Valor máximo do eixo y
+                },
+
                     beginAtZero: true
                 }
             }
         }
     });
-
     const ctxRam = document.getElementById('myChartLineRam');
 
-    new Chart(ctxRam, {
-        type: 'line',
-        data: {
-            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
-            font: {
-                size: 8
-            }, 
-            datasets: [{
-                label: 'Uso da Ram',
-                data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
-                fill: true,
-                backgroundColor: '#adbcffa1', // Cor de preenchimento
-                borderColor: '#adbcff',
-                pointRadius: 3,
-                tension: 0.4,
-            }],
-
+new Chart(ctxRam, {
+    type: 'line',
+    data: {
+        labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
+        font: {
+            size: 8
         },
-        options: {
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        font: {
-                            size: 9
-                        }
+        datasets: [{
+            label: 'Uso da Ram',
+            data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
+            fill: true,
+            backgroundColor: '#adbcffa1', // Cor de preenchimento
+            borderColor: '#adbcff',
+            pointRadius: 4,
+            tension: 0.4,
+        }],
+    },
+    options: {
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    font: {
+                        size: 9
                     }
                 }
             },
-            scales: {
-                x: {
-                    grid: {
-                        display: false
+            tooltip: {
+                callbacks: {
+                    title: function (tooltipItems) {
+                        return 'Legenda:';
                     },
-                    ticks: {
-                        font: {
-                            size: 9
-                        }
-                    },
-                   
-                },
-                y: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 10
-                        }
-                    },
-                    beginAtZero: true
+                    label: function (context) {
+                        return 'Uso da Ram: ' + context.parsed.y + '%';
+                    }
                 }
             }
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 9
+                    }
+                },
+            },
+            y: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 10
+                    },
+                    stepSize: 20, // Incremento desejado
+                    max: 100, // Valor máximo do eixo y
+                },
+                beginAtZero: true
+            }
         }
-    });
+    }
+});
+
 
     const ctxTarefas = document.getElementById('myChartLineTarefas');
 
@@ -401,42 +424,49 @@ new Chart(ctxTarefas, {
 });
 
 
-    const ctxDisco = document.getElementById('myChartLineDisco');
+const ctxDisco = document.getElementById('myChartLineDisco');
 
-    new Chart(ctxDisco, {
-        type: 'doughnut',
-        data: {
-            labels: ['Livre', 'Usados'],
-            font: {
-                size: 10
-            },
-            datasets: [{
-                label: 'Processos',
-                data: [23, 77],
-                fill: true,
-                backgroundColor: [
-                                    '#fed0df',
-                                    '#adbcff'
-                                ],
-                // borderColor: '#adbcff',
-                pointRadius: 2,
-                tension: 0.4,
-            }],
-
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        font: {
-                            size: 12
-                        }
+new Chart(ctxDisco, {
+    type: 'doughnut',
+    data: {
+        labels: ['Livre', 'Usados'],
+        datasets: [{
+            label: 'Memória',
+            data: [23, 77],
+            fill: true,
+            backgroundColor: [
+                '#fed0df',
+                '#adbcff'
+            ],
+            pointRadius: 2,
+            tension: 0.4,
+        }],
+    },
+    options: {
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    font: {
+                        size: 12
                     }
                 }
             },
-          
-        }
-    });
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        var labelIndex = context.dataIndex;
+                        if (labelIndex === 0) {
+                            return 'Memória Livre: ' + context.parsed + '%';
+                        } else if (labelIndex === 1) {
+                            return 'Memória Usada: ' + context.parsed + '%';
+                        }
+                    }
+                }
+            }
+        },
+    }
+});
+
 </script>
 
