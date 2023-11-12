@@ -70,12 +70,24 @@
     overflow: hidden;
     transition:  0.5s all; /* Adiciona uma transição suave ao mudar a altura */
 }
+.infosFuncionario .cargo.expandido{
+    display: flex!important;
+    justify-content: space-between;
+    align-items: center;
+}
+.vermelho {
+    color: #cf4747
+}
+.verde {
+    color: #25b431;
+}
  .iconeEditar{
     /* display: none!important; */
     cursor: pointer;
 }
 .infosFuncionario.expandido {
-    height: 16.5rem; /* Altere a altura conforme necessário */
+    min-height: 30.5rem!important; /* Altere a altura conforme necessário */
+    height: auto;
     flex-direction: column;
     padding-top: 4%!important;
     transition: all 0.5s ;
@@ -101,6 +113,22 @@
     z-index: 999; /* Garante que o botão fique acima de outros elementos na div pai */
 }
 
+#areaFuncionarios .infosFuncionario .labelFuncionario:not(.nomeFuncionario) {
+    display: none;
+}
+
+#areaFuncionarios .infosFuncionario.expandido .labelFuncionario {
+    display: block;
+    margin-bottom: 12.3rem;
+}
+
+#areaFuncionarios .infosFuncionario .tarefasCompletas .bordaVerde {
+    border-bottom: #25b431 2px solid; /* Sem !important */
+}
+
+#areaFuncionarios .infosFuncionario .tarefasAtrasadas  .bordaVermelha {
+    border-bottom: #e53d3d 2px solid; /* Sem !important */
+}
 
 /* area menu */
 

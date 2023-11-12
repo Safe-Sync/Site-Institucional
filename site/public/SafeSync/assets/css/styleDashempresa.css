@@ -124,6 +124,16 @@
     width: 45%;
     background-color: rgb(255, 255, 255);
     padding: 10px 30px 15px 30px;
+}
+.tableFuncionario {
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 82%;
+    margin-left: 5%;
+    background-color: white;
+    padding: 10px 0px 10px 40px;
+
     border-radius: 20px;
     box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
     -webkit-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
@@ -141,6 +151,13 @@ table {
     border: none;
     color: #102C57;
     margin: auto;
+    overflow: auto; 
+}
+
+table {
+    width: 80%;
+    border: none;
+    color: #102C57;
 }
 
 th, td {

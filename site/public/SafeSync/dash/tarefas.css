@@ -104,7 +104,10 @@
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
 }
-
+#areaFuncionarios article .infosFuncionario .task-input button{
+  /* padding: 9px 6px !important; */
+  width: 25%;
+}
 .task-input button:hover{
   background: #1111111f;
   color: #102C57;
