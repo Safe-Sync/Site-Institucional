@@ -291,7 +291,8 @@ ul li.item-menu a{
     padding-left: 2%;
     overflow: auto;
    
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.2);
+    backdrop-filter: blur(1px);
 }
 .notificacaoModal-content {
     background-color: #fefefe00;
