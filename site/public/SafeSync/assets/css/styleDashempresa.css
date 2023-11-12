@@ -6,7 +6,6 @@
     /* background-color: aquamarine; */
 }
 
-
 /*  */
 .kpiIniciais {
     width: 95%;
@@ -113,6 +112,19 @@
     background-color: #ca413a3f;
 }
 
+.containerTable {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.tableFuncionario {
+    margin-top: 30px;
+    text-align: center;
+    width: 45%;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 30px 15px 30px;
+}
 .tableFuncionario {
     margin-top: 30px;
     align-items: center;
@@ -121,6 +133,7 @@
     margin-left: 5%;
     background-color: white;
     padding: 10px 0px 10px 40px;
+
     border-radius: 20px;
     box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
     -webkit-box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
@@ -129,6 +142,15 @@
 
 .tableFuncionario h3 {
     color: #102C57;
+    overflow: auto;
+}
+
+table {
+    text-align: center;
+    width: 80%;
+    border: none;
+    color: #102C57;
+    margin: auto;
     overflow: auto; 
 }
 
@@ -146,4 +168,5 @@ th {
     background-color: #f2f2f200;
     font-weight: bold;
     text-align: start;
+    text-align: center;
 }
