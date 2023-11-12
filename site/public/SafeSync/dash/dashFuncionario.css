@@ -18,7 +18,9 @@ main {
 }
 
 nav.menu-lateral {
+    min-width: 5vw;
     width: 6%;
+    max-width: 90px;
     height: 100vh;
     background-color: #ffff;
     padding: 40px 1% 40px 1%;
@@ -29,7 +31,7 @@ nav.menu-lateral {
     top: 0;
     left: 0;
     overflow: hidden;
-    transition: .9s;
+    transition: .7s;
     z-index: 2;
 }
 
@@ -292,15 +294,20 @@ ul li.item-menu a{
     margin-left: 5%;
     color: #000d22;
 }
-#dash #areaGraficos section .disco h3, #dash #areaGraficos section .tarefas h3{
+#dash #areaGraficos section .disco h3{
     /* margin-left: 5%; */
     color: #000d22;
 }
-
+#dash #areaGraficos section .tarefas h3{
+    color: #000d22;
+    margin-left: 5%;
+}
  #dash #areaGraficos section .disco{
-    width: 28%;
-    height: 50vh;
+    width: 24%;
+    height: 43vh;
     padding: 0 4%;
+    margin: auto;
+    margin-top: 3.5vh;
     /* background-color: #77DD77; */
 }
 #dash #areaGraficos section .graficos div{
@@ -313,6 +320,12 @@ ul li.item-menu a{
     min-width: 85%;
     margin: auto;
     min-height: 110%;
+}
+#dash #areaGraficos section .graficos div #myChartLineRam{
+    min-width: 90%;
+}
+#dash #areaGraficos section .ram{
+    width: 45%;
 }
 #dash #areaGraficos section .graficos div #myChartLineTarefas, #dash #areaGraficos section .graficos div #myChartLineDisco {
     min-width: 85%;
@@ -490,6 +503,9 @@ ul li.item-menu a{
     color: #102C57;
     text-shadow: 3px 3px 5px #4e4e4e85;
     font-size: 2rem;
+    padding-top: 5vh;
+    /* background-color: green; */
+    margin-bottom: 0;
 }
 .usuarioModal-content section article #imgPerfil{
     width: 10rem;

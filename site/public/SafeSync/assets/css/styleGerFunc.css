@@ -86,7 +86,8 @@
     cursor: pointer;
 }
 .infosFuncionario.expandido {
-    height: 21.5rem!important; /* Altere a altura conforme necessário */
+    min-height: 30.5rem!important; /* Altere a altura conforme necessário */
+    height: auto;
     flex-direction: column;
     padding-top: 4%!important;
     transition: all 0.5s ;
@@ -118,10 +119,16 @@
 
 #areaFuncionarios .infosFuncionario.expandido .labelFuncionario {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 12.3rem;
 }
 
+#areaFuncionarios .infosFuncionario .tarefasCompletas .bordaVerde {
+    border-bottom: #25b431 2px solid; /* Sem !important */
+}
 
+#areaFuncionarios .infosFuncionario .tarefasAtrasadas  .bordaVermelha {
+    border-bottom: #e53d3d 2px solid; /* Sem !important */
+}
 
 /* area menu */
 

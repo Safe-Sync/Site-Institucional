@@ -354,6 +354,9 @@ ul  #item-menu-sair{
     color: #102C57;
     /* text-shadow: 3px 3px 5px #4e4e4e85; */
     font-size: 2rem;
+    padding-top: 5vh;
+    /* background-color: green; */
+    margin-bottom: 0;
 }
 .usuarioModal-content section article #imgPerfil{
     width: 10rem;

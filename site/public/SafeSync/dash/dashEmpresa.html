@@ -207,7 +207,7 @@
                             <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
                             <button onclick="">Atribuir Tarefa</button>
                         </div>
-                        <p class="labelFuncionario nomeFuncionario">Nome do Funcionário:</p>
+                        <p class="labelFuncionario nomeFuncionario">Gustavo Gomes</p>
                         <p class="labelFuncionario cargo">
                             Cargo:
                             <svg style="display: none" class="iconeEditar" xmlns="http://www.w3.org/2000/svg" width="16"
@@ -217,6 +217,18 @@
                                 <path fill-rule="evenodd"
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg>
+                        </p>
+                        <p class="labelFuncionario tarefasAtribuidas">
+                             Tarefas atribuidas: <span id="tarefasAtribuidas"> 15 </span>
+                            
+                        </p>
+                        <p class="labelFuncionario tarefasCompletas">
+                            <span class="bordaVerde"> Tarefas Completas: <span id="tarefasCompletas"> 11 </span></span>
+                          
+                        </p>
+                        <p class="labelFuncionario tarefasAtrasadas">
+                            <span class="bordaVermelha"> Tarefas Atrasadas:  <span id="tarefasAtrasadas"> 14 </span> </span>  
+                        
                         </p>
                         <p class="labelFuncionario estadoMaquina">
                             Estado da Máquina: <span class="estadoMaquinaText estadoMaquina">Normal</span>
@@ -231,7 +243,7 @@
                             <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
                             <button onclick="">Atribuir Tarefa</button>
                         </div>
-                        <p class="labelFuncionario nomeFuncionario">Nome do Funcionário:</p>
+                        <p class="labelFuncionario nomeFuncionario">Daniel Rios</p>
                         <p class="labelFuncionario cargo">
                             Cargo:
                             <svg style="display: none" class="iconeEditar" xmlns="http://www.w3.org/2000/svg" width="16"
@@ -242,6 +254,18 @@
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg>
                         </p>
+                        <p class="labelFuncionario tarefasAtribuidas">
+                            Tarefas atribuidas: <span id="tarefasAtribuidas"> 11 </span>
+                           
+                       </p>
+                       <p class="labelFuncionario tarefasCompletas">
+                           <span class="bordaVerde"> Tarefas Completas: <span id="tarefasCompletas"> 11 </span></span>
+                         
+                       </p>
+                       <p class="labelFuncionario tarefasAtrasadas">
+                           <span class="bordaVermelha"> Tarefas Atrasadas:  <span id="tarefasAtrasadas"> 0 </span> </span>  
+                       
+                       </p>
                         <p class="labelFuncionario estadoMaquina">
                             Estado da Máquina: <span class="estadoMaquinaText estadoMaquina">Manutenção</span>
                         </p>
@@ -265,7 +289,7 @@
                             <input id="input_cargo" type="text" placeholder="Cargo" />
                         </div>
                         <div class="group_input">
-                            <input id="input_cpf" type="text" placeholder="Cpf" />
+                            <input id="input_cpf" type="text" placeholder="CPF" />
                         </div>
                         <div class="group_input">
                             <input id="input_email" type="text" placeholder="Email" />
@@ -274,7 +298,7 @@
                             <input id="input_telefone" type="text" placeholder="Telefone" />
                         </div>
                         <div class="group_input">
-                            <input id="input_senha" type="text" placeholder="Senha" />
+                            <input id="input_senha" type="password" placeholder="Senha" />
                         </div>
                         <div class="botao_cadastro">
                             <button onclick="cadastrarFuncionario()">Seguinte</button>
@@ -351,6 +375,9 @@
 <script src="./script/dashEmpresa.js"></script>
 
 <script>
+    $('#input_cpf').mask('000.000.000-00');
+    $('#input_telefone').mask('(00)00000-0000')
+
     function cadastrarFuncionario() {
         var nomeVar = input_nome.value;
         var cargoVar = input_cargo.value;
