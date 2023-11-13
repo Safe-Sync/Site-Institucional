@@ -1,5 +1,6 @@
-var btnExpandir = document.querySelector('.botao_expandir')
-// var menuSide = document.querySelector('.abrirFecharMenu')
+var btnExpandir = document.querySelector('.botao_expandir');
+console.log(btnExpandir); // Verifique a saída no console do navegador
+
 var menuExpandir = document.querySelector('.menu-lateral')
 
 btnExpandir.addEventListener('click', function(){

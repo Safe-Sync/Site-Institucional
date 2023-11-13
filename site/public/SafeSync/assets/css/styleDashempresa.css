@@ -118,21 +118,17 @@
     display: flex;
 }
 
+
 .tableFuncionario {
-    margin-top: 30px;
-    text-align: center;
-    width: 45%;
-    background-color: rgb(255, 255, 255);
-    padding: 10px 30px 15px 30px;
-}
-.tableFuncionario {
+    width: 60%;
     margin-top: 30px;
     align-items: center;
     justify-content: center;
-    width: 82%;
-    margin-left: 5%;
+    text-align: center;
+    /* width: 82%; */
+    /* margin-left: 5%; */
     background-color: white;
-    padding: 10px 0px 10px 40px;
+    padding: 10px 0px 10px 0px;
 
     border-radius: 20px;
     box-shadow: 4px 6px 15px -4px rgba(0,0,0,0.56);
@@ -147,23 +143,44 @@
 
 table {
     text-align: center;
-    width: 80%;
+    width: 90%;
     border: none;
     color: #102C57;
-    margin: auto;
+    /* margin: auto; */
     overflow: auto; 
+    margin-left: 1%;
+    /* background-color: #dfbd00; */
+}
+th{
+    width: 100px;
 }
 
-table {
-    width: 80%;
-    border: none;
-    color: #102C57;
-}
 
 th, td {
     padding: 8px;
 }
 
+#posicao{
+    /* background-color: rgb(109, 235, 109); */
+    text-align: center;
+    width: 30%!important;
+
+}
+.posicaoFunc{
+    width: 35%!important;
+    /* padding-right: 10%; */
+    /* background-color: #ca413a; */
+}
+#totalTarefas{
+    /* background-color: rgb(109, 235, 109); */
+    text-align: end;
+    width: 35%!important;
+}
+.totalTarefasFunc{
+    /* width: 35; */
+    padding-left: 10%;
+    /* background-color: #ca413a; */
+}
 th {
     background-color: #f2f2f200;
     font-weight: bold;

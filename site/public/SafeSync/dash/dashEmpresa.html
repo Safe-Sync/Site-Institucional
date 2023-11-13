@@ -171,9 +171,9 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Posição</th>
+                                    <th id="posicao">Posição</th>
                                     <th>Nome</th>
-                                    <th>Total de Tarefas</th>
+                                    <th id="totalTarefas">Total de Tarefas</th>
                                 </tr>
                             </thead>
                             <tbody id="rank_funcionarios">
@@ -358,9 +358,9 @@
 
                         rank_funcionarios.innerHTML += `
                     <tr>
-                        <td>${i + 1}</td>
+                        <td class='posicaoFunc'>${i + 1}</td>
                         <td>${nomeAtual}</td>
-                        <td>${tarefasEntregues}</td>
+                        <td class='totalTarefasFunc'>${tarefasEntregues}</td>
                     </tr>
                     `
                     }
