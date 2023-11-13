@@ -6,6 +6,7 @@ function gerenFunc() {
       if (response.ok) {
         response.json().then(function (funcionarios) {
 
+          const infoFunc = document.getElementById('infoFunc')
 
           for(i = 0; i < funcionarios.length; i++){
             var nomeFuncionario = funcionarios[i].nomeFuncionario;
@@ -21,8 +22,8 @@ function gerenFunc() {
             console.log(tarefasPendentes);
             
             var novoFunc = document.createElement('div');
-            novoFunc.className = 'infosFuncionario';
 
+            novoFunc.className = 'infosFuncionario';
             novoFunc.innerHTML = `
             
             <div class="task-input" style="display: none;">
@@ -59,7 +60,7 @@ function gerenFunc() {
                       <p class="labelFuncionario usoMaquina">
                           Uso: <span class="usoMaquinaText usoMaquina">On</span>
                       </p>
-                      <p class="btnAbrirModalFuncionario">+</p>
+                      <p class="btnAbrirModalFuncionario" onclick="toggleModal(this)">+</p>
                       
             `
             
@@ -77,5 +78,4 @@ function gerenFunc() {
   }
   gerenFunc()
 
-  
 // setInterval(gerenFunc, 1000);
