@@ -118,49 +118,49 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// modal funcionarios
-const btnAbrirModalFuncionarios = document.querySelectorAll('.btnAbrirModalFuncionario');
 
-btnAbrirModalFuncionarios.forEach(btnAbrirModalFuncionario => {
-    btnAbrirModalFuncionario.addEventListener('click', () => {
-        const divFuncionario = btnAbrirModalFuncionario.closest('.infosFuncionario');
-        const iconeEdit = divFuncionario.querySelectorAll('.iconeEditar');
-        const labelFuncionario = divFuncionario.querySelectorAll('.labelFuncionario');
-        const taskInput = divFuncionario.querySelector('.task-input');
-        const estadoMaquinaText = divFuncionario.querySelector('.estadoMaquinaText');
-        const usoMaquinaText = divFuncionario.querySelector('.usoMaquinaText');
+function toggleModal(btn) {
 
-        divFuncionario.classList.toggle('expandido');
-        labelFuncionario.forEach(label => {
-            label.classList.toggle('expandido');
+    const btnAbrirModalFuncionarios = document.querySelectorAll('.btnAbrirModalFuncionario');
+
+    const divFuncionario = btn.closest('.infosFuncionario');
+    const iconeEdit = divFuncionario.querySelectorAll('.iconeEditar');
+    const labelFuncionario = divFuncionario.querySelectorAll('.labelFuncionario');
+    const taskInput = divFuncionario.querySelector('.task-input');
+    const estadoMaquinaText = divFuncionario.querySelector('.estadoMaquinaText');
+    const usoMaquinaText = divFuncionario.querySelector('.usoMaquinaText');
+
+    divFuncionario.classList.toggle('expandido');
+    labelFuncionario.forEach(label => {
+        label.classList.toggle('expandido');
+    });
+
+    if (divFuncionario.classList.contains('expandido')) {
+        btn.textContent = '-';
+        iconeEdit.forEach(icone => {
+            icone.style.display = 'block';
         });
-
-        if (divFuncionario.classList.contains('expandido')) {
-            btnAbrirModalFuncionario.textContent = '-';
-            iconeEdit.forEach(icone => {
-                icone.style.display = 'block';
-            });
-            taskInput.style.display = 'block';
-            if (estadoMaquinaText.textContent === 'Manutenção') {
-                estadoMaquinaText.classList.add('vermelho'); // Adiciona classe 'vermelho'
-            }
-            if (usoMaquinaText.textContent === 'Off') {
-                usoMaquinaText.classList.add('vermelho'); // Adiciona classe 'vermelho'
-            }
-            if (estadoMaquinaText.textContent === 'Normal') {
-                estadoMaquinaText.classList.add('verde'); // Adiciona classe 'vermelho'
-            }
-            if (usoMaquinaText.textContent === 'On') {
-                usoMaquinaText.classList.add('verde'); // Adiciona classe 'vermelho'
-            }
-        } else {
-            btnAbrirModalFuncionario.textContent = '+';
+        taskInput.style.display = 'block';
+        // Restante do código...
+        if (estadoMaquinaText.textContent === 'Manutenção') {
+            estadoMaquinaText.classList.add('vermelho'); // Adiciona classe 'vermelho'
+        }
+        if (usoMaquinaText.textContent === 'Off') {
+            usoMaquinaText.classList.add('vermelho'); // Adiciona classe 'vermelho'
+        }
+        if (estadoMaquinaText.textContent === 'Normal') {
+            estadoMaquinaText.classList.add('verde'); // Adiciona classe 'vermelho'
+        }
+        if (usoMaquinaText.textContent === 'On') {
+            usoMaquinaText.classList.add('verde'); // Adiciona classe 'vermelho'
+        }
+    } else {
+        btnAbrirModalFuncionarios.textContent = '+';
             iconeEdit.forEach(icone => {
                 icone.style.display = 'none';
             });
             taskInput.style.display = 'none';
             estadoMaquinaText.classList.remove('vermelho'); // Remove classe 'vermelho'
             usoMaquinaText.classList.remove('vermelho'); // Remove classe 'vermelho'
-        }
-    });
-});
+    }
+}
