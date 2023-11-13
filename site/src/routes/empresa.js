@@ -15,4 +15,9 @@ router.post("/autenticar", function (req, res) {
     empresaController.entrar(req, res);
 });
 
+
+router.get("/gerenFunc/:idEmpresa", function (req, res) {
+    empresaController.gerenFunc(req, res);
+});
+
 module.exports = router;

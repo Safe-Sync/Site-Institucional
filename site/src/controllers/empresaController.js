@@ -65,7 +65,7 @@ function cadastrar(req, res) {
         res.status(400).send("Email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else {
+    }else {
         empresaModel.cadastrar(nomeFantasia, razaoSocial, cnpj, cep, numero, complemento, email, telefone, senha)
             .then(
                 function (resultado) {
@@ -92,6 +92,7 @@ function cadastrarFuncionario(req, res) {
     var email = req.body.emailServer;
     var telefone = req.body.telefoneServer;
     var senha = req.body.senhaServer;
+    var idEmpresa = req.body.idEmpresaServer;
 
     if (nome == undefined) {
         res.status(400).send("Nome está undefined!");
@@ -105,8 +106,10 @@ function cadastrarFuncionario(req, res) {
         res.status(400).send("Telefone está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Senha está undefined!");
+    }else if(idEmpresa == undefined){
+        res.status(400).send("Id da empresa está undefined!");
     } else {
-        empresaModel.cadastrarFuncionario(nome, cargo, cpf, email, telefone, senha)
+        empresaModel.cadastrarFuncionario(nome, cargo, cpf, email, telefone, senha, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -124,8 +127,25 @@ function cadastrarFuncionario(req, res) {
     }
 }
 
+function gerenFunc(req, res) {
+
+    var idEmpresa = req.params.idEmpresa;
+
+    empresaModel.gerenFunc(idEmpresa).then(function (funcionarios) {
+        if (funcionarios.length > 0) {
+            res.status(200).json(funcionarios);
+        } else {
+            res.status(204).send("Nenhum funcionario encontrado")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     entrar,
     cadastrar,
     cadastrarFuncionario,
+    gerenFunc,
 }

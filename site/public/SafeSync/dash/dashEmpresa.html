@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/styleDashEmpresa.css" />
     <link rel="stylesheet" href="tarefas.css" />
     <link rel="stylesheet" href="../assets/css/styleGerFunc.css" />
+    <script src="./script/gerenFunc.js"></script>
     <title>Dashboard</title>
 </head>
 
@@ -21,19 +22,23 @@
                     <!-- <i class="bi bi-music-note-list" id="botao-expandir"></i> -->
                     <img src="../assets/img/logotipo.svg" alt="" width="60px" />
                 </div>
-                <ul>      
-                    <li class="item-menu ativo" id="dash-link" >
+                <ul>
+                    <li class="item-menu ativo" id="dash-link">
                         <a href="#">
                             <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
-                                    <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
-                                    <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
-                                    <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z"/>
-                                  </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" fill="currentColor"
+                                    class="bi bi-clipboard2-data" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z" />
+                                    <path
+                                        d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z" />
+                                    <path
+                                        d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z" />
+                                </svg>
                             </span>
                             <span class="txt-link dash-link">Dashboard</span>
                         </a>
-                    </li>              
+                    </li>
                     <li class="item-menu" id="funcionario">
                         <a href="#">
                             <span class="icon">
@@ -61,7 +66,7 @@
 
                             <span class="txt-link">Cadastrar</span>
                         </a>
-                    </li>                  
+                    </li>
                     <li class="item-menu" id="item-menu-sair" onclick="window.location.href='../index.html'">
                         <a href="#">
                             <span class="icon-sair">
@@ -84,7 +89,7 @@
             <header id="header">
                 <div id="titulosDash">
                     <h1 class="titulo">Dashboard</h1>
-                    <h3>Nome da empresa</h3>
+                    <h3 id="nome_empresa"></h3>
                 </div>
                 <section class="opcoesTopo">
                     <div id="notificacao">
@@ -107,8 +112,8 @@
             <section id="areaDash">
                 <div class="kpiIniciais">
                     <div class="kpiInfo">
-                            <p>Funcionários Ativos na SafeSync</p>    
-                        <span  id="kpi1">18</span>
+                        <p>Funcionários Ativos na SafeSync</p>
+                        <span id="kpi1">18</span>
                     </div>
                     <div class="kpiInfo">
                         <p>N° de Tarefas Entregues - mês</p>
@@ -129,7 +134,7 @@
                             <div class="legendaMaquinas">
                                 <p>% de máquinas que passaram do limite de Ram:</p>
                             </div>
-                            <div  id="kpiMaquina1">
+                            <div id="kpiMaquina1">
                                 <span>55%</span>
                             </div>
                         </div>
@@ -154,7 +159,7 @@
                             <div id="kpiMaquina3">
                                 <span>73%</span>
                             </div>
-                        </div>                        
+                        </div>
                         <p class="limiteAlerta">Limite alerta: 71%+ de uso</p>
                     </div>
                 </div>
@@ -164,44 +169,20 @@
                     <div class="tableFuncionario">
                         <h3>Funcionários que mais entregaram tarefas no último mês</h3>
                         <table>
-                          <thead>
-                            <tr>
-                              <th>Posição</th>
-                              <th>Nome</th>
-                              <th>Total de Tarefas</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>Nayra Belarmino</td>
-                              <td>15</td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>Gustavo Gomes</td>
-                              <td>12</td>
-                            </tr>
-                            <tr>
-                              <td>3</td>
-                              <td>Gustavo Torres</td>
-                              <td>10</td>
-                            </tr>
-                            <tr>
-                               <td>4</td>
-                                <td>João Lucas</td>
-                                <td>8</td>
-                              </tr>
-                              <tr>
-                                <td>5</td>
-                                <td>Daniel Rios</td>
-                                <td>6</td>
-                              </tr>
-                          </tbody>
+                            <thead>
+                                <tr>
+                                    <th>Posição</th>
+                                    <th>Nome</th>
+                                    <th>Total de Tarefas</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rank_funcionarios">
+                            </tbody>
                         </table>
                     </div>
                 </div>
-            </section>
+                      
+            </section>
 
             <section id="areaFuncionarios">
                 <div id="topoFuncionarios">
@@ -213,43 +194,7 @@
                         <img src="../assets/img/iconeLupa.svg" alt="" />
                     </div>
                 </div>
-                <article>                   
-                    <div class="infosFuncionario">
-                        <div class="task-input" style="display: none;">
-                            <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
-                            <button onclick="">Atribuir Tarefa</button>
-                        </div>
-                        <p class="labelFuncionario nomeFuncionario">Gustavo Gomes</p>
-                        <p class="labelFuncionario cargo">
-                            Cargo:
-                            <svg style="display: none" class="iconeEditar" xmlns="http://www.w3.org/2000/svg" width="16"
-                                height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path
-                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                <path fill-rule="evenodd"
-                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                            </svg>
-                        </p>
-                        <p class="labelFuncionario tarefasAtribuidas">
-                             Tarefas atribuidas: <span id="tarefasAtribuidas"> 15 </span>
-                            
-                        </p>
-                        <p class="labelFuncionario tarefasCompletas">
-                            <span class="bordaVerde"> Tarefas Completas: <span id="tarefasCompletas"> 11 </span></span>
-                          
-                        </p>
-                        <p class="labelFuncionario tarefasAtrasadas">
-                            <span class="bordaVermelha"> Tarefas Atrasadas:  <span id="tarefasAtrasadas"> 14 </span> </span>  
-                        
-                        </p>
-                        <p class="labelFuncionario estadoMaquina">
-                            Estado da Máquina: <span class="estadoMaquinaText estadoMaquina">Normal</span>
-                        </p>
-                        <p class="labelFuncionario usoMaquina">
-                            Uso: <span class="usoMaquinaText usoMaquina">On</span>
-                        </p>
-                        <p class="btnAbrirModalFuncionario">+</p>
-                    </div>   
+                <article id="infoFunc">
                     <div class="infosFuncionario">
                         <div class="task-input" style="display: none;">
                             <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
@@ -268,16 +213,17 @@
                         </p>
                         <p class="labelFuncionario tarefasAtribuidas">
                             Tarefas atribuidas: <span id="tarefasAtribuidas"> 11 </span>
-                           
-                       </p>
-                       <p class="labelFuncionario tarefasCompletas">
-                           <span class="bordaVerde"> Tarefas Completas: <span id="tarefasCompletas"> 11 </span></span>
-                         
-                       </p>
-                       <p class="labelFuncionario tarefasAtrasadas">
-                           <span class="bordaVermelha"> Tarefas Atrasadas:  <span id="tarefasAtrasadas"> 0 </span> </span>  
-                       
-                       </p>
+
+                        </p>
+                        <p class="labelFuncionario tarefasCompletas">
+                            <span class="bordaVerde"> Tarefas Completas: <span id="tarefasCompletas"> 11 </span></span>
+
+                        </p>
+                        <p class="labelFuncionario tarefasAtrasadas">
+                            <span class="bordaVermelha"> Tarefas Atrasadas: <span id="tarefasAtrasadas"> 0 </span>
+                            </span>
+
+                        </p>
                         <p class="labelFuncionario estadoMaquina">
                             Estado da Máquina: <span class="estadoMaquinaText estadoMaquina">Manutenção</span>
                         </p>
@@ -285,7 +231,7 @@
                             Uso: <span class="usoMaquinaText usoMaquina">Off</span>
                         </p>
                         <p class="btnAbrirModalFuncionario">+</p>
-                    </div>                                
+                    </div>
                 </article>
             </section>
 
@@ -367,11 +313,11 @@
                                     </svg>
                                 </div>
                                 <p class="legendaPerfil primeiraLegenda">Nome</p>
-                                <p class="campoPerfil">SafeSync</p>
+                                <p class="campoPerfil" id="perfi_nomeEmpresa"></p>
                                 <p class="legendaPerfil">Email</p>
-                                <p class="campoPerfil">safesync@byteflow.net</p>
+                                <p class="campoPerfil" id="perfil_emailEmpresa"></p>
                                 <p class="legendaPerfil">CNPJ</p>
-                                <p class="campoPerfil">77.923.752/0001-59</p>
+                                <p class="campoPerfil" id="perfil_cnpj"></p>
                             </div>
                         </article>
                     </section>
@@ -387,9 +333,89 @@
 <script src="./script/dashEmpresa.js"></script>
 
 <script>
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    var nomeEmpresa = sessionStorage.NOME_EMPRESA;
+    var emailEmpresa = sessionStorage.EMAIL_EMPRESA;
+    var cnpjEmpresa = sessionStorage.CNPJ;
+
+    nome_empresa.innerHTML = nomeEmpresa;
+    perfi_nomeEmpresa.innerHTML = nomeEmpresa;
+    perfil_emailEmpresa.innerHTML = emailEmpresa;
+    perfil_cnpj.innerHTML = cnpjEmpresa;
+
+
     $('#input_cpf').mask('000.000.000-00');
     $('#input_telefone').mask('(00)00000-0000')
 
+    function listarFuncionarios() {
+        fetch(`/kpiEmpresa/listarFuncionarios/${idEmpresa}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (funcionarios) {
+
+                    for (i = 0; i < funcionarios.length; i++) {
+                        var nomeAtual = funcionarios[i].nomeFuncionario;
+                        var tarefasEntregues = funcionarios[i].totalTarefasConcluidas
+
+                        rank_funcionarios.innerHTML += `
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td>${nomeAtual}</td>
+                        <td>${tarefasEntregues}</td>
+                    </tr>
+                    `
+                    }
+                });
+            } else {
+                console.error('Nenhuma tarefa encontrada ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+
+    }
+    listarFuncionarios()
+
+    function funcionariosAtivos() {
+        fetch(`/kpiEmpresa/funcionariosAtivos/${idEmpresa}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (funcionarios) {
+
+                    for (i = 0; i < funcionarios.length; i++) {
+                        kpi1.innerHTML = funcionarios[i].quantidade_funcionarios;
+                    }
+
+                });
+            } else {
+                console.error('Nenhuma funcionario encontrada ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+    funcionariosAtivos()
+    function TarefasEntreguesMes() {
+        fetch(`/kpiEmpresa/tarefasEntreguesMes/${idEmpresa}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (funcionarios) {
+
+                    for (i = 0; i < funcionarios.length; i++) {
+                        kpi2.innerHTML = funcionarios[i].totalTarefasEntregues;
+                    }
+
+                });
+            } else {
+                console.error('Nenhuma funcionario encontrada ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+    TarefasEntreguesMes()
+
+    console.log(sessionStorage.ID_EMPRESA);
     function cadastrarFuncionario() {
         var nomeVar = input_nome.value;
         var cargoVar = input_cargo.value;
@@ -397,6 +423,9 @@
         var emailVar = input_email.value;
         var telefoneVar = input_telefone.value;
         var senhaVar = input_senha.value;
+        var idEmpresaVar = sessionStorage.ID_EMPRESA;
+
+        console.log(idEmpresaVar);
 
         fetch("/empresa/cadastrarFuncionario", {
             method: "POST",
@@ -410,13 +439,21 @@
                 emailServer: emailVar,
                 telefoneServer: telefoneVar,
                 senhaServer: senhaVar,
+                idEmpresaServer: idEmpresaVar
             }),
         })
             .then(function (resposta) {
                 if (resposta.ok) {
-                    setTimeout(() => {
-                        window.location = "../login.html";
-                    }, "2000");
+                    // funcionário cadastrado
+                    location.reload();
+
+                    input_nome.value = "";
+                    input_cargo.value = "";
+                    input_cpf.value = "";
+                    input_email.value = "";
+                    input_telefone.value = "";
+                    input_senha.value = "";
+
                 } else {
                     console.log("Erro ao fazer o cadastro");
                 }
@@ -426,4 +463,5 @@
             });
         return false;
     }
+    
 </script>

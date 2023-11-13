@@ -66,6 +66,10 @@
                 console.log("ESTOU NO funcionario THEN DO entrar()!")
                 if (resposta.ok) {
                     resposta.json().then(json => {
+                        sessionStorage.ID_FUNCIONARIO = json.idFuncionario;
+                        sessionStorage.NOME_FUNCIONARIO = json.nomeFuncionario;
+                        sessionStorage.CARGO_FUNCIONARIO = json.cargo;
+                        sessionStorage.EMAIL_FUNCIONARIO = json.email;
                         console.log(json);
                         console.log(JSON.stringify(json));
                         console.log("Login success");
@@ -102,6 +106,10 @@
 
                 if (resposta.ok) {
                     resposta.json().then(json => {
+                        sessionStorage.NOME_EMPRESA = json.nomeFantasia;
+                        sessionStorage.EMAIL_EMPRESA = json.email;
+                        sessionStorage.CNPJ = json.cnpj;
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
                         console.log(json);
                         console.log(JSON.stringify(json));
                         console.log("Login success");

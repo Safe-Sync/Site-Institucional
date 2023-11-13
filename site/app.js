@@ -11,6 +11,9 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresa");
 var funcionarioRouter = require("./src/routes/funcionario");
+var tarefaRouter = require("./src/routes/tarefa");
+var kpiFuncionarioRouter = require("./src/routes/kpiFuncionario");
+var kpiEmpresaRouter = require("./src/routes/kpiEmpresa");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,6 +24,9 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/empresa", empresaRouter);
 app.use("/funcionario", funcionarioRouter);
+app.use("/tarefa", tarefaRouter);
+app.use("/kpiFuncionario", kpiFuncionarioRouter);
+app.use("/kpiEmpresa", kpiEmpresaRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
