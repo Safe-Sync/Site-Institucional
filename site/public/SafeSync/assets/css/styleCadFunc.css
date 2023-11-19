@@ -87,3 +87,7 @@ button{
     border-radius: 100px;
     cursor: pointer;
 }
+button:hover{
+    color: #dcdcdc;
+    background-color: #102C57;
+}

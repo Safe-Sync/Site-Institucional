@@ -143,9 +143,43 @@ function gerenFunc(req, res) {
     });
 }
 
+function adicionarTarefaFuncionario(req, res){
+    var idFuncionario = req.params.idFuncionario;
+    var taskInput = req.body.taskInputServer;
+    var taskDate = req.body.taskDateServer;
+
+    console.log("Entrei no adicionarTarefaFuncionario");
+    console.log(idFuncionario);
+    console.log(taskInput);
+    console.log(taskDate);
+
+    if(idFuncionario == undefined){
+        res.status(400).send("idFuncionario está undefined!");
+    }else if(taskInput == undefined){
+        res.status(400).send("taskInput está undefined!");
+    }else if(taskDate == undefined){
+        res.status(400).send("taskDate está undefined!");
+    }else {
+        empresaModel.adicionarTarefaFuncionario(taskInput, taskDate, idFuncionario)
+        .then(
+            function (tarefa) {
+                res.json(tarefa);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+
+    
+}
+
 module.exports = {
     entrar,
     cadastrar,
     cadastrarFuncionario,
     gerenFunc,
+    adicionarTarefaFuncionario,
 }

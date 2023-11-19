@@ -3,32 +3,31 @@ function gerenFunc() {
   var idEmpresa = sessionStorage.ID_EMPRESA
   console.log(idEmpresa);
   fetch(`/empresa/gerenFunc/${idEmpresa}`).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (funcionarios) {
+    if (response.ok) {
+      response.json().then(function (funcionarios) {
 
-          const infoFunc = document.getElementById('infoFunc')
+        const infoFunc = document.getElementById('infoFunc')
 
-          for(i = 0; i < funcionarios.length; i++){
-            var nomeFuncionario = funcionarios[i].nomeFuncionario;
-            var cargoFuncionario = funcionarios[i].cargo;
-            var tarefasAtribuidas = funcionarios[i].tarefasNaoIniciado;
-            var tarefasConcluidas = funcionarios[i].tarefasConcluido;
-            var tarefasPendentes = funcionarios[i].tarefasAFazerEmAndamento
+        for (i = 0; i < funcionarios.length; i++) {
+          var nomeFuncionario = funcionarios[i].nomeFuncionario;
+          var cargoFuncionario = funcionarios[i].cargo;
+          var idFuncionario = funcionarios[i].idFuncionario;
+          var tarefasAtribuidas = funcionarios[i].tarefasNaoIniciado;
+          var tarefasConcluidas = funcionarios[i].tarefasConcluido;
+          var tarefasPendentes = funcionarios[i].tarefasAFazerEmAndamento;
 
-            console.log(nomeFuncionario);
-            console.log(cargoFuncionario);
-            console.log(tarefasAtribuidas);
-            console.log(tarefasConcluidas);
-            console.log(tarefasPendentes);
+          var novoFunc = document.createElement('div');
+
+          novoFunc.className = 'infosFuncionario';
+          novoFunc.id = idFuncionario;
+
+          novoFunc.innerHTML = `
             
-            var novoFunc = document.createElement('div');
-
-            novoFunc.className = 'infosFuncionario';
-            novoFunc.innerHTML = `
-            
-            <div class="task-input" style="display: none;">
-                          <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
-                          <button onclick="">Atribuir Tarefa</button>
+            <div class="task-input" style="display: none; id="taskInput-${idFuncionario}">
+                    <input type="text" id="taskInput-${idFuncionario}" placeholder="Digite uma nova tarefa">
+                        <label for="taskDate-${idFuncionario}">Data de Entrega:</label>
+                        <input type="date" id="taskDate-${idFuncionario}">
+                    <button onclick="addTaskFuncionario(${idFuncionario})">Adicionar Tarefa</button>
                       </div>
                       <p class="labelFuncionario nomeFuncionario">${nomeFuncionario}</p>
                       <p class="labelFuncionario cargo">
@@ -50,32 +49,77 @@ function gerenFunc() {
 
                       </p>
                       <p class="labelFuncionario tarefasAtrasadas">
-                          <span class="bordaVermelha"> Tarefas Atrasadas: <span id="tarefasAtrasadas"> ${tarefasPendentes} </span>
+                          <span class="bordaVermelha"> Tarefas Pendentes: <span id="tarefasAtrasadas"> ${tarefasPendentes} </span>
                           </span>
 
-                      </p>
-                      <p class="labelFuncionario estadoMaquina">
-                          Estado da Máquina: <span class="estadoMaquinaText estadoMaquina">Normal</span>
                       </p>
                       <p class="labelFuncionario usoMaquina">
                           Uso: <span class="usoMaquinaText usoMaquina">On</span>
                       </p>
-                      <p class="btnAbrirModalFuncionario" onclick="toggleModal(this)">+</p>
+                      <p class="btnAbrirModalFuncionario" onclick="toggleModal(this)">-</p>
                       
             `
-            
-            infoFunc.appendChild(novoFunc);
-          }
+          infoFunc.appendChild(novoFunc);
+        }
 
-        });
+
+
+      });
+    } else {
+      console.error('Nenhuma tarefa encontrada ou erro na API');
+    }
+  })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados: ${error.message}`);
+    });
+}
+gerenFunc()
+
+function addTaskFuncionario(idFuncionario) {
+  var taskInput = document.getElementById(`taskInput-${idFuncionario}`);
+  var taskDate = document.getElementById(`taskDate-${idFuncionario}`);
+
+  if (taskInput.value != "" && taskDate.value != "") {
+    enviarTarefaParaServidor(idFuncionario, taskInput.value, taskDate.value);
+  } else {
+    alert("Preencha os dois campos")
+  }
+
+}
+
+
+
+
+
+function enviarTarefaParaServidor(idFuncionario, taskInput, taskDate) {
+  console.log(idFuncionario);
+  console.log(taskInput);
+  console.log(taskDate);
+  fetch(`/empresa/adicionarTarefaFuncionario/${idFuncionario}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      taskInputServer: taskInput,
+      taskDateServer: taskDate,
+    }),
+  })
+    .then(response => {
+      if (response.ok) {
+
+        // location.reload();
+
+        console.log('Tarefa adicionada com sucesso!');
       } else {
-        console.error('Nenhuma tarefa encontrada ou erro na API');
+        console.error('Erro ao adicionar tarefa');
       }
     })
-      .catch(function (error) {
-        console.error(`Erro na obtenção dos dados: ${error.message}`);
-      });
-  }
-  gerenFunc()
+    .catch(error => {
+      console.error(`Erro na requisição: ${error.message}`);
+    });
+}
+
+
 
 // setInterval(gerenFunc, 1000);

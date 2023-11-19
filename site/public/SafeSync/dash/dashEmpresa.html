@@ -111,7 +111,7 @@
             <section id="areaDash">
                 <div class="kpiIniciais">
                     <div class="kpiInfo">
-                        <p>Funcionários Ativos na SafeSync</p>
+                        <p>Funcionários Ativos na <span id="infoEmpresa" style="font-size: 15px;"></span></p>
                         <span id="kpi1">18</span>
                     </div>
                     <div class="kpiInfo">
@@ -303,6 +303,7 @@
     var cnpjEmpresa = sessionStorage.CNPJ;
 
     nome_empresa.innerHTML = nomeEmpresa;
+    infoEmpresa.innerHTML = nomeEmpresa;
     perfi_nomeEmpresa.innerHTML = nomeEmpresa;
     perfil_emailEmpresa.innerHTML = emailEmpresa;
     perfil_cnpj.innerHTML = cnpjEmpresa;

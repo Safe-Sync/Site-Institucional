@@ -15,9 +15,11 @@ router.post("/autenticar", function (req, res) {
     empresaController.entrar(req, res);
 });
 
-
 router.get("/gerenFunc/:idEmpresa", function (req, res) {
     empresaController.gerenFunc(req, res);
 });
 
+router.post("/adicionarTarefaFuncionario/:idFuncionario", function (req, res) {
+    empresaController.adicionarTarefaFuncionario(req, res);
+});
 module.exports = router;

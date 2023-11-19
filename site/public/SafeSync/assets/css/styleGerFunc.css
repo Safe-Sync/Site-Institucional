@@ -103,6 +103,9 @@
     align-items: center;
     justify-content: space-between;
 }
+#areaFuncionarios .infosFuncionario .labelFuncionario:last-child.expandido{
+    margin-bottom: 2%;
+}
 
 #areaFuncionarios .infosFuncionario .btnAbrirModalFuncionario {
     cursor: pointer;
