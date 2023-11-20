@@ -14,6 +14,7 @@ var funcionarioRouter = require("./src/routes/funcionario");
 var tarefaRouter = require("./src/routes/tarefa");
 var kpiFuncionarioRouter = require("./src/routes/kpiFuncionario");
 var kpiEmpresaRouter = require("./src/routes/kpiEmpresa");
+var medidasRouter = require("./src/routes/medidas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ app.use("/funcionario", funcionarioRouter);
 app.use("/tarefa", tarefaRouter);
 app.use("/kpiFuncionario", kpiFuncionarioRouter);
 app.use("/kpiEmpresa", kpiEmpresaRouter);
+app.use("/medidas", medidasRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
