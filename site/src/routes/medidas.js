@@ -6,6 +6,7 @@ var medidaController = require("../controllers/medidasController");
 
 
 router.get("/ultimas/:idFuncionario/:idHardware", function (req, res) {
+    console.log("Entrei no ultimas");
     medidaController.buscarUltimasMedidas(req, res);
 });
 

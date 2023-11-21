@@ -20,23 +20,16 @@ function buscarUltimasMedidas(idFuncionario, idHardware, limiteLinhas) {
 
     console.log("Executando a instrução SQL:\n", instrucaoSql);
 
-    return database.executar(instrucaoSql)
-        .then(results => {
-            const dataProcessada = results.map(row => {
-                row.dataHoraBrasilia = moment(row.dataHora).tz('America/Sao_Paulo').format();
-                return row;
-            });
-            return dataProcessada;
-        })
-        .catch(error => {
-            throw error;
-        });
+    return database.executar(instrucaoSql);
+
 }
 
 function buscarMedidasEmTempoReal(idHardware) {
     const instrucao = `
-        -- Sua instrução SQL para buscar medidas em tempo real aqui
-        -- Certifique-se de retornar os dados necessários
+    select 
+        consumoCpu,
+        DATE_FORMAT(dataHora,'%H:%i:%s') as ultima_data
+        from volateis where fkHardware = ${idHardware} order by dataHora ;
     `;
     return database.executar(instrucao);
 }

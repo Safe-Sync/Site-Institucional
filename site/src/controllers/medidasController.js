@@ -2,7 +2,7 @@ const medidasModel = require("../models/medidasModel");
 
 function buscarUltimasMedidas(req, res) {
     const limiteLinhas = 7;
-    const { idFuncionario, idHardware } = req.params;
+    var { idFuncionario, idHardware } = req.params;
 
     console.log("Recuperando as últimas %d medidas", limiteLinhas);
     console.log("ID do funcionário:", idFuncionario);
@@ -23,7 +23,8 @@ function buscarUltimasMedidas(req, res) {
 }
 
 function buscarMedidasEmTempoReal(req, res) {
-    const { idHardware } = req.params;
+    var idHardware = req.params.idHardware;
+    console.log("Entrei no controller do medidasTempoReal");
 
     medidasModel.buscarMedidasEmTempoReal(idHardware)
         .then(resultado => {

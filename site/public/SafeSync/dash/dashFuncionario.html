@@ -29,12 +29,12 @@
                                         d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
                                 </svg>
                             </span>
-                            <span class="txt-link" >Dashboard</span>
+                            <span class="txt-link">Dashboard</span>
                         </a>
                     </li>
                     <li class="item-menu" id="tarefas-link">
                         <a href="#">
-                            <span class="icon" >
+                            <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1.4em" fill="currentColor"
                                     class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -45,11 +45,11 @@
                                         d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                 </svg>
                             </span>
-                            <span class="txt-link tasks-link" >Tasks</span>
+                            <span class="txt-link tasks-link">Tasks</span>
                         </a>
                     </li>
-                   
-                  
+
+
                     <li class="item-menu" id="item-menu-sair" onclick="window.location.href='../index.html'">
                         <a href="#">
                             <span class="icon-sair">
@@ -61,7 +61,7 @@
                                         d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
                                 </svg>
                             </span>
-                            <span class="txt-link-sair" >Sair</span>
+                            <span class="txt-link-sair">Sair</span>
                         </a>
                     </li>
                 </ul>
@@ -70,7 +70,7 @@
 
         <article id="dash">
             <header id="header">
-                <div id="titulosDash"> 
+                <div id="titulosDash">
                     <h1 class="titulo">Dashboard</h1>
                     <h3><span id="nome_funcionario"></span> - Nome da empresa</h3>
                 </div>
@@ -123,9 +123,9 @@
                         <div>
                             <canvas id="myChartLineTarefas"></canvas>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="graficos disco">
-                        <h3>Uso de  Disco</h3>
+                        <h3>Uso de Disco</h3>
                         <div>
                             <canvas id="myChartLineDisco"></canvas>
                         </div>
@@ -149,8 +149,8 @@
                     </div>
                     <div class="task-input">
                         <input type="text" id="taskInput" placeholder="Digite uma nova tarefa">
-                            <label for="taskDate">Data de Entrega:</label>
-                            <input type="date" id="taskDate">
+                        <label for="taskDate">Data de Entrega:</label>
+                        <input type="date" id="taskDate">
                         <button onclick="addTask()">Adicionar Tarefa</button>
                     </div>
                     <div class="accordion" id="accordion">
@@ -180,17 +180,38 @@
                     <!-- Conteúdo do modal aqui -->
                     <!-- Seu conteúdo modal aqui... -->
                     <section>
-                        <div class="notificacaoCritico"><p>Uso da CPU crítico, acima dos 90%</p></div>
-                        <div class="notificacaoBom"><p>Uso da CPU bom, abaixo dos 50%</p></div>
-                        <div class="notificacaoAlerta"><p>Uso da CPU em alerta, acima dos 70%</p></div>
-                        <div class="notificacaoAlerta"><p>Uso da CPU em alerta, acima dos 70%</p></div>
-                        <div class="notificacaoAlerta"><p>Uso da CPU em alerta, acima dos 70%</p></div>
-                        <div class="notificacaoAlerta"><p>Uso da CPU em alerta, acima dos 70%</p></div>
-                        <div class="notificacaoAlerta"><p>Uso da CPU em alerta, acima dos 70%</p></div>
-                        <div class="notificacaoAlerta"><p>Uso da CPU em alerta, acima dos 70%</p></div>
-                        <div class="notificacaoAlerta"><p>Uso da CPU em alerta, acima dos 70%</p></div>
-                        <div class="notificacaoAlerta"><p onclick="window.location.href='./dashFuncionario.html'">Uso da CPU em alerta, acima dos 70%</p></div>
-           
+                        <div class="notificacaoCritico">
+                            <p>Uso da CPU crítico, acima dos 90%</p>
+                        </div>
+                        <div class="notificacaoBom">
+                            <p>Uso da CPU bom, abaixo dos 50%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p>Uso da CPU em alerta, acima dos 70%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p>Uso da CPU em alerta, acima dos 70%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p>Uso da CPU em alerta, acima dos 70%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p>Uso da CPU em alerta, acima dos 70%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p>Uso da CPU em alerta, acima dos 70%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p>Uso da CPU em alerta, acima dos 70%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p>Uso da CPU em alerta, acima dos 70%</p>
+                        </div>
+                        <div class="notificacaoAlerta">
+                            <p onclick="window.location.href='./dashFuncionario.html'">Uso da CPU em alerta, acima dos
+                                70%</p>
+                        </div>
+
                     </section>
                 </div>
             </div>
@@ -201,22 +222,24 @@
                     <section>
                         <h1>Meu Perfil</h1>
 
-                            <article>
-                                <div id="imgPerfil"> <img src="../assets/img/exemploModelo.svg" alt=""></div>
+                        <article>
+                            <div id="imgPerfil"> <img src="../assets/img/exemploModelo.svg" alt=""></div>
 
-                               
-                                <div class="conteudoPerfil">
-                                    <div class="iconeEditarPerfil"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                                      </svg></div>
-                                    <p class="legendaPerfil primeiraLegenda">Nome</p>
-                                    <p class="campoPerfil" id="perfil_nome"></p>
-                                    <p class="legendaPerfil">Cargo</p>
-                                    <p class="campoPerfil" id="perfil_cargo"></p>
-                                    <p class="legendaPerfil">Email</p>
-                                    <p class="campoPerfil" id="perfil_email"></p>
-                                </div>
-                            </article>
+
+                            <div class="conteudoPerfil">
+                                <div class="iconeEditarPerfil"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                                    </svg></div>
+                                <p class="legendaPerfil primeiraLegenda">Nome</p>
+                                <p class="campoPerfil" id="perfil_nome"></p>
+                                <p class="legendaPerfil">Cargo</p>
+                                <p class="campoPerfil" id="perfil_cargo"></p>
+                                <p class="legendaPerfil">Email</p>
+                                <p class="campoPerfil" id="perfil_email"></p>
+                            </div>
+                        </article>
                     </section>
                 </div>
             </div>
@@ -242,135 +265,52 @@
     perfil_cargo.innerHTML = cargoFuncionario;
     perfil_email.innerHTML = emailFuncionario;
 
-    // npm install moment-timezone
-
-
-// ...
-
-// Assumindo que `row` contém os resultados da consulta
-
-// Agora `dataHoraBrasilia` deve conter a data e hora no fuso horário correto
-
-    // ... (código anterior)
 
     let proximaAtualizacao;
 
-// Função para obter dados do sensor e plotar o gráfico
-function obterDadosGrafico(idHardware) {
-    alterarTitulo(idHardware);
+    // Função para obter dados do sensor e plotar o gráfico
+    function obterDadosGrafico(idHardware) {
 
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
-    console.log(idHardware);
-    console.log(idFuncionario);
-
-    fetch(`/medidas/ultimas/${idFuncionario}/${idHardware}`).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-            
-
-                plotarGrafico(resposta, idHardware);
-                atualizacaoPeriodica(idHardware); // Adicione esta chamada para atualizar periodicamente
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
         }
-    }).catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
+        console.log("id do hardware: " + idHardware);
+        console.log("id do funcionário: " + idFuncionario);
 
-    atualizacaoPeriodica(idHardware);
-
-}
-
-function atualizarGrafico(idHardware, dados, myChart) {
-
+        fetch(`/medidas/ultimas/${idFuncionario}/${idHardware}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
 
-fetch(`/medidas/tempo-real/${idHardware}`).then(function (response) {
-    console.log();
-  if (response.ok) {
-    response.json().then(function (novoRegistro) {
-
-      console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-      console.log(`Dados atuais do gráfico:`);
-      console.log(dados);
-      obterdados(idHardware)
-
-      // let avisoCaptura = document.getElementById(``)
-      // avisoCaptura.innerHTML = ""
+                    plotarGrafico(resposta, idHardware);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
 
 
-      if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-        console.log("---------------------------------------------------------------")
-        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-        console.log("Horário do novo dado capturado:")
-        console.log(novoRegistro[0].momento_grafico)
-        console.log("Horário do último dado capturado:")
-        console.log(dados.labels[dados.labels.length - 1])
-        console.log("---------------------------------------------------------------")
-      } else {
-        // tirando e colocando valores no gráfico
-        dados.labels.shift(); // apagar o primeiro
-        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+    }
 
-        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+    var chartCpu;
+    function plotarGrafico(resposta, idHardware) {
+            if (chartCpu) {
+            chartCpu.destroy();
+          }
+        console.log('Iniciando plotagem do gráfico...');
 
-        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+        // Criando estrutura para plotar gráfico - labels
+        var labels = [];
+        
 
-        myChart.update();
-      }
-
-      // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacao = setTimeout(() => atualizarGrafico(idHardware, dados, myChart), 15000);
-    });
-  } else {
-    console.error('Nenhum dado encontrado ou erro na API');
-    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-    proximaAtualizacao = setTimeout(() => atualizarGrafico(idHardware, dados, myChart), 2000);
-  }
-})
-  .catch(function (error) {
-    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-  });
-
-}
-
-function atualizacaoPeriodica() {
-obterdados(1);
-// function sendData() {
-//     var http = new XMLHttpRequest();
-//     http.open('POST', 'http://localhost:3000/api/sendData', false);
-//     http.send(null);
-// }
-
-// setInterval(() => {
-//     sendData();
-// }, 2000);
-
-setTimeout(atualizacaoPeriodica, 15000);
-}
-var chartCpu; 
-function plotarGrafico(resposta, idSensor) {
-    if (chartCpu) {
-    // Se existir, destrua o gráfico
-    chartCpu.destroy();
-  }
-    console.log('Iniciando plotagem do gráfico...');
-
-    // Criando estrutura para plotar gráfico - labels
-    let labels = [];
-
-    // Criando estrutura para plotar gráfico - dados
-    let dados = {
-        labels: labels,
-        datasets: [{
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
                 label: 'Uso da Cpu', // Alterado para manter consistência
                 data: [],
                 fill: true,
@@ -379,32 +319,216 @@ function plotarGrafico(resposta, idSensor) {
                 pointRadius: 4,
                 tension: 0.4,
             }
-        ]
-    };
+            ]
+        };
 
-    console.log('----------------------------------------------')
-    console.log('Estes dados foram recebidos pela função "obterDadosGrafico" e passados para "plotarGrafico":')
-    console.log(resposta)
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela função "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
 
-    // Inserindo valores recebidos na estrutura para plotar o gráfico
-    for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
-        labels.push(registro.momento_grafico);
-        dados.datasets[0].data.push(registro.umidade); // Alterado para manter consistência
+        // Inserindo valores recebidos na estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registroData = resposta[i].ultima_data;
+            console.log("data recebida: " + registroData);
+            var consumoCpu = resposta[i].consumoCpu;
+            labels.push(registroData);
+            dados.datasets[0].data.push(consumoCpu); // Alterado para manter consistência
+            
+        }
+        console.log("labels: ");
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                size: 9
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                return 'Legenda:';
+                            },
+                            label: function (context) {
+                                return 'Uso da Cpu: ' + context.parsed.y + '%';
+                            }
+                        }
+                    },
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 9
+                            }
+                        },
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 10
+                            },
+                            stepSize: 20, 
+                            max: 100,
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartLineCpu`),
+            config
+        );
+        setTimeout(() => {
+            // Chamar a função atualizarGrafico dentro do setTimeout
+            atualizarGrafico(idHardware, dados, myChart);
+        }, 2000);
+    }
+    function atualizarGrafico(idHardware, dados, myChart) {
+
+        console.log("id Hardware do atualizarGrafico: " + idHardware);
+        console.log("dados do atualizarGrafico: " + dados);
+
+        fetch(`/medidas/tempo-real/${idHardware}`).then(function (response) {
+            console.log("tempo-real");
+            if (response.ok) {
+                console.log("entrei no if");
+                response.json().then(function (novoRegistro) {
+
+                    // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    // console.log(`Dados atuais do gráfico: ${JSON.stringify(dados)}`);
+                    obterdados(idFuncionario)
+
+                    // let avisoCaptura = document.getElementById(``)
+                    // avisoCaptura.innerHTML = ""
+
+                    console.log("ultima data: " + novoRegistro[0].ultima_data);
+
+                    if (novoRegistro[0].ultima_data == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].ultima_data)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        console.log("estou no else do atualizarGrafico");
+                        console.log("Horário do último dado capturado:")
+                        console.log(novoRegistro[0].ultima_data)
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].ultima_data); // incluir um novo momento
+                        console.log(dados.labels.length);
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].consumoCpu); // incluir uma nova medida de umidade
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idHardware, dados, myChart), 15000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idHardware, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
     }
 
-    console.log('----------------------------------------------')
-    console.log('O gráfico será plotado com os respectivos valores:')
-    console.log('Labels:')
-    console.log(labels)
-    console.log('Dados:')
-    console.log(dados.datasets)
-    console.log('----------------------------------------------')
+    function atualizacaoPeriodica() {
+        obterdados(1);
 
-    // Criando estrutura para plotar gráfico - config
-    const config = {
+        setTimeout(atualizacaoPeriodica, 15000);
+
+    }
+
+    // função para criar os alertas
+    function obterdados(idHardware) {
+        console.log(idHardware + " id do hardware da obterDados");
+        fetch(`/medidas/tempo-real/${idHardware}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+
+                        // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+
+    
+
+    // Função para atualizar o gráfico periodicamente
+    // function atualizacaoPeriodica(idHardware) {
+    //     setTimeout(() => obterDadosGrafico(idHardware), 15000);
+    // }
+
+    // ... (código posterior)
+
+    // Chame a função inicial para iniciar o processo
+    obterDadosGrafico(idFuncionario); 
+
+
+
+
+
+    const ctxRam = document.getElementById('myChartLineRam');
+
+    new Chart(ctxRam, {
         type: 'line',
-        data: dados,
+        data: {
+            labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
+            font: {
+                size: 8
+            },
+            datasets: [{
+                label: 'Uso da Ram',
+                data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
+                fill: true,
+                backgroundColor: '#adbcffa1', // Cor de preenchimento
+                borderColor: '#adbcff',
+                pointRadius: 4,
+                tension: 0.4,
+            }],
+        },
         options: {
             plugins: {
                 legend: {
@@ -421,10 +545,10 @@ function plotarGrafico(resposta, idSensor) {
                             return 'Legenda:';
                         },
                         label: function (context) {
-                            return 'Uso da Cpu: ' + context.parsed.y + '%';
+                            return 'Uso da Ram: ' + context.parsed.y + '%';
                         }
                     }
-                },
+                }
             },
             scales: {
                 x: {
@@ -452,241 +576,150 @@ function plotarGrafico(resposta, idSensor) {
                 }
             }
         }
-    };
-
-    // Adicionando gráfico criado em div na tela
-    let myChart = new Chart(
-        document.getElementById(`myChartLineCpu`),
-        config
-    );
-
-    setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 2000);
-}
-
-// Função para atualizar o gráfico periodicamente
-function atualizacaoPeriodica(idHardware) {
-    setTimeout(() => obterDadosGrafico(idHardware), 15000);
-}
-
-// ... (código posterior)
-
-// Chame a função inicial para iniciar o processo
-obterDadosGrafico(1); // Substitua o argumento pelo ID do sensor desejado
-
-
-
-
-    
-    const ctxRam = document.getElementById('myChartLineRam');
-
-new Chart(ctxRam, {
-    type: 'line',
-    data: {
-        labels: ['11:04', '11:05', '11:05', '11:06', '11:06', '11:07', '11:07', '11:08', '11:09', '11:09'],
-        font: {
-            size: 8
-        },
-        datasets: [{
-            label: 'Uso da Ram',
-            data: [0, 10, 10, 40, 40, 50, 60, 40, 80, 90, 100, 90, 85, 85, 80, 70, 80, 60, 60],
-            fill: true,
-            backgroundColor: '#adbcffa1', // Cor de preenchimento
-            borderColor: '#adbcff',
-            pointRadius: 4,
-            tension: 0.4,
-        }],
-    },
-    options: {
-        plugins: {
-            legend: {
-                display: true,
-                labels: {
-                    font: {
-                        size: 9
-                    }
-                }
-            },
-            tooltip: {
-                callbacks: {
-                    title: function (tooltipItems) {
-                        return 'Legenda:';
-                    },
-                    label: function (context) {
-                        return 'Uso da Ram: ' + context.parsed.y + '%';
-                    }
-                }
-            }
-        },
-        scales: {
-            x: {
-                grid: {
-                    display: false
-                },
-                ticks: {
-                    font: {
-                        size: 9
-                    }
-                },
-            },
-            y: {
-                grid: {
-                    display: false
-                },
-                ticks: {
-                    font: {
-                        size: 10
-                    },
-                    stepSize: 20, // Incremento desejado
-                    max: 100, // Valor máximo do eixo y
-                },
-                beginAtZero: true
-            }
-        }
-    }
-});
+    });
 
 
     const ctxTarefas = document.getElementById('myChartLineTarefas');
 
-new Chart(ctxTarefas, {
-    type: 'bar',
-    data: {
-        labels: ['seg', 'ter', 'qua', 'qui', 'sex'],
-        datasets: [{
-            label: 'Tarefas Atribuidas',
-            data: [4, 5, 10, 8, 7, 3],
-            backgroundColor: '#fed0df', // Cor de preenchimento
-            tension: 0.4,
-        }, {
-            label: 'Tarefas Entregues',
-            data: [3, 6, 9, 9, 7, 3],
-            backgroundColor: '#adbcff', // Cor de preenchimento
-            tension: 0.4,
-        }],
-    },
-    options: {
-        plugins: {
-            legend: {
-                display: true,
-                labels: {
-                    font: {
-                        size: 9
-                    }
-                }
-            }
+    new Chart(ctxTarefas, {
+        type: 'bar',
+        data: {
+            labels: ['seg', 'ter', 'qua', 'qui', 'sex'],
+            datasets: [{
+                label: 'Tarefas Atribuidas',
+                data: [4, 5, 10, 8, 7, 3],
+                backgroundColor: '#fed0df', // Cor de preenchimento
+                tension: 0.4,
+            }, {
+                label: 'Tarefas Entregues',
+                data: [3, 6, 9, 9, 7, 3],
+                backgroundColor: '#adbcff', // Cor de preenchimento
+                tension: 0.4,
+            }],
         },
-        scales: {
-            x: {
-                grid: {
-                    display: false
-                },
-                ticks: {
-                    font: {
-                        size: 9
-                    }
-                }
-            },
-            y: {
-                grid: {
-                    display: false
-                },
-                ticks: {
-                    font: {
-                        size: 11
-                    }
-                },
-                beginAtZero: true
-            }
-        }
-    }
-});
-
-
-const ctxDisco = document.getElementById('myChartLineDisco');
-
-new Chart(ctxDisco, {
-    type: 'doughnut',
-    data: {
-        labels: ['Livre', 'Usados'],
-        datasets: [{
-            label: 'Memória',
-            data: [23, 77],
-            fill: true,
-            backgroundColor: [
-                '#fed0df',
-                '#adbcff'
-            ],
-            pointRadius: 2,
-            tension: 0.4,
-        }],
-    },
-    options: {
-        plugins: {
-            legend: {
-                display: true,
-                labels: {
-                    font: {
-                        size: 12
-                    }
-                }
-            },
-            tooltip: {
-                callbacks: {
-                    label: function (context) {
-                        var labelIndex = context.dataIndex;
-                        if (labelIndex === 0) {
-                            return 'Memória Livre: ' + context.parsed + '%';
-                        } else if (labelIndex === 1) {
-                            return 'Memória Usada: ' + context.parsed + '%';
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 9
                         }
                     }
                 }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    },
+                    beginAtZero: true
+                }
             }
+        }
+    });
+
+
+    const ctxDisco = document.getElementById('myChartLineDisco');
+
+    new Chart(ctxDisco, {
+        type: 'doughnut',
+        data: {
+            labels: ['Livre', 'Usados'],
+            datasets: [{
+                label: 'Memória',
+                data: [23, 77],
+                fill: true,
+                backgroundColor: [
+                    '#fed0df',
+                    '#adbcff'
+                ],
+                pointRadius: 2,
+                tension: 0.4,
+            }],
         },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            var labelIndex = context.dataIndex;
+                            if (labelIndex === 0) {
+                                return 'Memória Livre: ' + context.parsed + '%';
+                            } else if (labelIndex === 1) {
+                                return 'Memória Usada: ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            },
+        }
+    });
+
+    function alterarTitulo(idHardware) {
+        var tituloEmpresa = document.getElementById(`tituloEmpresa${idHardware}`)
+        myChartLineCpu.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idHardware + "</span>"
     }
-});
-
-function alterarTitulo(idHardware) {
-    var tituloEmpresa = document.getElementById(`tituloEmpresa${idHardware}`)
-    myChartLineCpu.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idHardware + "</span>"
-  }
 
 
-function tarefasEntregues() {
-    var idFuncionario = sessionStorage.ID_FUNCIONARIO;
-    fetch(`/kpiFuncionario/tarefasEntregues/${idFuncionario}`)
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (tarefas) {
+    function tarefasEntregues() {
+        var idFuncionario = sessionStorage.ID_FUNCIONARIO;
+        fetch(`/kpiFuncionario/tarefasEntregues/${idFuncionario}`)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (tarefas) {
 
-                    tarefasEntreguesFunc.innerHTML = tarefas[0].total_tarefas_entregues;
-                });
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
-        });
-}
-tarefasEntregues();
+                        tarefasEntreguesFunc.innerHTML = tarefas[0].total_tarefas_entregues;
+                    });
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+    tarefasEntregues();
 
-function tarefasPendentes() {
-    var idFuncionario = sessionStorage.ID_FUNCIONARIO;
-    fetch(`/kpiFuncionario/tarefasPendentes/${idFuncionario}`)
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (tarefas) {
+    function tarefasPendentes() {
+        var idFuncionario = sessionStorage.ID_FUNCIONARIO;
+        fetch(`/kpiFuncionario/tarefasPendentes/${idFuncionario}`)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (tarefas) {
 
-                    tarefasPendentesFunc.innerHTML = tarefas[0].total_tarefas_entregues;
-                });
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
-        });
-}
-tarefasPendentes();
+                        tarefasPendentesFunc.innerHTML = tarefas[0].total_tarefas_entregues;
+                    });
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+    tarefasPendentes();
 
-// Atualiza as tarefas a cada 5 segundos (por exemplo)
-// setInterval(tarefasEntregues, 1000);
+    // Atualiza as tarefas a cada 5 segundos (por exemplo)
+    // setInterval(tarefasEntregues, 1000);
 
 </script>
