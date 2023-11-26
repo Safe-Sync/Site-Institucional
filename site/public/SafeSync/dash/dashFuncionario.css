@@ -223,7 +223,7 @@ ul li.item-menu a{
     background-color: #ffe23c4b;
     color: #dfbd00;
     padding: 2%;
-    margin-top: 15%;
+    /* margin-top: 15%; */
 }
 #dash #areaGraficos #areaKpis .kpiBranca{
     min-width: 20%;

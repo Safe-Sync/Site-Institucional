@@ -10,8 +10,15 @@ router.get("/ultimas/:idFuncionario/:idHardware", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/tempo-real/:idHardware", function (req, res) {
-    medidaController.buscarMedidasEmTempoReal(req, res);
+router.get("/graficoCPU/:idHardware", function (req, res) {
+    medidaController.graficoCPU(req, res);
 })
 
+router.get("/graficoRAM/:idHardware", function (req, res) {
+    medidaController.graficoRAM(req, res);
+})
+
+router.get("/graficoDISCO/:idHardware", function (req, res) {
+    medidaController.graficoDISCO(req, res);
+})
 module.exports = router;

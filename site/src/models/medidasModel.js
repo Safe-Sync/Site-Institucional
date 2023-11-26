@@ -1,5 +1,5 @@
 const database = require("../database/config");
-const moment = require('moment-timezone');
+// const moment = require('moment-timezone');
 
 function buscarUltimasMedidas(idFuncionario, idHardware, limiteLinhas) {
     const instrucaoSql = `
@@ -24,17 +24,52 @@ function buscarUltimasMedidas(idFuncionario, idHardware, limiteLinhas) {
 
 }
 
-function buscarMedidasEmTempoReal(idHardware) {
+// mudar nome para medidasCPU
+function graficoCPU(idHardware, limiteLinhas) {
+    console.log("id do hardware dentro do models tempo-real: " + idHardware);
     const instrucao = `
     select 
         consumoCpu,
         DATE_FORMAT(dataHora,'%H:%i:%s') as ultima_data
-        from volateis where fkHardware = ${idHardware} order by dataHora ;
+        from volateis where fkHardware = ${idHardware} order by dataHora desc LIMIT ${limiteLinhas};
+    `;
+    return database.executar(instrucao);
+}
+
+function graficoRAM(idHardware, limiteLinhas) {
+    console.log("id do hardware dentro do models tempo-real: " + idHardware);
+    const instrucao = `
+    SELECT 
+        consumoRam,
+        DATE_FORMAT(dataHora, '%H:%i:%s') AS ultima_data,
+        totalRam AS totalRam
+    FROM 
+        volateis 
+        INNER JOIN hardwares  ON fkHardware = ${idHardware}
+    WHERE 
+        fkHardware = ${idHardware}
+    ORDER BY 
+        dataHora DESC
+    LIMIT ${limiteLinhas};
+    `;
+    return database.executar(instrucao);
+}
+
+function graficoDISCO(idHardware) {
+    const instrucao = `
+    SELECT 
+    totalDisco AS totalDisco,
+    consumoDisco AS consumoDisco
+    FROM 
+    hardwares 
+    INNER JOIN volateis v ON idHardware = ${idHardware};
     `;
     return database.executar(instrucao);
 }
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
+    graficoCPU,
+    graficoRAM,
+    graficoDISCO,
 };

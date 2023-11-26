@@ -22,11 +22,13 @@ function buscarUltimasMedidas(req, res) {
         });
 }
 
-function buscarMedidasEmTempoReal(req, res) {
+function graficoCPU(req, res) {
+    const limiteLinhas = 1;
     var idHardware = req.params.idHardware;
     console.log("Entrei no controller do medidasTempoReal");
+    console.log(idHardware);
 
-    medidasModel.buscarMedidasEmTempoReal(idHardware)
+    medidasModel.graficoCPU(idHardware, limiteLinhas)
         .then(resultado => {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -40,7 +42,46 @@ function buscarMedidasEmTempoReal(req, res) {
         });
 }
 
+function graficoRAM(req, res) {
+    const limiteLinhas = 1;
+    var idHardware = req.params.idHardware;
+    console.log("Entrei no controller do medidasTempoReal");
+    console.log(idHardware);
+
+    medidasModel.graficoRAM(idHardware, limiteLinhas)
+        .then(resultado => {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(erro => {
+            console.error("Erro ao buscar medidas em tempo real:", erro.message);
+            res.status(500).json({ error: erro.message });
+        });
+}
+function graficoDISCO(req, res) {
+    var idHardware = req.params.idHardware;
+    console.log("Entrei no controller do medidasTempoReal");
+    console.log(idHardware);
+
+    medidasModel.graficoDISCO(idHardware)
+        .then(resultado => {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(erro => {
+            console.error("Erro ao buscar medidas em tempo real:", erro.message);
+            res.status(500).json({ error: erro.message });
+        });
+}
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
+    graficoCPU,
+    graficoRAM,
+    graficoDISCO,
 };
