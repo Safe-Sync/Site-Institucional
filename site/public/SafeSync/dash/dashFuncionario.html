@@ -358,22 +358,24 @@
 
     }
 
-
+    var discoUsado = 0;
+    var discoTotal = 0;
     function graficoDISCO(idHardware) {
 
         fetch(`/medidas/graficoDISCO/${idHardware}`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log('Resposta exibirInfo ', JSON.stringify(resposta));
+                    // console.log('Resposta exibirInfo ', JSON.stringify(resposta));
 
                     if (resposta.length > 0) {
 
-                        var armazenamentoUsado = resposta[0].consumoDisco;
-                        var armazenamentoTotal = resposta[0].totalDisco;
-                        console.log(`usado: ${armazenamentoUsado}`);
-                        console.log(`total: ${armazenamentoTotal}`);
-                        var armazenamentoLivre = armazenamentoTotal - armazenamentoUsado;
-                        console.log(`livre: ${armazenamentoLivre}`);
+                        discoTotal = resposta[0].totalDisco;
+                        discoUsado = resposta[0].consumoDisco;
+                        var discoLivre = discoTotal - discoUsado;
+                        console.log(`usado: ${discoUsado}`);
+                        console.log(`total: ${discoTotal}`);
+
+                        dashDisco(discoUsado, discoLivre);
                     }
                 });
             } else {
@@ -454,49 +456,8 @@
     });
 
 
-    const ctxDisco = document.getElementById('myChartLineDisco');
 
-    new Chart(ctxDisco, {
-        type: 'doughnut',
-        data: {
-            labels: ['Livre', 'Usados'],
-            datasets: [{
-                label: 'Memória',
-                data: [23, 77],
-                fill: true,
-                backgroundColor: [
-                    '#fed0df',
-                    '#adbcff'
-                ],
-                pointRadius: 2,
-                tension: 0.4,
-            }],
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            var labelIndex = context.dataIndex;
-                            if (labelIndex === 0) {
-                                return 'Memória Livre: ' + context.parsed + '%';
-                            } else if (labelIndex === 1) {
-                                return 'Memória Usada: ' + context.parsed + '%';
-                            }
-                        }
-                    }
-                }
-            },
-        }
-    });
+   
 
     function alterarTitulo(idHardware) {
         var tituloEmpresa = document.getElementById(`tituloEmpresa${idHardware}`)

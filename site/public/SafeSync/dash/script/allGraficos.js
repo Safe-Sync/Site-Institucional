@@ -129,3 +129,55 @@ var dadosRam = {
             }
         }
     });
+
+    var chartDisco;
+    function dashDisco(discoLivre, discoUsado){
+
+        if(chartDisco){
+            chartDisco.destroy();
+        }
+        
+    const ctxDisco = document.getElementById('myChartLineDisco');
+
+    chartDisco =  new Chart(ctxDisco, {
+        type: 'doughnut',
+        data: {
+            labels: ['Livre', 'Usados'],
+            datasets: [{
+                label: 'Memória',
+                data: [discoUsado, discoLivre],
+                fill: true,
+                backgroundColor: [
+                    '#fed0df',
+                    '#adbcff'
+                ],
+                pointRadius: 2,
+                tension: 0.4,
+            }],
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            var labelIndex = context.dataIndex;
+                            if (labelIndex === 0) {
+                                return 'Memória Livre: ' + context.parsed + '%';
+                            } else if (labelIndex === 1) {
+                                return 'Memória Usada: ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            },
+        }
+    });
+    }
