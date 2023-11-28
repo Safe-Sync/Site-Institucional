@@ -40,10 +40,18 @@ function gerenFunc(idEmpresa) {
     return database.executar(instrucao);
     }
 
+    function procurarFuncionario(idEmpresa, nomeBuscado) {
+        var instrucao = `
+        SELECT * FROM funcionarios JOIN empresas ON idEmpresa = fkEmpresa WHERE idEmpresa = ${idEmpresa} AND nomeFuncionario like '%${nomeBuscado}%'
+        `;
+        return database.executar(instrucao);
+    }
+
 module.exports = {
     entrar,
     cadastrar,
     cadastrarFuncionario,
     gerenFunc,
     adicionarTarefaFuncionario,
+    procurarFuncionario
 };

@@ -22,4 +22,9 @@ router.get("/gerenFunc/:idEmpresa", function (req, res) {
 router.post("/adicionarTarefaFuncionario/:idFuncionario", function (req, res) {
     empresaController.adicionarTarefaFuncionario(req, res);
 });
+
+router.post("/procurarFuncionario/:idEmpresa" , function (req, res) {
+    empresaController.procurarFuncionario(req, res);
+});
+
 module.exports = router;

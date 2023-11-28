@@ -176,10 +176,34 @@ function adicionarTarefaFuncionario(req, res){
     
 }
 
+    function procurarFuncionario(req, res) {
+        var idEmpresa = req.params.idEmpresa;
+        var nomeBuscado = req.body.nomeFuncionario;
+
+        if(nomeBuscado == undefined) {
+            res.status(400).send("nomeFuncionario está undefined!");
+        } else if(idEmpresa == undefined) {
+            res.status(400).send("idEmpresa está undefined!");
+        } else {
+            empresaModel.procurarFuncionario(idEmpresa, nomeBuscado)
+            .then(
+                function (funcionarios) {
+                    res.json(funcionarios);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            )
+        }
+    }
+
 module.exports = {
     entrar,
     cadastrar,
     cadastrarFuncionario,
     gerenFunc,
     adicionarTarefaFuncionario,
+    procurarFuncionario
 }
