@@ -190,7 +190,7 @@
                         <h1>Gestão de funcionários</h1>
                     </div>
                     <div>
-                        <input type="text" placeholder="buscar..." />
+                        <input id="input_nomeFuncionarioBuscado" onkeypress="buscarFuncionario()" type="text" placeholder="buscar..." />
                         <img src="../assets/img/iconeLupa.svg" alt="" />
                     </div>
                 </div>
@@ -565,4 +565,28 @@
             });
         return false;
     }
+    
+    function buscarFuncionario() {
+        var nomeFuncionarioVar = input_nomeFuncionarioBuscado.value;
+
+        fetch(`/procurarFuncionario/${idEmpresa}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nomeFuncionarioServer: nomeFuncionarioVar
+            })
+        })
+        .then(function (response) {
+            if(response.ok) {
+                response.json().then(function (funcionarios) {
+                    for(var i = 0; i <= funcionarios.length; i++) {
+                        console.log(funcionarios[i])
+                    }
+                })
+            }
+        })
+    }
+
 </script>
