@@ -47,6 +47,7 @@ function cadastrar(req, res) {
     var telefone = req.body.TelefoneServer;
     var senha = req.body.SenhaServer;
 
+
     if (razaoSocial == undefined) {
         res.status(400).send("Razão social está undefined!");
     } else if (nomeFantasia == undefined) {
@@ -94,6 +95,11 @@ function cadastrarFuncionario(req, res) {
     var senha = req.body.senhaServer;
     var idEmpresa = req.body.idEmpresaServer;
 
+    var limiteCpu = req.body.limiteCpuServer;
+    var limiteRam = req.body.limiteRamServer;
+    var limiteDisco = req.body.limiteDiscoServer;
+
+
     if (nome == undefined) {
         res.status(400).send("Nome está undefined!");
     } else if (cargo == undefined) {
@@ -108,8 +114,14 @@ function cadastrarFuncionario(req, res) {
         res.status(400).send("Senha está undefined!");
     }else if(idEmpresa == undefined){
         res.status(400).send("Id da empresa está undefined!");
+    } else if (limiteCpu == undefined) {
+        res.status(400).send("Limite de CPU está undefined!");
+    } else if (limiteRam == undefined) {
+        res.status(400).send("Limite de RAM está undefined!");
+    } else if (limiteDisco == undefined) {
+        res.status(400).send("Limite de Disco está undefined!");
     } else {
-        empresaModel.cadastrarFuncionario(nome, cargo, cpf, email, telefone, senha, idEmpresa)
+        empresaModel.cadastrarFuncionario(nome, cargo, cpf, email, telefone, senha, idEmpresa, limiteCpu, limiteRam, limiteDisco)
             .then(
                 function (resultado) {
                     res.json(resultado);
