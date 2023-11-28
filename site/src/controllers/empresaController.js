@@ -190,11 +190,14 @@ function adicionarTarefaFuncionario(req, res){
 
     function procurarFuncionario(req, res) {
         var idEmpresa = req.params.idEmpresa;
-        var nomeBuscado = req.body.nomeFuncionario;
+        var nomeBuscado = req.body.nomeFuncionarioServer;
 
         if(nomeBuscado == undefined) {
             res.status(400).send("nomeFuncionario está undefined!");
+            console.log("Entrei no controler");
+
         } else if(idEmpresa == undefined) {
+
             res.status(400).send("idEmpresa está undefined!");
         } else {
             empresaModel.procurarFuncionario(idEmpresa, nomeBuscado)
