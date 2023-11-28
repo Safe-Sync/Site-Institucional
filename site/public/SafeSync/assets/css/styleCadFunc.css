@@ -5,7 +5,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
-#areaCadFunc{
+:root {
+    --primary-color: #102C57;
+  }
+#dash #areaCadFunc{
     width: auto;
     height: 85vh;
     margin-top: 12vh;
@@ -13,8 +16,9 @@
     /* background-color: green; */
 }
 
-.container{
+#dash #areaCadFunc{
     width: auto;
+    min-height: 85vh;
     height: 100%;
     /* margin-left: 10vw; */
     /* background-color: rgb(100, 40, 40); */
@@ -24,30 +28,30 @@
 }
 
 
-.card_cadastro{
+#dash #areaCadFunc .container .card_cadastro{
     margin: auto;
     width: 50%;
     height: 100%;
     /* background-color: aqua; */
 }
 
-.titulo_cadastro{
+#dash .titulo_cadastro{
     font-size: 32px;
     color: #102C57;
 }
 
-input{
+#dash .container input{
     width: 100%;
     height: 1.9rem;
     font-size: 1.1rem;
     background: none;
     border-radius: 0;
     border-top: 0;
-    border-left: 0;
+     border-left: 0;
     border-right: 0;
 }
 
-input:focus{
+#dash .container input:focus{
     outline: none;
     border: 2px solid #102c57e0;
     background: none;
@@ -67,6 +71,14 @@ input:focus{
 .card_cadastro .primeiraGroupInputs{
     margin-top: 0.8rem;
 }
+.btns-group {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: red; */
+}
+
 
 .botao_cadastro{
     width: 100%;
@@ -76,7 +88,9 @@ input:focus{
     align-items: center;
     height: 3.1rem;
 }
-
+.btn{
+    width: 40%;
+}
 button{
     height: 100%;
     width: 40%;
@@ -90,4 +104,89 @@ button{
 button:hover{
     color: #dcdcdc;
     background-color: #102C57;
+}
+
+
+
+.form-step {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
+}
+
+.form-step-active {
+    display: block;
+}
+.progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 1rem 0 1rem;
+    /* background-color: pink; */
+    margin: auto;
+    width: 50%;
+    height: auto;
+}
+
+.progress-step {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: 0;
+  
+}
+
+.progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+    z-index: 1;
+}
+
+.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.progress-step-active {
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
+    z-index: 1;
+}
+
+
+.progress {
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: 0.3s;
+}
+
+@keyframes animate {
+    from {
+      transform: scale(1, 0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1, 1);
+      opacity: 1;
+    }
 }

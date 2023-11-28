@@ -14,12 +14,41 @@ function cadastrar(nomeFantasia, razaoSocial, cnpj, cep, numero, complemento, em
     return database.executar(instrucao);
 }
 
-function cadastrarFuncionario(nome, cargo, cpf, email, telefone, senha, idEmpresa) {
-    var instrucao = `
-        INSERT INTO funcionarios (nomeFuncionario, cargo, cpf, email, telefone, senha, fkEmpresa) VALUES ('${nome}', '${cargo}', '${cpf}', '${email}', '${telefone}', '${senha}', '${idEmpresa}');
+// function cadastrarFuncionario(nome, cargo, cpf, email, telefone, senha, idEmpresa) {
+//     var instrucao = `
+//         INSERT INTO funcionarios (nomeFuncionario, cargo, cpf, email, telefone, senha, fkEmpresa) VALUES ('${nome}', '${cargo}', '${cpf}', '${email}', '${telefone}', '${senha}', '${idEmpresa}');
+//     `;
+//     return database.executar(instrucao);
+// }
+function cadastrarFuncionario(nome, cargo, cpf, email, telefone, senha, idEmpresa, limiteCpu, limiteRam, limiteDisco) {
+
+
+        // Inserir dados na tabela de funcionários
+        var instrucaoFuncionario = `
+        INSERT INTO funcionarios (nomeFuncionario, cargo, cpf, email, telefone, senha, fkEmpresa)
+        VALUES ('${nome}', '${cargo}', '${cpf}', '${email}', '${telefone}', '${senha}', '${idEmpresa}');
     `;
-    return database.executar(instrucao);
+    
+    var instrucaoLimitador = `
+        INSERT INTO limitador (maxCpu, maxDisco, maxRam, fkEmpresa)
+        SELECT '${limiteCpu}', '${limiteDisco}', '${limiteRam}', '${idEmpresa}';
+    `;
+    
+    database.executar(instrucaoFuncionario)
+        .then(() => {
+            return database.executar(instrucaoLimitador);
+        })
+        .then(() => {
+            console.log('Inserção concluída.');
+        })
+        .catch((err) => {
+            console.error('Erro durante a inserção:', err);
+        });
+    
+    
 }
+
+
 
 function gerenFunc(idEmpresa) {
     var instrucao = `

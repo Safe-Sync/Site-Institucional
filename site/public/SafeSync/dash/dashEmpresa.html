@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="imagem/png" href="../assets/img/logotipo.svg" />
     <link rel="stylesheet" href="dashEmpresa.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/styleCadastro.css"> -->
     <link rel="stylesheet" href="../assets/css/styleCadFunc.css" />
     <link rel="stylesheet" href="../assets/css/styleDashEmpresa.css" />
     <link rel="stylesheet" href="tarefas.css" />
@@ -194,36 +195,64 @@
                     </div>
                 </div>
                 <article id="infoFunc">
-                    
+
                 </article>
             </section>
 
             <section id="areaCadFunc">
+                <div class="titulo_cadastro">Cadastro</div>
+
+                <div class="progressbar">
+                    <div class="progress" id="progress"></div>
+                    <div class="progress-step progress-step-active"></div>
+                    <div class="progress-step"></div>
+                    <!-- <div class="progress-step"></div> -->
+                </div>
+
                 <div class="container">
                     <!-- <div class="separador"></div> -->
                     <div class="card_cadastro">
-                        <div class="titulo_cadastro">Cadastro</div>
-                        <div class="group_input primeiraGroupInputs">
-                            <input id="input_nome" type="text" placeholder="Nome Completo" />
+                        <div class="form-step form-step-active">
+                            <div class="group_input primeiraGroupInputs">
+                                <input id="input_nome" type="text" placeholder="Nome Completo" />
+                            </div>
+                            <div class="group_input">
+                                <input id="input_cargo" type="text" placeholder="Cargo" />
+                            </div>
+                            <div class="group_input">
+                                <input id="input_cpf" type="text" placeholder="CPF" />
+                            </div>
+                            <div class="group_input">
+                                <input id="input_email" type="text" placeholder="Email" />
+                            </div>
+                            <div class="group_input">
+                                <input id="input_telefone" type="text" placeholder="Telefone" />
+                            </div>
+                            <div class="group_input">
+                                <input id="input_senha" type="password" placeholder="Senha" />
+                            </div>
+                            <div class="btns-group">
+                                <button onclick="validarEtapa1()" href="#" class="btn btn-next ">Próximo</button>
+                            </div>
                         </div>
-                        <div class="group_input">
-                            <input id="input_cargo" type="text" placeholder="Cargo" />
+                        <div class="form-step">
+                            <h3>Cadastro dos limites do hardware</h3>
+                            <div class="group_input primeiraGroupInputs">
+                                <input id="input_limite_cpu" type="number" placeholder="Limite Cpu" />
+                            </div>
+                            <div class="group_input">
+                                <input id="input_limite_ram" type="number" placeholder="Limite Ram" />
+                            </div>
+                            <div class="group_input">
+                                <input id="input_limite_disco" type="number" placeholder="Limite Disco" />
+                            </div>
+
+                            <div class="btns-group">
+                                <button onclick="voltarEtapas()" href="#" class="btn btn-prev ">Voltar</button>
+                                <button onclick="validarEtapa2()" href="#" class="btn btn-next ">Cadastrar</button>
+                            </div>
                         </div>
-                        <div class="group_input">
-                            <input id="input_cpf" type="text" placeholder="CPF" />
-                        </div>
-                        <div class="group_input">
-                            <input id="input_email" type="text" placeholder="Email" />
-                        </div>
-                        <div class="group_input">
-                            <input id="input_telefone" type="text" placeholder="Telefone" />
-                        </div>
-                        <div class="group_input">
-                            <input id="input_senha" type="password" placeholder="Senha" />
-                        </div>
-                        <div class="botao_cadastro">
-                            <button onclick="cadastrarFuncionario()">Seguinte</button>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -302,11 +331,28 @@
     var emailEmpresa = sessionStorage.EMAIL_EMPRESA;
     var cnpjEmpresa = sessionStorage.CNPJ;
 
+    var limiteCpu = sessionStorage.LIMITE_CPU;
+    var limiteRam = sessionStorage.LIMITE_RAM;
+    var limiteDisco = sessionStorage.LIMITE_DISCO;
+
     nome_empresa.innerHTML = nomeEmpresa;
     infoEmpresa.innerHTML = nomeEmpresa;
     perfi_nomeEmpresa.innerHTML = nomeEmpresa;
     perfil_emailEmpresa.innerHTML = emailEmpresa;
     perfil_cnpj.innerHTML = cnpjEmpresa;
+
+
+    //-------------------------------------------------------------------
+
+
+    //-------------------------------------------------------------------
+
+    const progresso = document.getElementById("progress");
+    const EtapaDoFormulario = document.querySelectorAll(".form-step");
+    const ProgressoEtapas = document.querySelectorAll(".progress-step");
+    const BotaoVoltar = document.querySelectorAll(".btn-prev");
+
+    var NumeroDaEtapa = 0;
 
 
     $('#input_cpf').mask('000.000.000-00');
@@ -381,7 +427,88 @@
     TarefasEntreguesMes()
 
     console.log(sessionStorage.ID_EMPRESA);
+
+    function validar1() {
+        var nomeVar = input_nome.value;
+        var cargoVar = input_cargo.value;
+        var cpfVar = input_cpf.value;
+        var emailVar = input_email.value;
+        var telefoneVar = input_telefone.value;
+        var senhaVar = input_senha.value;
+
+        if ((nomeVar == '') || (cargoVar == '') || (cpfVar == '') || (emailVar == '') || (telefoneVar == '') || (senhaVar == '')) {
+            console.log("erro na validação 1");
+            alert("Preencha todos os campos")
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+    }
+
+
+    function validarEtapa1() {
+        validar1()
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+
+    }
+
+    function validar2() {
+        var limiteCpu = input_limite_cpu.value
+        var limiteRam = input_limite_ram.value
+        var limiteDisco = input_limite_disco.value
+
+        if ((limiteCpu == '') || (limiteRam == '') || (limiteDisco == '')) {
+            console.log("erro na validação 2");
+            alert("Preencha todos os campos")
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+    }
+
+    function validarEtapa2() {
+        validar2();
+        if (validar2 == false) {
+            return false;
+        } else {
+            cadastrarFuncionario();
+        }
+    }
+
+    function voltarEtapas() {
+        NumeroDaEtapa--;
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+    }
+
+    function AvancarEtapas() {
+        EtapaDoFormulario.forEach((formStep) => {
+            formStep.classList.contains("form-step-active") &&
+                formStep.classList.remove("form-step-active");
+        });
+
+        EtapaDoFormulario[NumeroDaEtapa].classList.add("form-step-active");
+    }
+
+    function AvancarBarraDeProgresso() {
+        ProgressoEtapas.forEach((EtapasFormulario, indice) => {
+            if (indice < NumeroDaEtapa + 1) {
+                EtapasFormulario.classList.add("progress-step-active");
+            } else {
+                EtapasFormulario.classList.remove("progress-step-active");
+            }
+        });
+
+        const progressActive = document.querySelectorAll(".progress-step-active");
+
+        progresso.style.width =
+            ((progressActive.length - 1) / (ProgressoEtapas.length - 1)) * 100 + "%";
+    }
+
+
     function cadastrarFuncionario() {
+
         var nomeVar = input_nome.value;
         var cargoVar = input_cargo.value;
         var cpfVar = input_cpf.value;
@@ -389,6 +516,10 @@
         var telefoneVar = input_telefone.value;
         var senhaVar = input_senha.value;
         var idEmpresaVar = sessionStorage.ID_EMPRESA;
+
+        var limiteCpu = input_limite_cpu.value
+        var limiteRam = input_limite_ram.value
+        var limiteDisco = input_limite_disco.value
 
         console.log(idEmpresaVar);
 
@@ -404,7 +535,10 @@
                 emailServer: emailVar,
                 telefoneServer: telefoneVar,
                 senhaServer: senhaVar,
-                idEmpresaServer: idEmpresaVar
+                idEmpresaServer: idEmpresaVar,
+                limiteCpuServer: limiteCpu,
+                limiteRamServer: limiteRam,
+                limiteDiscoServer: limiteDisco
             }),
         })
             .then(function (resposta) {
@@ -418,6 +552,9 @@
                     input_email.value = "";
                     input_telefone.value = "";
                     input_senha.value = "";
+                    input_limite_cpu = "";
+                    input_limite_ram = "";
+                    input_limite_disco = "";
 
                 } else {
                     console.log("Erro ao fazer o cadastro");
@@ -451,4 +588,5 @@
             }
         })
     }
+
 </script>
