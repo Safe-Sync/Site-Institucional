@@ -69,7 +69,7 @@ var labelsRam = [];
 var dadosRam = {
     labels: labelsRam,
     datasets: [{
-        label: 'Uso da Cpu',
+        label: 'Uso da Ram',
         data: [],
         fill: true,
         backgroundColor: '#adbcffa1',
@@ -170,9 +170,9 @@ var dadosRam = {
                         label: function (context) {
                             var labelIndex = context.dataIndex;
                             if (labelIndex === 0) {
-                                return 'Memória Livre: ' + context.parsed + '%';
+                                return 'Memória Livre: ' + context.parsed + 'GB';
                             } else if (labelIndex === 1) {
-                                return 'Memória Usada: ' + context.parsed + '%';
+                                return 'Memória Usada: ' + context.parsed + 'GB';
                             }
                         }
                     }

@@ -91,7 +91,6 @@
                     </div>
                 </section>
             </header>
-
             <section id="areaGraficos">
                 <article id="areaKpis">
                     <div class="kpi kpiTarefa">
@@ -180,10 +179,11 @@
                     <!-- Conteúdo do modal aqui -->
                     <!-- Seu conteúdo modal aqui... -->
                     <section>
-                        <div class="notificacaoCritico">
-                            <p>Uso da CPU crítico, acima dos 90%</p>
+                        <div class="notificacaoCritico" id="alerta_P">
+                            <!-- <p alerta_span>Uso da CPU crítico, acima dos 90%</p> -->
+
                         </div>
-                        <div class="notificacaoBom">
+                        <!-- <div class="notificacaoBom">
                             <p>Uso da CPU bom, abaixo dos 50%</p>
                         </div>
                         <div class="notificacaoAlerta">
@@ -206,11 +206,11 @@
                         </div>
                         <div class="notificacaoAlerta">
                             <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
+                        </div> -->
+                        <!-- <div class="notificacaoAlerta">
                             <p onclick="window.location.href='./dashFuncionario.html'">Uso da CPU em alerta, acima dos
                                 70%</p>
-                        </div>
+                        </div> -->
 
                     </section>
                 </div>
@@ -223,7 +223,7 @@
                         <h1>Meu Perfil</h1>
 
                         <article>
-                            <div id="imgPerfil"> <img src="../assets/img/exemploModelo.svg" alt=""></div>
+                            <!-- <div id="imgPerfil"> <img src="../assets/img/exemploModelo.svg" alt=""></div> -->
 
 
                             <div class="conteudoPerfil">
@@ -270,8 +270,6 @@
 
 
     let proximaAtualizacao;
-
-    // Função para obter dados do sensor e plotar o gráfico
     function graficoCPU(idHardware) {
 
         if (proximaAtualizacao != undefined) {
@@ -298,7 +296,7 @@
                                 dados.datasets[0].data.shift();
                             }
                             dados.labels.push(data);
-                            dados.datasets[0].data.push(cpu);
+                            dados.datasets[0].data.push(parseInt(cpu));
                         }
                         chartCpu.update();
 
@@ -314,7 +312,7 @@
 
     }
 
-    // Função para obter dados do sensor e plotar o gráfico
+    var consumo;
     function graficoRAM(idHardware) {
 
         if (proximaAtualizacao != undefined) {
@@ -327,21 +325,20 @@
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         resposta.reverse();
-                        // console.log(`Dados recebidos depois do reverse: ${JSON.stringify(resposta)}`);
 
 
                         for (var i = 0; i < resposta.length; i++) {
 
                             var data = resposta[i].ultima_data;
                             var Ram = resposta[i].consumoRam;
-                            var consumo = ((Ram * 100) / resposta[i].totalRam); // 8 = 100
+                            consumo = ((Ram * 100) / resposta[i].totalRam); // 8 = 100
 
                             if (dadosRam.labels.length >= 7) {
                                 dadosRam.labels.shift();
                                 dadosRam.datasets[0].data.shift();
                             }
                             dadosRam.labels.push(data);
-                            dadosRam.datasets[0].data.push(consumo);
+                            dadosRam.datasets[0].data.push(parseInt(consumo));
                         }
 
                         chartRam.update();
@@ -360,22 +357,20 @@
 
     var discoUsado = 0;
     var discoTotal = 0;
+    var discoLivre = 0;
     function graficoDISCO(idHardware) {
 
         fetch(`/medidas/graficoDISCO/${idHardware}`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    // console.log('Resposta exibirInfo ', JSON.stringify(resposta));
 
                     if (resposta.length > 0) {
 
                         discoTotal = resposta[0].totalDisco;
                         discoUsado = resposta[0].consumoDisco;
-                        var discoLivre = discoTotal - discoUsado;
-                        console.log(`usado: ${discoUsado}`);
-                        console.log(`total: ${discoTotal}`);
+                        discoLivre = discoTotal - discoUsado;
 
-                        dashDisco(discoUsado, discoLivre);
+                        dashDisco(parseInt(discoUsado), parseInt(discoLivre));
                     }
                 });
             } else {
@@ -386,17 +381,68 @@
         });
     }
 
+    function dadosAlertas(idEmpresa) {
 
-    console.log("id do funcionario passado como parametro: " + idFuncionario);
+
+        var totalAlertas = 0;
+
+
+        fetch(`/medidas/alertas/${idEmpresa}`).then(function (response) {
+            console.log(idEmpresa + " id da empresa");
+            if (response.ok) {
+                response.json().then(function (alertas) {
+
+                    var alertCpu = alertas[0].maxCpu;
+                    var alertRam = alertas[0].maxRam;
+                    var alertDisco = alertas[0].maxDisco;
+                    var CPU = parseInt(alertas[0].consumoCpu);
+                    var RAM = parseInt(consumo);
+                    var DISCO = parseInt(alertas[0].consumoDisco);
+
+                    console.log(`
+                    alertaCpu = ${alertCpu}
+                    alertaRam = ${alertRam}
+                    alertaDisco = ${alertDisco}
+                    CPU = ${CPU}
+                    RAM = ${RAM}
+                    DISCO = ${DISCO}
+                    `);
+
+                    if (CPU > alertCpu) {
+                        console.log("Entrei no if da cpu");
+                        alerta_P.innerHTML += `<P class="notificacaoCritico">SUA CPU ENTROU NO ALERTA</span>`
+                        totalAlertas++
+                    }
+                    if (RAM > alertRam) {
+                        alerta_P.innerHTML += `<P class="notificacaoCritico">SUA RAM ENTROU NO ALERTA</span>`
+                        totalAlertas++
+                    }
+                    if (DISCO > alertDisco) {
+                        alerta_P.innerHTML += `<P class="notificacaoCritico">SEU DISCO ENTROU NO ALERTA</span>`
+                        totalAlertas++
+                    }
+
+                    console.log(totalAlertas + " Total de alertas");
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+
+    // console.log("id do funcionario passado como parametro: " + idFuncionario);
     graficoCPU(idFuncionario);
     graficoRAM(idFuncionario);
     graficoDISCO(idFuncionario);
-
+    dadosAlertas(1)
 
     setInterval(function () {
         graficoCPU(idFuncionario);
         graficoRAM(idFuncionario);
         graficoDISCO(idFuncionario);
+        dadosAlertas(1)
     }, 10000);
 
 
@@ -409,12 +455,12 @@
             datasets: [{
                 label: 'Tarefas Atribuidas',
                 data: [4, 5, 10, 8, 7, 3],
-                backgroundColor: '#fed0df', // Cor de preenchimento
+                backgroundColor: '#fed0df',
                 tension: 0.4,
             }, {
                 label: 'Tarefas Entregues',
                 data: [3, 6, 9, 9, 7, 3],
-                backgroundColor: '#adbcff', // Cor de preenchimento
+                backgroundColor: '#adbcff',
                 tension: 0.4,
             }],
         },
@@ -455,16 +501,6 @@
         }
     });
 
-
-
-   
-
-    function alterarTitulo(idHardware) {
-        var tituloEmpresa = document.getElementById(`tituloEmpresa${idHardware}`)
-        myChartLineCpu.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idHardware + "</span>"
-    }
-
-
     function tarefasEntregues() {
         var idFuncionario = sessionStorage.ID_FUNCIONARIO;
         fetch(`/kpiFuncionario/tarefasEntregues/${idFuncionario}`)
@@ -498,8 +534,5 @@
             });
     }
     tarefasPendentes();
-
-    // Atualiza as tarefas a cada 5 segundos (por exemplo)
-    // setInterval(tarefasEntregues, 1000);
 
 </script>

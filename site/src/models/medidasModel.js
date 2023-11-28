@@ -67,9 +67,27 @@ function graficoDISCO(idHardware) {
     return database.executar(instrucao);
 }
 
+function alertas(idEmpresa) {
+    const instrucao = `
+    SELECT
+        v.consumoCpu,
+        v.consumoDisco,
+        v.consumoRam,
+        l.maxCpu,
+        l.maxDisco,
+        l.maxRam
+    FROM
+        volateis v
+    JOIN
+        limitador l ON v.fkHardware = ${idEmpresa};
+    `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
     buscarUltimasMedidas,
     graficoCPU,
     graficoRAM,
     graficoDISCO,
+    alertas,
 };
