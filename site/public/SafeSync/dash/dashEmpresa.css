@@ -263,6 +263,7 @@ ul  #item-menu-sair{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    box-shadow: 2PX 3PX 5PX rgb(41, 41, 41);
 }
 .notificacaoModal-content section .notificacaoAlerta{
     width: 88%;
