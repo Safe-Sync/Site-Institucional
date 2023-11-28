@@ -79,9 +79,27 @@ function graficoDISCO(req, res) {
             res.status(500).json({ error: erro.message });
         });
 }
+
+function alertas(req, res) {
+    var idEmpresa = req.params.idEmpresa;
+
+    medidasModel.alertas(idEmpresa)
+        .then(resultado => {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(erro => {
+            console.error("Erro ao buscar medidas:", erro.message);
+            res.status(500).json({ error: erro.message });
+        });
+}
 module.exports = {
     buscarUltimasMedidas,
     graficoCPU,
     graficoRAM,
     graficoDISCO,
+    alertas,
 };

@@ -21,4 +21,8 @@ router.get("/graficoRAM/:idHardware", function (req, res) {
 router.get("/graficoDISCO/:idHardware", function (req, res) {
     medidaController.graficoDISCO(req, res);
 })
+
+router.get("/alertas/:idEmpresa", function (req, res) {
+    medidaController.alertas(req, res);
+})
 module.exports = router;
