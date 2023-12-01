@@ -36,6 +36,36 @@ function entrar(req, res) {
     }
 }
 
+function editarInformacoes(req, res) {
+    var idFuncionario = req.params.idFuncionario;
+    var nomeFuncionario = req.body.nomeFuncionarioServer;
+    var emailFuncionario = req.body.emailFuncionarioServer;
+    var cargoFuncionario = req.body.cargoFuncionarioServer;
+
+    if(idFuncionario == undefined) {
+        res.status(400).send("idFuncionario está undefined!");
+    } else if(nomeFuncionario == undefined) {
+        res.status(400).send("nomeFuncionario está undefined!");
+    } else if(emailFuncionario == undefined) {
+        res.status(400).send("emailFuncionario está undefined!");
+    } else if(cargoFuncionario == undefined) {
+        res.status(400).send("cargoFuncionario está undefined!");
+    } else {
+        funcionarioModel.editarInformacoes(nomeFuncionario, emailFuncionario, cargoFuncionario, idFuncionario)
+        .then(
+            function (informacoes) {
+                res.json(informacoes);
+                console.log(informacoes)
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
 module.exports = {
     entrar,
+    editarInformacoes,
 }

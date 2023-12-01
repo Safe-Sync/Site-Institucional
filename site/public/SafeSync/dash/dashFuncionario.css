@@ -543,6 +543,7 @@ ul li.item-menu a{
     top: 41%; */
     margin-left: 90%;
     margin-top: -5%;
+    cursor: pointer;
 }
 .usuarioModal-content section article .conteudoPerfil .legendaPerfil{
     color: #000d22;

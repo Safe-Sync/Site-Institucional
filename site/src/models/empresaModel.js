@@ -71,7 +71,25 @@ function gerenFunc(idEmpresa) {
 
     function procurarFuncionario(idEmpresa, nomeBuscado) {
         var instrucao = `
-        SELECT * FROM funcionarios JOIN empresas ON idEmpresa = fkEmpresa WHERE idEmpresa = ${idEmpresa} AND nomeFuncionario like '%${nomeBuscado}%'
+        SELECT f.idFuncionario, f.nomeFuncionario, f.cargo,
+    SUM(CASE WHEN t.progresso = 'Não Iniciado' THEN 1 ELSE 0 END) AS tarefasNaoIniciado,
+    SUM(CASE WHEN t.progresso = 'Concluído' THEN 1 ELSE 0 END) AS tarefasConcluido,
+    SUM(CASE WHEN t.progresso IN ('A Fazer', 'Em Andamento') THEN 1 ELSE 0 END) AS tarefasAFazerEmAndamento
+		FROM funcionarios f LEFT JOIN tarefa t ON f.idFuncionario = t.fkFuncionario WHERE fkEmpresa = ${idEmpresa} AND nomeFuncionario like '%${nomeBuscado}%'
+			GROUP BY f.idFuncionario, f.nomeFuncionario, f.cargo;`;
+        return database.executar(instrucao);
+    }
+
+    function editarInformacoes(nomeEmpresa, emailEmpresa, cnpjEmpresa, idEmpresa) {
+        var instrucao = `
+        UPDATE empresas SET nomeFantasia = '${nomeEmpresa}', email = '${emailEmpresa}', cnpj = '${cnpjEmpresa}' WHERE idEmpresa = ${idEmpresa}
+        `;
+        return database.executar(instrucao);
+    }
+
+    function editarCargoFuncionario(cargoEditado, idFuncionario) {
+        var instrucao = `
+        UPDATE funcionarios SET cargo = '${cargoEditado}' WHERE idFuncionario = ${idFuncionario}
         `;
         return database.executar(instrucao);
     }
@@ -82,5 +100,7 @@ module.exports = {
     cadastrarFuncionario,
     gerenFunc,
     adicionarTarefaFuncionario,
-    procurarFuncionario
+    procurarFuncionario,
+    editarInformacoes,
+    editarCargoFuncionario,
 };

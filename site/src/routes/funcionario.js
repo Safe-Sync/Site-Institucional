@@ -7,4 +7,8 @@ router.post("/entrar", function (req, res) {
     funcionarioController.entrar(req, res);
 })
 
+router.put("/editarInformacoes/:idFuncionario", function (req, res) {
+    funcionarioController.editarInformacoes(req, res);
+})
+
 module.exports = router;

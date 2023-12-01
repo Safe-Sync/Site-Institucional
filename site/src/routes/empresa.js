@@ -27,4 +27,12 @@ router.post("/procurarFuncionario/:idEmpresa" , function (req, res) {
     empresaController.procurarFuncionario(req, res);
 });
 
+router.put("/editarInformacoes/:idEmpresa", function (req, res) {
+    empresaController.editarInformacoes(req, res);
+})
+
+router.put("/editarCargoFuncionario/:idFuncionario", function (req, res) {
+    empresaController.editarCargoFuncionario(req, res);
+})
+
 module.exports = router;
