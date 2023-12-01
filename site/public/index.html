@@ -28,7 +28,7 @@
             <img src="./ByteFlow/imgs/byte-logo.png" alt="" />
           </div>
 
-          <div class="nav-list">
+          <div class="nav-list ">
             <ul>
               <li class="nav-item">
                 <a class="nav-link" href="#inicio">Início</a>
@@ -48,8 +48,8 @@
             </ul>
           </div>
 
-          <div class="login-button">
-            <button><a href="./SafeSync/index.html">Começar</a></button>
+          <div class="login-button" onclick="window.location.href='./SafeSync/index.html'">
+            <button ><a>Começar</a></button>
           </div>
 
           <div class="mobile-menu-icon">
@@ -82,13 +82,13 @@
             </li>
           </ul>
 
-          <div class="login-button">
-            <button><a href="./SafeSync/index.html">Começar</a></button>
+          <div class="login-button" onclick="window.location.href='./SafeSync/index.html'">
+            <button >Começar</button>
           </div>
         </div>
       </header>
 
-      <div class="tela-inicial">
+      <div class="tela-inicial fade-in-from-top">
         <div class="byteflow">
           <h1>ByteFlow</h1>
           <h2>
@@ -124,8 +124,8 @@
           <div class="container-solucao">
               <h1>Solução</h1>
       
-              <section>
-                  <div class="vetor-computador2">
+              <section class=" fade-in-from-left">
+                  <div class="vetor-computador2 fade-in-from-left">
                     <img
                       src="./ByteFlow/imgs/computadores-solucao.svg"
                       class=""
@@ -133,7 +133,7 @@
                     />
                   </div>
         
-                  <div class="texto-solucao">
+                  <div class="texto-solucao fade-in-from-right">
                     <p>
                         Nós da ByteFlow temos como principal solução o SafeSync onde monitoramos dados dos computadores de funcionários em home office, e também, a ociosidade destes funcionários perando a máquina, aumentando a sua produtividade. Assim, contribuímos ativamente para o aumento da
                       eficiência e produtividade desses profissionais, garantindo que o
@@ -224,7 +224,7 @@
 
       <section id="visao">
         <div class="container-principal">
-          <div class="box-missao">
+          <div class="box-missao fade-in-from-top">
             <img src="ByteFlow/imgs/missao.svg" alt="" />
             <h2>Missão</h2>
             <p>
@@ -234,7 +234,7 @@
             </p>
           </div>
 
-          <div class="box-visao">
+          <div class="box-visao fade-in-from-bottom">
             <img src="ByteFlow/imgs/visao.svg" alt="" />
             <h2>Visão</h2>
             <p>
@@ -243,7 +243,7 @@
             </p>
           </div>
 
-          <div class="box-valores">
+          <div class="box-valores fade-in-from-top">
             <img src="ByteFlow/imgs/valores.svg" alt="" />
             <h2>Valores</h2>
             <p>
@@ -326,3 +326,65 @@
     <script src="ByteFlow/js/script.js"></script>
   </body>
 </html>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function handleIntersection(entries, observer) {
+      entries.forEach(function (entry) {
+        // Se o elemento estiver na viewport, adicione a classe 'show'
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          // Remova o observador após a primeira vez que o elemento for visível (opcional)
+          observer.unobserve(entry.target);
+        }
+      });
+    }
+
+    // Obtenha todos os elementos com a classe 'fade-in-from-top'
+    var fadeInFromTopElements = document.querySelectorAll('.fade-in-from-top');
+
+    // Configure o IntersectionObserver para elementos com classe 'fade-in-from-top'
+    var observerTop = new IntersectionObserver(handleIntersection);
+
+    // Registre os elementos com classe 'fade-in-from-top' para observação
+    fadeInFromTopElements.forEach(function (element) {
+      observerTop.observe(element);
+    });
+
+    // Obtenha todos os elementos com a classe 'fade-in-from-left'
+    var fadeInFromLeftElements = document.querySelectorAll('.fade-in-from-left');
+
+    // Configure o IntersectionObserver para elementos com classe 'fade-in-from-left'
+    var observerLeft = new IntersectionObserver(handleIntersection);
+
+    // Registre os elementos com classe 'fade-in-from-left' para observação
+    fadeInFromLeftElements.forEach(function (element) {
+      observerLeft.observe(element);
+    });
+
+    // Obtenha todos os elementos com a classe 'fade-in-from-right'
+    var fadeInFromRightElements = document.querySelectorAll('.fade-in-from-right');
+
+    // Configure o IntersectionObserver para elementos com classe 'fade-in-from-right'
+    var observerRight = new IntersectionObserver(handleIntersection);
+
+    // Registre os elementos com classe 'fade-in-from-right' para observação
+    fadeInFromRightElements.forEach(function (element) {
+      observerRight.observe(element);
+    });
+
+    // Obtenha todos os elementos com a classe 'fade-in-from-bottom'
+    var fadeInFromBottomElements = document.querySelectorAll('.fade-in-from-bottom');
+
+    // Configure o IntersectionObserver para elementos com classe 'fade-in-from-bottom'
+    var observerBottom = new IntersectionObserver(handleIntersection);
+
+    // Registre os elementos com classe 'fade-in-from-bottom' para observação
+    fadeInFromBottomElements.forEach(function (element) {
+      observerBottom.observe(element);
+    });
+
+    // Adicione a classe 'show' ao primeiro elemento com a classe 'fade-in-from-top' imediatamente
+    var firstElementTop = document.querySelector('.fade-in-from-top');
+    firstElementTop.classList.add('show');
+  });
+</script>

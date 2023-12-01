@@ -411,3 +411,7 @@ ul  #item-menu-sair{
     margin: 0;
 }
 
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{
+    min-width: 70px;
+}
