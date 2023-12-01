@@ -323,6 +323,8 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script src="./script/dashEmpresa.js"></script>
 <script src="./script/gerenFunc.js"></script>
 
@@ -443,7 +445,16 @@
 
         if ((nomeVar == '') || (cargoVar == '') || (cpfVar == '') || (emailVar == '') || (telefoneVar == '') || (senhaVar == '')) {
             console.log("erro na validação 1");
-            alert("Preencha todos os campos")
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Preencha todos os campos!',
+                showConfirmButton: true,
+                timer: 2000
+               
+            });
+
             return false
         } else {
             NumeroDaEtapa++
@@ -465,7 +476,15 @@
 
         if ((limiteCpu == '') || (limiteRam == '') || (limiteDisco == '')) {
             console.log("erro na validação 2");
-            alert("Preencha todos os campos")
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Preencha todos os campos!',
+                showConfirmButton: true,
+                timer: 2000
+               
+            });
             return false
         } else {
             NumeroDaEtapa++

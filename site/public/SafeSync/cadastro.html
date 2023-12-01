@@ -112,7 +112,13 @@
 
         if ((NomeFantasiaValue == '') || (RazaoSocialValue == '') || (cnpjValue == '')) {
             console.log("erro na validação 1");
-            alert("Preencha todos os campos")
+            Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro!',
+                    text: 'Preencha todos os campos!',
+                    showConfirmButton: true,
+                    timer: 2000})
             return false
         } else {
             NumeroDaEtapa++
@@ -133,7 +139,15 @@
 
         if ((cepValue == '') || (numeroValue == '') || (complementoValue == '')) {
             console.log("erro na validação 2");
-            alert("Preencha todos os campos")
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Preencha todos os campos!',
+                showConfirmButton: true,
+                timer: 2000
+               
+            });
             return false
         } else {
             NumeroDaEtapa++
@@ -153,7 +167,15 @@
 
         if ((telefoneValue == '') || (emailValue == '') || (senhaValue == '')) {
             console.log("erro na validação 3");
-            alert("Preencha todos os campos")
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Preencha todos os campos!',
+                showConfirmButton: true,
+                timer: 2000
+               
+            });
             return false
         } else {
             NumeroDaEtapa++
@@ -228,10 +250,27 @@
             })
         }).then(function (resposta) {
             if (resposta.ok) {
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Cadastro realizado com sucesso!',
+                    text: 'Redirecionando para tela de Login!',
+                    showConfirmButton: false,
+                    timer: 2000})
+
                 setTimeout(() => {
                     window.location = "./login.html";
                 }, "2000")
             } else {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro!',
+                    text: 'Erro no cadastro!',
+                    showConfirmButton: true,
+                    timer: 2000})
+
                 console.log("Erro ao fazer o cadastro");
             }
         }).catch(function (resposta) {

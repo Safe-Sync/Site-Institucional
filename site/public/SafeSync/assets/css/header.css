@@ -83,7 +83,7 @@ header {
 
 .nav-link {
     text-decoration: none;
-    color: #000;
+    color: #e1e1e1;
     font-size: 1.25rem;
     font-weight: 500;
 }
@@ -331,19 +331,25 @@ span{
 }
 
 .sub_classe_texto h2{
-    color: #102C57;
+    color: #b5b5b5;
     width: 100%;
     font-size: 40px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
+    text-shadow: 0px 4px 4px rgba(165, 95, 165, 0.25);   
 }
-
+.sub_classe_texto h3 span{
+    color: #da9aff;
+}
 .sub_classe_texto h3 {
+    color: #c2c2c2;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
 }
 
 .sub_classe_texto h4{
     margin: 0 20px 0 0;
+    font-weight: 400;
     font-size: 18px;
+    color:whitesmoke;
+    line-height: 37px;
 }
 
 .start_button {
@@ -361,7 +367,7 @@ span{
     min-height: 60px;
     background-color: #102C57;
     border-radius: 15px;
-    box-shadow: 8px 8px 0px -1px rgba(0, 0, 0, 0.945);
+    box-shadow: 8px 8px 0px -1px #da9aff    ;
     cursor: pointer;
 }
 
@@ -376,6 +382,10 @@ span{
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+.buttons button:first-child a{
+    text-shadow: 3px 3px 3px black;
+    color: #f2f2f2;
 }
 
 .login-button button {

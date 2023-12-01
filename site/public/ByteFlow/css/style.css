@@ -57,11 +57,12 @@ header {
     color: #07031A;
 }
 
-.nav-list ul li:hover{
+.nav-list ul li:hover {
     transform: translateY(-0.2rem);
 
 }
-.nav-list ul li:before{
+
+.nav-list ul li:before {
     content: "";
     position: absolute;
     top: 0;
@@ -72,12 +73,14 @@ header {
     transition: width 0.3s, background-color 0.3s;
     z-index: -1;
 }
-.nav-list ul li:hover::before{
+
+.nav-list ul li:hover::before {
     width: 100%;
     border-bottom: solid 2px #ffb900;
 
-} 
-.login-button{
+}
+
+.login-button {
     width: 11%;
     height: auto;
 }
@@ -99,19 +102,20 @@ header {
     left: 0;
     width: 0;
     height: 100%;
-    background-color: #ff6b6b00; /* Cor inicial do background */
+    background-color: #ff6b6b00;
+    /* Cor inicial do background */
     transition: width 0.3s, background-color 0.3s;
     z-index: -1;
     border-radius: 1rem;
 
-  }
-  
-  .nav-bar .login-button button:hover::before {
+}
+
+.nav-bar .login-button button:hover::before {
     width: 100%;
     background-color: #4267b3;
 }
 
-.nav-bar .login-button button:hover{
+.nav-bar .login-button button:hover {
     transform: translateY(-5px);
     cursor: pointer;
     /* background-color: #3b3b3b; */
@@ -135,41 +139,50 @@ header {
     .nav-bar {
         padding: 1.5rem 2rem 1rem 1rem;
     }
+
     .nav-item {
         display: none;
     }
+
     .login-button {
         display: none;
     }
+
     .mobile-menu-icon {
         display: flex;
         width: 30%;
         justify-content: flex-end;
     }
+
     .mobile-menu-icon button {
         background-color: transparent;
         border: none;
         cursor: pointer;
     }
+
     .mobile-menu ul {
         display: flex;
         flex-direction: column;
         text-align: center;
         padding-bottom: 1rem;
     }
+
     .mobile-menu .nav-item {
         display: block;
         padding-top: 1.2rem;
     }
+
     .mobile-menu .login-button {
         display: block;
-        padding: 1rem ;
+        padding: 1rem;
         width: 30%;
         margin: auto;
     }
+
     .mobile-menu .login-button button {
         width: 100%;
     }
+
     .open {
         display: block;
     }
@@ -179,9 +192,9 @@ header {
     background-color: #89B6CA;
     height: 100vh;
     background-image: url(../imgs/inicio.svg);
-    background-repeat: no-repeat;   
-    background-size:cover;
-    background-position:  100% -10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% -10%;
 
 }
 
@@ -191,7 +204,7 @@ header {
     align-items: center;
     justify-content: space-around;
     gap: 2rem;
-    
+
 }
 
 .byteflow {
@@ -199,14 +212,18 @@ header {
     width: 45vw;
     line-height: 42px;
     /* background-color: #25d366; */
-    
+
 }
 
-.byteflow p{
+.byteflow p {
+    font-size: 1.2rem;
     font-weight: 600;
+    color: #00122e;
     text-shadow: #57575752 2px 2px 2px;
 }
-.byteflow h1, .byteflow h2{
+
+.byteflow h1,
+.byteflow h2 {
     text-shadow: #57575752 2px 2px 2px;
 }
 
@@ -216,7 +233,8 @@ h1 {
 }
 
 p {
-    font-size: 1.1'rem;
+    font-size: 1.1'
+
 }
 
 .vetor-computador {
@@ -232,18 +250,18 @@ p {
     height: 200vh;
     /* background-color: #721616; */
     background-image: url(../imgs/fundoAmarelo.svg);
-    background-size:22%;
+    background-size: 22%;
     background-repeat: no-repeat;
     /* margin-left: -20%; */
     background-position: 20%;
     /* background-color: #07031A; */
 }
 
-#solucao{
+#solucao {
     width: auto;
     padding: 3%;
     height: fit-content;
-    box-shadow: 0px 13px 12px -6px rgba(59,59,59,0.57) inset;
+    box-shadow: 0px 13px 12px -6px rgba(59, 59, 59, 0.57) inset;
     color: #07031A;
 }
 
@@ -252,20 +270,21 @@ p {
     height: auto;
     margin: auto;
     /* background-color: #4267b3; */
-    
+
 }
+
 .container-solucao section {
     margin-top: 5%;
     width: auto;
     height: auto;
-    display: flex;   
+    display: flex;
     justify-content: space-between;
     gap: 2rem;
     align-items: center;
     /* background-color: #897fbb; */
 }
 
-.container-solucao h1{
+.container-solucao h1 {
     width: 100%;
     text-align: center;
 }
@@ -275,7 +294,7 @@ p {
     height: max-content;
 }
 
-.texto-solucao p{
+.texto-solucao p {
     text-align: end;
     line-height: 40px;
 }
@@ -283,19 +302,21 @@ p {
 #beneficio {
     height: 100vh;
     width: 100%;
-    
+
     color: #07031A;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.cardsBeneficio{
+
+.cardsBeneficio {
     width: 90%;
     margin: auto;
     display: flex;
     flex-direction: row;
     /* background-color: #25d366; */
 }
+
 .container-beneficio {
     width: 100%;
     display: flex;
@@ -326,6 +347,7 @@ p {
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.6);
     transition: 300ms;
 }
+
 .headerCard {
     width: 100%;
     height: 45px;
@@ -372,13 +394,16 @@ p {
     color: black;
     font-size: 15px;
 }
-.bottomCard a:hover{
+
+.bottomCard a:hover {
     color: #4267b3;
 }
-.div-botao{
+
+.div-botao {
     width: 30%;
     height: 8vh;
 }
+
 .div-botao button {
     border: none;
     background-color: #07031A;
@@ -388,7 +413,7 @@ p {
     border-radius: 18px;
     font-size: 22px;
 }
- 
+
 .div-botao button::before {
     content: "";
     position: absolute;
@@ -396,19 +421,20 @@ p {
     left: 0;
     width: 0;
     height: 100%;
-    background-color: #ff6b6b00; /* Cor inicial do background */
+    background-color: #ff6b6b00;
+    /* Cor inicial do background */
     transition: width 0.3s, background-color 0.3s;
     z-index: -1;
     border-radius: 1rem;
 
-  }
-  
-  .div-botao button:hover::before {
+}
+
+.div-botao button:hover::before {
     width: 100%;
     background-color: #4267b3;
 }
 
-.div-botao button:hover{
+.div-botao button:hover {
     transform: translateY(-2px);
     cursor: pointer;
     /* background-color: #3b3b3b; */
@@ -425,7 +451,7 @@ p {
     height: auto;
     background-color: #89B6CA;
     background-image: url(../imgs/fundoSobre.svg);
-    background-size:contain;
+    background-size: contain;
     /* background-position-x: 0%; */
     /* background-position: initial 0%; */
     background-repeat: no-repeat;
@@ -437,10 +463,12 @@ p {
     box-shadow: 0px -6px 10px 0 rgba(41, 41, 41, 0.6);
     /* gap: 2.5rem; */
 }
-.titulo-pag{
+
+.titulo-pag {
     margin-bottom: 3%;
 }
-.container-sobre-nos{
+
+.container-sobre-nos {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -476,9 +504,9 @@ p {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    -webkit-box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
-    -moz-box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
-    box-shadow: 14px 13px 14px -8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 14px 13px 14px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 14px 13px 14px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 14px 13px 14px -8px rgba(0, 0, 0, 0.75);
 }
 
 .img-sobre-nos {
@@ -492,7 +520,7 @@ p {
     width: 100%;
     /* background-color: #ffffff; */
     background-image: url(../imgs/tela-valores.svg);
-    background-size:cover;
+    background-size: cover;
     color: #07031A;
     display: flex;
     align-items: center;
@@ -509,14 +537,14 @@ p {
 
 }
 
-.box-missao{
+.box-missao {
     background-color: white;
     text-align: center;
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10px;
     width: 40vw;
     margin-top: 5%;
-    box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
+    box-shadow: 0px 21px 30px -6px rgba(0, 0, 0, 0.75);
 }
 
 .box-missao p {
@@ -527,14 +555,14 @@ p {
     width: 7rem;
 }
 
-.box-visao{
+.box-visao {
     background-color: #C7EEFF;
     text-align: center;
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10px;
     width: 40vw;
     height: 50vh;
-    box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
+    box-shadow: 0px 21px 30px -6px rgba(0, 0, 0, 0.75);
 }
 
 .box-visao p {
@@ -545,14 +573,14 @@ p {
     width: 7rem;
 }
 
-.box-valores{
+.box-valores {
     background-color: white;
     text-align: center;
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10px;
     width: 40vw;
     margin-top: 5%;
-    box-shadow: 0px 21px 30px -6px rgba(0,0,0,0.75);
+    box-shadow: 0px 21px 30px -6px rgba(0, 0, 0, 0.75);
 }
 
 .box-valores p {
@@ -579,13 +607,15 @@ footer {
 .footer-link {
     text-decoration: none;
 }
+
 #footer_contacts img {
     margin-left: -5px;
     /* background-color: #07031A; */
 }
+
 #footer_content {
-    background: rgb(0,83,119);
-    background: linear-gradient(0deg, rgba(0,83,119,1) 24%, rgba(137,182,202,1) 66%);
+    background: rgb(0, 83, 119);
+    background: linear-gradient(0deg, rgba(0, 83, 119, 1) 24%, rgba(137, 182, 202, 1) 66%);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding: 3rem 3.5rem;
@@ -601,7 +631,7 @@ footer {
     display: flex;
     gap: 2rem;
     margin-top: 1.5rem;
-} 
+}
 
 #footer_social_media .footer-link {
     display: flex;
@@ -615,7 +645,7 @@ footer {
 }
 
 #footer_social_media .footer-link i {
-    font-size: 1.25rem;    
+    font-size: 1.25rem;
 }
 
 #footer_social_media .footer-link:hover {
@@ -712,6 +742,58 @@ footer {
         padding: 4rem 2rem;
         height: auto;
     }
-    
+
 }
 
+/* animação fade */
+
+/* Define a classe com as propriedades iniciais */
+.fade-in-from-top {
+    opacity: 0;
+    /* Inicia com opacidade zero para criar o efeito de fade */
+    transform: translateY(-100px);
+    /* Move para cima 100 pixels para criar o efeito de aparecer de cima */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    /* Adiciona uma transição suave */
+}
+
+
+.fade-in-from-bottom {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-from-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-from-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Adiciona animações quando a classe é aplicada */
+.fade-in-from-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-from-bottom.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.fade-in-from-left.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-from-right.show {
+    opacity: 1;
+    transform: translateY(0);
+}
