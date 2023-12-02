@@ -6,14 +6,17 @@ function adicionarTarefa(req, res){
     var nomeTarefa = req.body.nomeTarefaServer;
     var dataTarefa = req.body.dataTarefaServer;
     var fkFuncionario = req.body.dadosFuncionarioServer;
+    var diaDaSemana = req.body.diaDaSemanaServer;
 
     if(nomeTarefa == undefined){
         res.status(400).send("Nome da tarefa está undefined");
     }else if(dataTarefa == undefined){
         req.status(400).send("Data da tarefa está undefined")
+    }else if(diaDaSemana == undefined){
+        req.status(400).send("Dia da semana está undefined")
     }
     else{
-        tarefaModel.adicionarTarefa(nomeTarefa, dataTarefa, fkFuncionario)
+        tarefaModel.adicionarTarefa(nomeTarefa, dataTarefa, diaDaSemana, fkFuncionario)
         .then(
             function (tarefa) {
                 res.json(tarefa);

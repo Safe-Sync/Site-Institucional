@@ -62,9 +62,9 @@ function gerenFunc(idEmpresa) {
     return database.executar(instrucao);
 }
 
-    function adicionarTarefaFuncionario(taskInput, taskDate, idFuncionario){
+    function adicionarTarefaFuncionario(taskInput, taskDate, idFuncionario, diaDaSemana){
         var instrucao = `
-        INSERT INTO tarefa (nome_tarefa, data_upload, progresso, fkFuncionario) VALUES ('${taskInput}', '${taskDate}', 'Não iniciado', '${idFuncionario}');
+        INSERT INTO tarefa (nome_tarefa, data_upload, progresso, fkFuncionario) VALUES ('${taskInput}', '${taskDate}', 'Não iniciado', '${diaDaSemana}', '${idFuncionario}');
     `;
     return database.executar(instrucao);
     }

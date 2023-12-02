@@ -72,7 +72,7 @@
             <header id="header">
                 <div id="titulosDash">
                     <h1 class="titulo">Dashboard</h1>
-                    <h3><span id="nome_funcionario"></span> - Nome da empresa</h3>
+                    <h3><span id="nome_funcionario"></span> - <span id="span_nome_empresa">Nome da empresa</span></h3>
                 </div>
                 <section class="opcoesTopo">
                     <div id="notificacao">
@@ -270,6 +270,7 @@
 
 
     let proximaAtualizacao;
+    var cpu;
     function graficoCPU(idHardware) {
 
         if (proximaAtualizacao != undefined) {
@@ -289,7 +290,8 @@
                         for (var i = 0; i < resposta.length; i++) {
 
                             var data = resposta[i].ultima_data;
-                            var cpu = resposta[i].consumoCpu;
+                            cpu = resposta[i].consumoCpu;
+                            console.log(`cpu do grafico Cpu: ${cpu}`);
 
                             if (dados.labels.length >= 7) {
                                 dados.labels.shift();
@@ -359,6 +361,7 @@
     var discoTotal = 0;
     var discoLivre = 0;
     function graficoDISCO(idHardware) {
+        console.log(`id do hardware: ${idHardware}`);
 
         fetch(`/medidas/graficoDISCO/${idHardware}`).then(function (response) {
             if (response.ok) {
@@ -380,49 +383,122 @@
             console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
     }
+    var totalAlertas = 0;
 
+    function dadosEmpresa(idFuncionario) {
+
+
+        fetch(`/medidas/dadosEmpresa/${idFuncionario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+
+                    if (resposta.length > 0) {
+                        var idEmpresa = resposta[0].idEmpresa;
+                        var nomeEmpresa = resposta[0].nomeFantasia;
+
+                        console.log(`
+                        id da empresa: ${idEmpresa}
+                        nomeEmpresa: ${nomeEmpresa}
+                        `);
+                        span_nome_empresa.innerHTML = `${nomeEmpresa}`
+
+                        setInterval(function () {
+                            dadosAlertas(idEmpresa);
+                        }, 10000);
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+    dadosEmpresa(idFuncionario);
+
+    var alertCpu = 0;
+    var alertRam = 0;
+    var alertDisco = 0;
     function dadosAlertas(idEmpresa) {
-
-
-        var totalAlertas = 0;
-
-
-        fetch(`/medidas/alertas/${idEmpresa}`).then(function (response) {
+        fetch(`/medidas/alertas/${idEmpresa}/${idFuncionario}`).then(function (response) {
             console.log(idEmpresa + " id da empresa");
             if (response.ok) {
                 response.json().then(function (alertas) {
 
-                    var alertCpu = alertas[0].maxCpu;
-                    var alertRam = alertas[0].maxRam;
-                    var alertDisco = alertas[0].maxDisco;
-                    var CPU = parseInt(alertas[0].consumoCpu);
-                    var RAM = parseInt(consumo);
-                    var DISCO = parseInt(alertas[0].consumoDisco);
 
-                    console.log(`
-                    alertaCpu = ${alertCpu}
-                    alertaRam = ${alertRam}
-                    alertaDisco = ${alertDisco}
-                    CPU = ${CPU}
-                    RAM = ${RAM}
-                    DISCO = ${DISCO}
-                    `);
+                    if (alertas.length > 0) {
 
-                    if (CPU > alertCpu) {
-                        console.log("Entrei no if da cpu");
-                        alerta_P.innerHTML += `<P class="notificacaoCritico">SUA CPU ENTROU NO ALERTA</span>`
-                        totalAlertas++
+                        var idLimitador = alertas[0].idLimitador;
+
+                        console.log(idLimitador+"idLimitador");
+
+                        alertCpu = alertas[0].maxCpu;
+                        alertRam = alertas[0].maxRam;
+                        alertDisco = alertas[0].maxDisco;
+                        var CPU = parseInt(cpu);
+                        var RAM = parseInt(consumo);
+                        var DISCO = parseInt(discoUsado);
+
+                        // console.log(`
+                        //         idEmpresa = ${idEmpresa}
+                        //         alertaCpu = ${alertCpu}
+                        //         alertaRam = ${alertRam}
+                        //         alertaDisco = ${alertDisco}
+                        //         CPU = ${CPU}
+                        //         RAM = ${RAM}
+                        //         DISCO = ${DISCO}
+                        //         `);
+
+                        if (CPU > alertCpu) {
+                            console.log("Entrei no if da cpu");
+                            alerta_P.innerHTML += `<P class="notificacaoCritico">SUA CPU ENTROU NO ALERTA</span>`
+                            totalAlertas++
+                        }
+                        if (RAM > alertRam) {
+                            alerta_P.innerHTML += `<P class="notificacaoCritico">SUA RAM ENTROU NO ALERTA</span>`
+                            totalAlertas++
+                        }
+                        if (DISCO > alertDisco) {
+                            alerta_P.innerHTML += `<P class="notificacaoCritico">SEU DISCO ENTROU NO ALERTA</span>`
+                            totalAlertas++
+                        }
                     }
-                    if (RAM > alertRam) {
-                        alerta_P.innerHTML += `<P class="notificacaoCritico">SUA RAM ENTROU NO ALERTA</span>`
-                        totalAlertas++
-                    }
-                    if (DISCO > alertDisco) {
-                        alerta_P.innerHTML += `<P class="notificacaoCritico">SEU DISCO ENTROU NO ALERTA</span>`
-                        totalAlertas++
-                    }
+
 
                     console.log(totalAlertas + " Total de alertas");
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+
+    function graficoTAREFA(idFuncionario) {
+
+        fetch(`/medidas/graficoTAREFA/${idFuncionario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+
+                    // debugger
+                    for(i = 0; i < resposta.length; i++){
+                        var dia = resposta[i].diaDaSemana;
+                        var tarefasPendentes = resposta[i].tarefas_nao_concluidas;
+                        var tarefasConcluidas = resposta[i].tarefas_concluidas;
+
+                        console.log(`
+                            dia: ${dia}
+                            concluidas: ${tarefasConcluidas}
+                            pendentes: ${tarefasPendentes}
+                        `);
+
+                        dadosTarefa.labels.push(dia);
+                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
+                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+
+                    }
+                    chartTarefa.update()
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -436,70 +512,16 @@
     graficoCPU(idFuncionario);
     graficoRAM(idFuncionario);
     graficoDISCO(idFuncionario);
-    dadosAlertas(1)
+    graficoTAREFA(idFuncionario);
 
     setInterval(function () {
         graficoCPU(idFuncionario);
         graficoRAM(idFuncionario);
         graficoDISCO(idFuncionario);
-        dadosAlertas(1)
     }, 10000);
 
 
-    const ctxTarefas = document.getElementById('myChartLineTarefas');
-
-    new Chart(ctxTarefas, {
-        type: 'bar',
-        data: {
-            labels: ['seg', 'ter', 'qua', 'qui', 'sex'],
-            datasets: [{
-                label: 'Tarefas Atribuidas',
-                data: [4, 5, 10, 8, 7, 3],
-                backgroundColor: '#fed0df',
-                tension: 0.4,
-            }, {
-                label: 'Tarefas Entregues',
-                data: [3, 6, 9, 9, 7, 3],
-                backgroundColor: '#adbcff',
-                tension: 0.4,
-            }],
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        font: {
-                            size: 9
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 9
-                        }
-                    }
-                },
-                y: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 11
-                        }
-                    },
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+   
 
     function tarefasEntregues() {
         var idFuncionario = sessionStorage.ID_FUNCIONARIO;

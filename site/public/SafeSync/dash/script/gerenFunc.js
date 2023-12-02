@@ -76,11 +76,20 @@ function gerenFunc() {
 gerenFunc()
 
 function addTaskFuncionario(idFuncionario) {
+  
+  var dataAtual = new Date();
+
+  var diaDaSemanaNumero = dataAtual.getDay();
+
+  var diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+  var diaDaSemanaNome = diasDaSemana[diaDaSemanaNumero];
+
+
   var taskInput = document.getElementById(`taskInput-${idFuncionario}`);
   var taskDate = document.getElementById(`taskDate-${idFuncionario}`);
 
   if (taskInput.value != "" && taskDate.value != "") {
-    enviarTarefaParaServidor(idFuncionario, taskInput.value, taskDate.value);
+    enviarTarefaParaServidor(idFuncionario, taskInput.value, taskDate.value, diaDaSemanaNome);
   } else {
     alert("Preencha os dois campos")
   }
@@ -91,7 +100,7 @@ function addTaskFuncionario(idFuncionario) {
 
 
 
-function enviarTarefaParaServidor(idFuncionario, taskInput, taskDate) {
+function enviarTarefaParaServidor(idFuncionario, taskInput, taskDate, diaDaSemana) {
   console.log(idFuncionario);
   console.log(taskInput);
   console.log(taskDate);
@@ -103,6 +112,8 @@ function enviarTarefaParaServidor(idFuncionario, taskInput, taskDate) {
     body: JSON.stringify({
       taskInputServer: taskInput,
       taskDateServer: taskDate,
+      diaDaSemanaServer: diaDaSemana
+
     }),
   })
     .then(response => {

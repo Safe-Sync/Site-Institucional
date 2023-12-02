@@ -181,3 +181,62 @@ var dadosRam = {
         }
     });
     }
+
+
+    const ctxTarefas = document.getElementById('myChartLineTarefas');
+
+    var labelTarefa = [];
+    var dadosTarefa = {
+        labels: labelTarefa,
+        datasets: [{
+            label: 'Tarefas Atribuidas',
+            data: [],
+            backgroundColor: '#fed0df',
+            tension: 0.4,
+        }, {
+            label: 'Tarefas Entregues',
+            data: [],
+            backgroundColor: '#adbcff',
+            tension: 0.4,
+        }],
+    }
+
+    var chartTarefa = new Chart(ctxTarefas, {
+        type: 'bar',
+        data: dadosTarefa,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 9
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });

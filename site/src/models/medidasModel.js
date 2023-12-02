@@ -59,7 +59,8 @@ function graficoDISCO(idHardware) {
     const instrucao = `
     SELECT 
     totalDisco AS totalDisco,
-    consumoDisco AS consumoDisco
+    consumoDisco AS consumoDisco,
+    fkEmpresa
     FROM 
     hardwares 
     INNER JOIN volateis v ON idHardware = ${idHardware};
@@ -67,19 +68,40 @@ function graficoDISCO(idHardware) {
     return database.executar(instrucao);
 }
 
-function alertas(idEmpresa) {
+function graficoTAREFA(idFuncionario) {
     const instrucao = `
     SELECT
-        v.consumoCpu,
-        v.consumoDisco,
-        v.consumoRam,
-        l.maxCpu,
-        l.maxDisco,
-        l.maxRam
+    diaDaSemana,
+    SUM(CASE WHEN progresso = 'Concluído' THEN 1 ELSE 0 END) as tarefas_concluidas,
+    SUM(CASE WHEN progresso <> 'Concluído' THEN 1 ELSE 0 END) as tarefas_nao_concluidas
+    FROM tarefa
+    WHERE fkFuncionario = ${idFuncionario}
+    GROUP BY diaDaSemana;
+    `;
+    return database.executar(instrucao);
+}
+
+
+function alertas(idEmpresa, idFuncionario) {
+    const instrucao = `
+    SELECT
+        idLimitador,
+        maxCpu,
+        maxDisco,
+        maxRam,
+        fkEmpresa
     FROM
-        volateis v
-    JOIN
-        limitador l ON v.fkHardware = ${idEmpresa};
+        limitador where fkEmpresa = ${idEmpresa} and idLimitador = ${idFuncionario};
+    `;
+    return database.executar(instrucao);
+}
+
+function dadosEmpresa(idFuncionario) {
+    const instrucao = `
+    SELECT empresas.idEmpresa, empresas.nomeFantasia
+        FROM empresas
+        JOIN funcionarios ON empresas.idEmpresa = funcionarios.fkEmpresa
+        WHERE funcionarios.idFuncionario = ${idFuncionario};
     `;
     return database.executar(instrucao);
 }
@@ -89,5 +111,7 @@ module.exports = {
     graficoCPU,
     graficoRAM,
     graficoDISCO,
+    graficoTAREFA,
     alertas,
+    dadosEmpresa,
 };

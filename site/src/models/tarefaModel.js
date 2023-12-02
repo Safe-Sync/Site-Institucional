@@ -1,8 +1,8 @@
 var database = require("../database/config")
 
-function adicionarTarefa(nomeTarefa, dataTarefa, fkFuncionario) {
+function adicionarTarefa(nomeTarefa, dataTarefa, diaDaSemana, fkFuncionario) {
     var instrucao = `
-        INSERT INTO tarefa (nome_tarefa, data_upload, progresso, fkFuncionario) VALUES ('${nomeTarefa}', '${dataTarefa}', 'Não iniciado', '${fkFuncionario}');
+        INSERT INTO tarefa (nome_tarefa, data_upload, progresso, diaDaSemana, fkFuncionario) VALUES ('${nomeTarefa}', '${dataTarefa}', 'Não iniciado', '${diaDaSemana}', '${fkFuncionario}');
     `;
     return database.executar(instrucao);
 }

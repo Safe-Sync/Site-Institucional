@@ -159,6 +159,7 @@ function adicionarTarefaFuncionario(req, res){
     var idFuncionario = req.params.idFuncionario;
     var taskInput = req.body.taskInputServer;
     var taskDate = req.body.taskDateServer;
+    var diaDaSemana = req.body.idEmpresaServer;
 
     console.log("Entrei no adicionarTarefaFuncionario");
     console.log(idFuncionario);
@@ -171,8 +172,11 @@ function adicionarTarefaFuncionario(req, res){
         res.status(400).send("taskInput está undefined!");
     }else if(taskDate == undefined){
         res.status(400).send("taskDate está undefined!");
-    }else {
-        empresaModel.adicionarTarefaFuncionario(taskInput, taskDate, idFuncionario)
+    }else if(diaDaSemana == undefined){
+        res.status(400).send("diaDaSemana está undefined!");
+    }
+    else {
+        empresaModel.adicionarTarefaFuncionario(taskInput, taskDate, idFuncionario, diaDaSemana)
         .then(
             function (tarefa) {
                 res.json(tarefa);

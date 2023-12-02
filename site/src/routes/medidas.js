@@ -22,7 +22,16 @@ router.get("/graficoDISCO/:idHardware", function (req, res) {
     medidaController.graficoDISCO(req, res);
 })
 
-router.get("/alertas/:idEmpresa", function (req, res) {
+router.get("/graficoTAREFA/:idFuncionario", function (req, res) {
+    medidaController.graficoTAREFA(req, res);
+})
+
+router.get("/alertas/:idEmpresa/:idFuncionario", function (req, res) {
     medidaController.alertas(req, res);
 })
+
+router.get("/dadosEmpresa/:idFuncionario", function (req, res) {
+    medidaController.dadosEmpresa(req, res);
+})
+
 module.exports = router;

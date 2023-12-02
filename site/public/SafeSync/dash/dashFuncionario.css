@@ -393,7 +393,9 @@ ul li.item-menu a{
 }
 
 .notificacaoModal-content section div{
-    margin-bottom: 1.5%;
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: column-reverse;
 }
 .notificacaoModal-content section div p{
     font-size: 1.125rem;
@@ -411,7 +413,8 @@ ul li.item-menu a{
     display: flex;
     justify-content: center;
     align-items: start;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    margin-bottom: 1%;
 }
 .notificacaoModal-content section .notificacaoAlerta{
     width: 88%;
