@@ -21,7 +21,7 @@
                 <div class="titulo_login">Login</div>
                 <div class="tipoLogin">
                     <select name="tipo_login" id="input_tipo_login">
-                        <option value=""  disabled selected>Tipo de Login</option>
+                        <option value="" disabled selected>Tipo de Login</option>
                         <option value="empresa">Empresa</option>
                         <option value="funcionario">Funcionário</option>
                     </select>
@@ -32,7 +32,7 @@
                 <div class="group_input">
                     <input id="input_senha" type="password" placeholder="Senha">
                 </div>
-                
+
                 <div class="center">
                     Ainda não tem conta?<a href="./cadastro.html">Cadastre-se</a>
                 </div>
@@ -52,85 +52,151 @@
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
 
-        if (tipoLogin == "funcionario") {
-            fetch("/funcionario/entrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    emailServer: emailVar,
-                    senhaServer: senhaVar
-                })
-            }).then(function (resposta) {
-                console.log("ESTOU NO funcionario THEN DO entrar()!")
-                if (resposta.ok) {
-                    resposta.json().then(json => {
-                        sessionStorage.ID_FUNCIONARIO = json.idFuncionario;
-                        sessionStorage.NOME_FUNCIONARIO = json.nomeFuncionario;
-                        sessionStorage.CARGO_FUNCIONARIO = json.cargo;
-                        sessionStorage.EMAIL_FUNCIONARIO = json.email;
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        console.log("Login success");
-                        setTimeout(function () {
-                            window.location = "./dash/dashFuncionario.html"
-                        }, 2000);
+        if (tipoLogin == "" || emailVar == "" || senhaVar == "") {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro!',
+                text: 'Preencha todos os campos!',
+                showConfirmButton: true,
+                timer: 2000
+               
+            });
+        } else {
+            if (tipoLogin == "funcionario") {
+                fetch("/funcionario/entrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        emailServer: emailVar,
+                        senhaServer: senhaVar
+                    })
+                }).then(function (resposta) {
+                    console.log("ESTOU NO funcionario THEN DO entrar()!")
+                    if (resposta.ok) {
+                        resposta.json().then(json => {
+                            sessionStorage.ID_FUNCIONARIO = json.idFuncionario;
+                            sessionStorage.NOME_FUNCIONARIO = json.nomeFuncionario;
+                            sessionStorage.CARGO_FUNCIONARIO = json.cargo;
+                            sessionStorage.EMAIL_FUNCIONARIO = json.email;
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+                            console.log("Login success");
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Login realizado com sucesso!',
+                                text: 'Redirecionando para sua dash',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                            setTimeout(function () {
+                                window.location = "./dash/dashFuncionario.html"
+                            }, 2000);
+                        }
+                        );
+
+                    } else {
+                        resposta.text().then(texto => {
+                            console.error(texto);
+                        });
+
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Erro!',
+                            text: 'Erro no login!',
+                            showConfirmButton: true,
+                            timer: 2000,
+                            customClass: {
+                                confirmButton: 'custom-confirm-button-class'
+                            },
+                            onOpen: () => {
+                                const confirmButton = document.querySelector('.swal2-confirm.custom-confirm-button-class');
+                                if (confirmButton) {
+                                    confirmButton.style.padding = '10px 20px'; // Ajuste o tamanho conforme necessário
+                                    confirmButton.style.fontSize = '16px'; // Ajuste o tamanho da fonte conforme necessário
+                                }
+                            }
+                        });
+
                     }
-                    );
-
-                } else {
-                    resposta.text().then(texto => {
-                        console.error(texto);
-                    });
-
-                    console.log("Erro no login");
-                }
-            }).catch(function (erro) {
-                console.log(erro);
-            })
-            return false;
-
-        } else if (tipoLogin == "empresa") {
-            fetch("/empresa/autenticar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    emailServer: emailVar,
-                    senhaServer: senhaVar
+                }).catch(function (erro) {
+                    console.log(erro);
                 })
-            }).then(function (resposta) {
-                console.log("ESTOU NO empresa THEN DO entrar()!")
+                return false;
 
-                if (resposta.ok) {
-                    resposta.json().then(json => {
-                        sessionStorage.NOME_EMPRESA = json.nomeFantasia;
-                        sessionStorage.EMAIL_EMPRESA = json.email;
-                        sessionStorage.CNPJ = json.cnpj;
-                        sessionStorage.ID_EMPRESA = json.idEmpresa;
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        console.log("Login success");
-                        setTimeout(function () {
-                            window.location = "./dash/dashEmpresa.html"
-                        }, 2000);
+            } else if (tipoLogin == "empresa") {
+                fetch("/empresa/autenticar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        emailServer: emailVar,
+                        senhaServer: senhaVar
+                    })
+                }).then(function (resposta) {
+                    console.log("ESTOU NO empresa THEN DO entrar()!")
+
+                    if (resposta.ok) {
+                        resposta.json().then(json => {
+                            sessionStorage.NOME_EMPRESA = json.nomeFantasia;
+                            sessionStorage.EMAIL_EMPRESA = json.email;
+                            sessionStorage.CNPJ = json.cnpj;
+                            sessionStorage.ID_EMPRESA = json.idEmpresa;
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+                            console.log("Login success");
+
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Login realizado com sucesso!',
+                                text: 'Redirecionando para sua dash',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                            setTimeout(function () {
+                                window.location = "./dash/dashEmpresa.html"
+                            }, 2000);
+                        }
+                        );
+
+                    } else {
+                        resposta.text().then(texto => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Erro!',
+                                text: 'Erro no login!',
+                                showConfirmButton: true,
+                                timer: 2000,
+                                customClass: {
+                                    confirmButton: 'custom-confirm-button-class'
+                                },
+                                onOpen: () => {
+                                    const confirmButton = document.querySelector('.swal2-confirm.custom-confirm-button-class');
+                                    if (confirmButton) {
+                                        confirmButton.style.padding = '10px 20px'; // Ajuste o tamanho conforme necessário
+                                        confirmButton.style.fontSize = '16px'; // Ajuste o tamanho da fonte conforme necessário
+                                    }
+                                }
+                            });
+
+                            console.error(texto);
+                        });
+
+                        console.log("Erro no login");
                     }
-                    );
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
 
-                } else {
-                    resposta.text().then(texto => {
-                        console.error(texto);
-                    });
-
-                    console.log("Erro no login");
-                }
-            }).catch(function (erro) {
-                console.log(erro);
-            })
-
-            return false;
+                return false;
+            }
         }
     }
 </script>

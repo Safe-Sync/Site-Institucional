@@ -99,11 +99,11 @@ document.addEventListener("DOMContentLoaded", function() {
 // area kpis
 // Função para gerar um número aleatório entre 0 e 10
 function gerarNumeroAleatorio() {
-    var numeroAleatorio = Math.floor(Math.random() * 11); // Gera um número aleatório entre 0 e 10
-    document.getElementById("alertasMaquinaFunc").textContent = numeroAleatorio; // Atualiza o conteúdo do elemento com o número aleatório
+    // var numeroAleatorio = Math.floor(Math.random() * 11); 
+    var numAlertas = document.getElementById("alertasMaquinaFunc").innerHTML // Atualiza o conteúdo do elemento com o número aleatório
 
     // Converta o número de alertas para um número inteiro
-    numAlertas = parseInt(numeroAleatorio);
+    // numAlertas = parseInt(numeroAleatorio);
 
     // Aplique as classes de acordo com o número de alertas
     if (numAlertas > 5) {

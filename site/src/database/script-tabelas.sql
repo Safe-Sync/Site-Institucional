@@ -1,7 +1,6 @@
 CREATE DATABASE IF NOT EXISTS SafeSync;
 USE SafeSync;
-
- -- drop database SafeSync;
+-- drop database SafeSync;
 
 CREATE TABLE IF NOT EXISTS empresas (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -70,34 +69,20 @@ CREATE TABLE IF NOT EXISTS tarefa (
   data_upload DATE NOT NULL,
   progresso VARCHAR(45) NOT NULL,
   CONSTRAINT check_progresso CHECK (progresso IN ('Não iniciado', 'Em Andamento', 'Concluído', 'A Fazer')),
+  diaDaSemana VARCHAR(50) NOT NULL,
   fkFuncionario INT,
   FOREIGN KEY (fkfuncionario) REFERENCES funcionarios(idFuncionario),
   PRIMARY KEY (idTarefa, fkFuncionario)
 );
 
-
-
-show tables;
+-- show tables;
 
 -- Inserts para a tabela empresas
 INSERT INTO empresas (nomeFantasia, razaoSocial, cnpj, cep, numero, complemento, email, telefone, senhaEmpresa) 
 VALUES ('Empresa A', 'Razao Social A', '12345678901234', '12345678', '123', 'Sala 1', 'empresaA@email.com', '123456789', 'senha123'),
        ('Empresa B', 'Razao Social B', '56789012345678', '87654321', '456', 'Sala 2', 'empresaB@email.com', '987654321', 'senha456');
 
--- Inserts para a tabela funcionarios
-INSERT INTO funcionarios (nomeFuncionario, cargo, cpf, email, telefone, senha, fkEmpresa) 
-VALUES ('Funcionario 1', 'Cargo 1', '12345678901', 'funcionario1@email.com', '111222333', 'senhaFunc1', 1),
-       ('Funcionario 2', 'Cargo 2', '98765432109', 'funcionario2@email.com', '444555666', 'senhaFunc2', 2);
 
--- Inserts para a tabela hardwares
--- INSERT INTO hardwares (sistemaOperacional, totalCpu, totalDisco, totalRam, fkEmpresa, fkFuncionario) 
--- VALUES ('Windows', 4.0, 1024.0, 8.0, 1, 1),
-   --    ('Linux', 2.0, 512.0, 4.0, 2, 2);
-
--- Inserts para a tabela limitador
- -- INSERT INTO limitador (tipoComponente, maxCpu, maxDisco, maxRam, fkEmpresa) 
--- VALUES ('CPU', 80, 1024, 16, 1),
-   --    ('Disco', 512, 2048, 8, 2);
        
 SELECT f.idFuncionario, 
        f.nomeFuncionario,
@@ -125,30 +110,6 @@ select * from funcionarios;
 select * from volateis;
 select * from hardwares;
 select * from limitador;
+select * from tarefa;
 
-  SELECT v.*, h.*
-    FROM hardwares h
-    LEFT JOIN volateis v ON h.idHardware = v.fkHardware
-    WHERE h.fkFuncionario = 1 AND (
-        v.idVolateis IS NULL OR
-        (v.fkHardware, v.dataHora) = (
-            SELECT v1.fkHardware, MAX(v1.dataHora) AS ultima_data
-            FROM volateis v1
-            WHERE v1.fkHardware =1  
-            GROUP BY v1.fkHardware
-        )
-    )
-    LIMIT 1;
-    
-       SELECT v.*, h.*
-    FROM hardwares h
-    LEFT JOIN volateis v ON h.idHardware = v.fkHardware
-    WHERE h.fkFuncionario = 1 AND (
-        v.idVolateis IS NULL OR
-        (v.fkHardware, v.dataHora) = (
-            SELECT v1.fkHardware, MAX(v1.dataHora) AS ultima_data
-            FROM volateis v1
-            WHERE v1.fkHardware = 1  
-            GROUP BY v1.fkHardware
-        )
-    );
+  

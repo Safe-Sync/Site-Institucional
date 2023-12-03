@@ -153,7 +153,6 @@ function toggleModal(btn) {
                 icone.style.display = 'none';
             });
             taskInput.style.display = 'none';
-            estadoMaquinaText.classList.remove('vermelho'); // Remove classe 'vermelho'
             usoMaquinaText.classList.remove('vermelho'); // Remove classe 'vermelho'
     }
 }

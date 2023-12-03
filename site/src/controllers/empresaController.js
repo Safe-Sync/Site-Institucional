@@ -1,3 +1,4 @@
+const { info } = require("console");
 var empresaModel = require("../models/empresaModel");
 
 var sessoes = [];
@@ -159,7 +160,7 @@ function adicionarTarefaFuncionario(req, res){
     var idFuncionario = req.params.idFuncionario;
     var taskInput = req.body.taskInputServer;
     var taskDate = req.body.taskDateServer;
-    var diaDaSemana = req.body.idEmpresaServer;
+    var diaDaSemana = req.body.diaDaSemanaServer;
 
     console.log("Entrei no adicionarTarefaFuncionario");
     console.log(idFuncionario);
@@ -218,11 +219,64 @@ function adicionarTarefaFuncionario(req, res){
         }
     }
 
+    function editarInformacoes(req, res) {
+        var idEmpresa = req.params.idEmpresa;
+        var nomeEmpresa = req.body.nomeEmpresaServer;
+        var emailEmpresa = req.body.emailEmpresaServer;
+        var cnpjEmpresa = req.body.cnpjEmpresaServer;
+
+        if(idEmpresa == undefined) {
+            res.status(400).send("idEmpresa está undefined!");
+        } else if(nomeEmpresa == undefined) {
+            res.status(400).send("nomeEmpresa está undefined!");
+        } else if(emailEmpresa == undefined) {
+            res.status(400).send("emailEmpresa está undefined!");
+        } else if(cnpjEmpresa == undefined) {
+            res.status(400).send("cnpjEmpresa está undefined!");
+        } else {
+            empresaModel.editarInformacoes(nomeEmpresa, emailEmpresa, cnpjEmpresa, idEmpresa)
+            .then(
+                function (informacoes) {
+                    res.json(informacoes);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+        }
+    }
+
+    function editarCargoFuncionario(req, res) {
+        var idFuncionario = req.params.idFuncionario;
+        var cargoEditado = req.body.cargoEditadoServer;
+
+        if(idFuncionario == undefined) {
+            res.status(400).send("idFuncionario está undefined!");
+        } else if(cargoEditado == undefined) {
+            res.status(400).send("nomeEditado está undefined!");
+        } else {
+            empresaModel.editarCargoFuncionario(cargoEditado, idFuncionario)
+            .then(function (informacoes) {
+                res.json(informacoes);
+                console.log(informacoes);
+            }).catch(
+                function (erro) {
+                    console.log(erro);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            )
+        }
+    }
+
 module.exports = {
     entrar,
     cadastrar,
     cadastrarFuncionario,
     gerenFunc,
     adicionarTarefaFuncionario,
-    procurarFuncionario
+    procurarFuncionario,
+    editarInformacoes,
+    editarCargoFuncionario,
 }

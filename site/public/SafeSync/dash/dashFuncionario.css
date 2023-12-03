@@ -223,7 +223,7 @@ ul li.item-menu a{
     background-color: #ffe23c4b;
     color: #dfbd00;
     padding: 2%;
-    /* margin-top: 15%; */
+    margin-top: 15%;
 }
 #dash #areaGraficos #areaKpis .kpiBranca{
     min-width: 20%;
@@ -379,6 +379,7 @@ ul li.item-menu a{
     margin-left: 8vw;
     overflow-y: auto;
     scrollbar-width: thin;
+    scrollbar-color: grey;
 }
 
 /* Estilo da barra de rolagem */
@@ -475,15 +476,16 @@ ul li.item-menu a{
     overflow: auto;
    
     /* background-color: rgba(0,0,0,0.4); */
-    backdrop-filter: blur(5px);
-
+    backdrop-filter: blur(5px);;
 }
 .usuarioModal-content {
     background-color: #fefefe;
     width: 50%;
-    height: 90%;
+    height: 65%;
     padding: 0 5%;
     margin: auto;
+    margin-top: 8%;
+
     /* overflow-y: auto; */
     /* scrollbar-width: thin; */
     box-shadow: #5050509c 5px 5px 10px ;
@@ -528,7 +530,7 @@ ul li.item-menu a{
     background-color: #D4E2F8;
     padding: 2% 3%;
     border-radius: 15px;
-    /* margin-top: 1%; */
+    margin-top: 2%;
 }
 .usuarioModal-content section article .iconeEditarPerfil{
     background-color: #EDEDED ;
@@ -544,6 +546,7 @@ ul li.item-menu a{
     top: 41%; */
     margin-left: 90%;
     margin-top: -5%;
+    cursor: pointer;
 }
 .usuarioModal-content section article .conteudoPerfil .legendaPerfil{
     color: #000d22;
@@ -562,19 +565,32 @@ ul li.item-menu a{
 }
 /*  */
 
-/* .notificacaoCritico{
-    width: 100%;
+.notificacaoCritico {
+    width: 88%;
     padding-left: 2%;
     height: 4rem;
     border-radius: 1rem;
     background-color: #FF6961;
     display: flex;
-    justify-content: start;
-    align-items: start;
-    flex-direction: column;
-} */
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 2px 3px 5px rgb(41, 41, 41);
+    color: #ffffff!important;
+    font-weight: 600!important;
+    animation: changeBackground 3s infinite; /* 3s * 3 (number of background changes) */
+}
 
-.notificacaoCritico p{
-    height: 500px;
-    /* width: 100%; */
+@keyframes changeBackground {
+    0% {
+        background-color: #FF6961; /* Red */
+    }
+    33.33% {
+        background-color: #bb2020; /* Sky Blue */
+    }
+    66.66% {
+        background-color: #FF6961; /* Light Green */
+    }
+    100% {
+        background-color: #bb2020; /* Gold */
+    }
 }

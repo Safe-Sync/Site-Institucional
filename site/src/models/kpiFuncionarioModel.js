@@ -16,7 +16,16 @@ function tarefasPendentes(idFuncionario) {
     `;
     return database.executar(instrucao);
 }
+
+function janelasAbertas(idFuncionario){
+    var instrucao = `
+    select idVolateis, totalJanelas from volateis where fkHardware = ${idFuncionario} order by idVolateis desc;
+    `
+    return database.executar(instrucao)
+}
+
 module.exports = {
     tarefasEntregues,
     tarefasPendentes,
+    janelasAbertas,
 };

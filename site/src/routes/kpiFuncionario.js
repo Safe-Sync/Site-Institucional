@@ -12,4 +12,7 @@ router.get("/tarefasPendentes/:idFuncionario", function (req, res) {
     tarefasController.tarefasPendentes(req, res);
 });
 
+router.get("/janelasAbertas/:idFuncionario", function (req, res) {
+    tarefasController.janelasAbertas(req, res);
+});
 module.exports = router;
