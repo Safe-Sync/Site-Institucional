@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS limitador(
 	FOREIGN KEY (fkEmpresa) REFERENCES empresas(idEmpresa),
     PRIMARY KEY (idLimitador, fkEmpresa)
 );
+-- truncate table limitador;
 
 CREATE TABLE IF NOT EXISTS tarefa (
   idTarefa INT auto_increment,
@@ -75,34 +76,43 @@ CREATE TABLE IF NOT EXISTS tarefa (
   PRIMARY KEY (idTarefa, fkFuncionario)
 );
 
+CREATE TABLE IF NOT EXISTS alertas (
+    idAlerta INT AUTO_INCREMENT,
+    alertaCpu INT NOT NULL,
+    alertaRam INT NOT NULL,
+    alertaDisco INT NOT NULL,
+    quantidadeAlertas INT NOT NULL,
+    fkEmpresa INT NOT NULL,
+    fkFuncionario INT NOT NULL,
+    FOREIGN KEY (fkFuncionario) REFERENCES funcionarios(idFuncionario),
+    FOREIGN KEY (fkEmpresa) REFERENCES empresas(idEmpresa),
+    PRIMARY KEY (idAlerta)
+);
+select * from alertas;
+-- drop table alertas;
 -- show tables;
-
+  
+-- truncate table tarefa;
 -- Inserts para a tabela empresas
 INSERT INTO empresas (nomeFantasia, razaoSocial, cnpj, cep, numero, complemento, email, telefone, senhaEmpresa) 
 VALUES ('Empresa A', 'Razao Social A', '12345678901234', '12345678', '123', 'Sala 1', 'empresaA@email.com', '123456789', 'senha123'),
        ('Empresa B', 'Razao Social B', '56789012345678', '87654321', '456', 'Sala 2', 'empresaB@email.com', '987654321', 'senha456');
 
+-- Inserts para a tabela funcionarios
+-- INSERT INTO funcionarios (nomeFuncionario, cargo, cpf, email, telefone, senha, fkEmpresa) 
+-- VALUES ('Funcionario 1', 'Cargo 1', '12345678901', 'funcionario1@email.com', '111222333', 'senhaFunc1', 1),
+ --      ('Funcionario 2', 'Cargo 2', '98765432109', 'funcionario2@email.com', '444555666', 'senhaFunc2', 2);
 
+-- Inserts para a tabela hardwares
+-- INSERT INTO hardwares (sistemaOperacional, totalCpu, totalDisco, totalRam, fkEmpresa, fkFuncionario) 
+-- VALUES ('Windows', 4.0, 1024.0, 8.0, 1, 1),
+   --    ('Linux', 2.0, 512.0, 4.0, 2, 2);
+
+-- Inserts para a tabela limitador
+ -- INSERT INTO limitador (tipoComponente, maxCpu, maxDisco, maxRam, fkEmpresa) 
+-- VALUES ('CPU', 80, 1024, 16, 1),
+   --    ('Disco', 512, 2048, 8, 2);
        
-SELECT f.idFuncionario, 
-       f.nomeFuncionario,
-		v.idVolateis, 
-       ROUND(v.consumoCpu, 2) AS consumoCpu, 
-       v.totalJanelas, 
-       v.dataHora,
-		ROUND(v.consumoRam, 2) AS consumoRam,
-       ROUND(v.consumoDisco, 2) AS consumoDisco,
-       Round(h.totalDisco, 2) AS totalDisco       
-FROM volateis v
-JOIN hardwares h ON v.fkHardware = h.idHardware
-JOIN funcionarios f ON h.fkFuncionario = f.idFuncionario
-WHERE f.idFuncionario = 1  
-       AND v.dataHora = (SELECT MAX(dataHora) FROM volateis WHERE fkHardware = h.idHardware)
-       AND h.totalCpu IS NOT NULL
-ORDER BY v.dataHora DESC
-LIMIT 1;
-
-
 
 	
 select * from empresas;
@@ -111,5 +121,7 @@ select * from volateis;
 select * from hardwares;
 select * from limitador;
 select * from tarefa;
+select * from alertas;
 
-  
+
+
