@@ -181,6 +181,7 @@ header {
 
     .mobile-menu .login-button button {
         width: 100%;
+        color: whitesmoke;
     }
 
     .open {
