@@ -65,7 +65,54 @@ function editarInformacoes(req, res) {
         );
     }
 }
+
+function inserirAlertas(req, res) {
+    var qtdAlertasCpu = req.body.cpuAlertaServer;
+    var qtdAlertasRam = req.body.ramAlertaServer;
+    var qtdAlertasDisco = req.body.discoAlertaServer;
+    var qtdAlertas = req.body.totalAlertasServer;
+    var idFuncionario = req.body.idFuncionarioServer;
+    var idEmpresa = req.body.idEmpresaServer;
+
+
+    if(qtdAlertas == undefined) {
+        res.status(400).send("qtdAlertas está undefined!");
+    } else if(idFuncionario == undefined) {
+        res.status(400).send("idFuncionario está undefined!");
+    } else {
+        funcionarioModel.inserirAlertas(qtdAlertasCpu, qtdAlertasRam, qtdAlertasDisco, qtdAlertas, idFuncionario, idEmpresa)
+        .then(
+            function (informacoes) {
+                res.json(informacoes);
+                console.log(informacoes)
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
+
+function mostrarAlertas(req, res) {
+
+    var idFuncionario = req.params.idFuncionario;
+    
+    funcionarioModel.mostrarAlertas(idFuncionario).then(function (tarefa) {
+        if (tarefa.length > 0) {
+            res.status(200).json(tarefa);
+        } else {
+            res.status(204).send("Nenhuma alerta encontrado")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 module.exports = {
     entrar,
     editarInformacoes,
+    inserirAlertas,
+    mostrarAlertas,
 }

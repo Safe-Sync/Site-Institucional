@@ -16,4 +16,16 @@ router.get("/tarefasEntreguesMes/:idEmpresa", function (req, res) {
     kpiEmpresaController.tarefasEntreguesMes(req, res);
 });
 
+router.get("/tarefasPendentesMes/:idEmpresa", function (req, res) {
+    kpiEmpresaController.tarefasPendentesMes(req, res);
+});
+
+router.get("/limiteMaquinas/:idEmpresa", function (req, res) {
+    kpiEmpresaController.limiteMaquinas(req, res);
+});
+
+router.get("/qtdMaquinas/:idEmpresa", function (req, res) {
+    kpiEmpresaController.qtdMaquinas(req, res);
+});
+
 module.exports = router;

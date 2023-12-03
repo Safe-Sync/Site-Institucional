@@ -41,6 +41,13 @@ function atualizarNaoIniciado(id) {
     return database.executar(instrucao);
 }
 
+function deletarTarefa(id) {
+    console.log("id"+id);
+    var instrucao = `
+    DELETE FROM tarefa WHERE idTarefa = ('${id}');
+    `;
+    return database.executar(instrucao);
+}
 
 module.exports = {
     adicionarTarefa,
@@ -49,4 +56,5 @@ module.exports = {
     atualizarTarefaEmAndamento,
     atualizarTarefaConcluido,
     atualizarNaoIniciado,
+    deletarTarefa,
 };

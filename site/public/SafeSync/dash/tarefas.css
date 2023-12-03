@@ -70,6 +70,8 @@
 
 .task-input {
   margin-bottom: 35px;
+  display: flex;
+  align-items: center;
 }
 
 .task-input input{
@@ -141,3 +143,7 @@
   color: #102C57;
   border-bottom: 1px solid #102C57;
 }
+
+/* .exibirTarefa{
+  margin-left: 5%;
+} */

@@ -22,7 +22,7 @@
 //           novoFunc.id = idFuncionario;
 
 //           novoFunc.innerHTML = `
-            
+
 //             <div class="task-input" style="display: none; id="taskInput-${idFuncionario}">
 //                     <input type="text" id="taskInput-${idFuncionario}" placeholder="Digite uma nova tarefa">
 //                         <label for="taskDate-${idFuncionario}">Data de Entrega:</label>
@@ -57,7 +57,7 @@
 //                           Uso: <span class="usoMaquinaText usoMaquina">On</span>
 //                       </p>
 //                       <p class="btnAbrirModalFuncionario" onclick="toggleModal(this)">-</p>
-                      
+
 //             `
 //           infoFunc.appendChild(novoFunc);
 //         }
@@ -76,19 +76,21 @@
 // gerenFunc()
 
 function addTaskFuncionario(idFuncionario) {
-  
+
   var dataAtual = new Date();
 
   var diaDaSemanaNumero = dataAtual.getDay();
 
-  var diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+  var diasDaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
   var diaDaSemanaNome = diasDaSemana[diaDaSemanaNumero];
 
 
   var taskInput = document.getElementById(`taskInput-${idFuncionario}`);
   var taskDate = document.getElementById(`taskDate-${idFuncionario}`);
 
+
   if (taskInput.value != "" && taskDate.value != "") {
+
     enviarTarefaParaServidor(idFuncionario, taskInput.value, taskDate.value, diaDaSemanaNome);
   } else {
     alert("Preencha os dois campos")
@@ -105,6 +107,15 @@ function enviarTarefaParaServidor(idFuncionario, taskInput, taskDate, diaDaSeman
   console.log(taskInput);
   console.log(taskDate);
   console.log(diaDaSemana);
+  Swal.fire({
+    position: 'center',
+    icon: 'sucess',
+    title: 'Tarefa criada com sucesso!',
+    text: '',
+    showConfirmButton: true,
+    timer: 2000
+
+  });
   fetch(`/empresa/adicionarTarefaFuncionario/${idFuncionario}`, {
     method: 'POST',
     headers: {
@@ -120,8 +131,16 @@ function enviarTarefaParaServidor(idFuncionario, taskInput, taskDate, diaDaSeman
     .then(response => {
       if (response.ok) {
 
-        // location.reload();
 
+        // swal({
+        //   title: "Good job!",
+        //   text: "Tarefa criada!",
+        //   icon: "success",
+        //   button: "Concluir",
+        // });setTimeout(function() {
+                  setTimeout(function() {
+                    location.reload();
+                  }, 2000);
         console.log('Tarefa adicionada com sucesso!');
       } else {
         console.error('Erro ao adicionar tarefa');

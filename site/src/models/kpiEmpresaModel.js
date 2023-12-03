@@ -30,8 +30,41 @@ function tarefasEntreguesMes(idEmpresa) {
     return database.executar(instrucao);
 }
 
+function tarefasPendentesMes(idEmpresa) {
+    var instrucao = `
+    SELECT COUNT(t.idTarefa) AS totalTarefasPendentes FROM empresas e
+	JOIN funcionarios f ON e.idEmpresa = f.fkEmpresa
+		JOIN tarefa t ON f.idFuncionario = t.fkFuncionario
+			WHERE e.idEmpresa = ${idEmpresa} AND t.progresso != 'Concluído'
+				AND MONTH(t.data_upload) = MONTH(CURRENT_DATE())
+					AND YEAR(t.data_upload) = YEAR(CURRENT_DATE());
+    `;
+    return database.executar(instrucao);
+}
+
+function limiteMaquinas(idEmpresa) {
+
+    var instrucao = `
+    select COUNT(alertaCpu) as alertasCpu, COUNT(alertaRam) as alertasRam, COUNT(alertaDisco) as alertasDisco from alertas where fkEmpresa = ${idEmpresa};
+    `
+    return database.executar(instrucao);
+}
+
+function qtdMaquinas(idEmpresa) {
+
+    var instrucao = `
+    SELECT COUNT(idHardware) AS quantidade_hardwares
+FROM hardwares where fkEmpresa = ${idEmpresa};
+    `
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     listarFuncionarios,
     funcionariosAtivos,
     tarefasEntreguesMes,
+    tarefasPendentesMes,
+    limiteMaquinas,
+    qtdMaquinas,
 };

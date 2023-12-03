@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <main>
 
         <article>
@@ -153,6 +154,15 @@
                         <button onclick="addTask()">Adicionar Tarefa</button>
                     </div>
                     <div class="accordion" id="accordion">
+                        <div class="accordion-item" id="lixo" ondragover="allowDrop(event)" ondrop="drop(event)">
+                            <div class="accordion-header" id="headerlixo">Excluir tarefa<svg
+                                    xmlns="http://www.w3.org/2000/svg" height="18" width="16" style="margin-left: 2%;"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                                </svg></div>
+                            <div class="accordion-content" id="lixoContent"></div>
+                        </div>
                         <div class="accordion-item" id="tarefas" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <div class="accordion-header" id="headerTarefas">Tarefas</div>
                             <div class="accordion-content" id="tarefasContent"></div>
@@ -282,7 +292,6 @@
         }
 
         if (idHardware == undefined) {
-            console.log("id do funcionário undefined");
         } else {
             fetch(`/medidas/graficoCPU/${idHardware}`).then(function (response) {
                 if (response.ok) {
@@ -295,7 +304,6 @@
 
                             var data = resposta[i].ultima_data;
                             cpu = resposta[i].consumoCpu;
-                            console.log(`cpu do grafico Cpu: ${cpu}`);
 
                             if (dados.labels.length >= 7) {
                                 dados.labels.shift();
@@ -365,7 +373,6 @@
     var discoTotal = 0;
     var discoLivre = 0;
     function graficoDISCO(idHardware) {
-        console.log(`id do hardware: ${idHardware}`);
 
         fetch(`/medidas/graficoDISCO/${idHardware}`).then(function (response) {
             if (response.ok) {
@@ -388,7 +395,9 @@
         });
     }
     var totalAlertas = 0;
-
+    var cpuAlerta = 0;
+    var ramAlerta = 0;
+    var discoAlerta = 0;
     function dadosEmpresa(idFuncionario) {
 
 
@@ -400,10 +409,10 @@
                         var idEmpresa = resposta[0].idEmpresa;
                         var nomeEmpresa = resposta[0].nomeFantasia;
 
-                        console.log(`
-                        id da empresa: ${idEmpresa}
-                        nomeEmpresa: ${nomeEmpresa}
-                        `);
+                        // console.log(`
+                        // id da empresa: ${idEmpresa}
+                        // nomeEmpresa: ${nomeEmpresa}
+                        // `);
                         span_nome_empresa.innerHTML = `${nomeEmpresa}`
 
                         setInterval(function () {
@@ -425,7 +434,6 @@
     var alertDisco = 0;
     function dadosAlertas(idEmpresa) {
         fetch(`/medidas/alertas/${idEmpresa}/${idFuncionario}`).then(function (response) {
-            console.log(idEmpresa + " id da empresa");
             if (response.ok) {
                 response.json().then(function (alertas) {
 
@@ -434,7 +442,6 @@
 
                         var idLimitador = alertas[0].idLimitador;
 
-                        console.log(idLimitador + "idLimitador");
 
                         alertCpu = alertas[0].maxCpu;
                         alertRam = alertas[0].maxRam;
@@ -454,24 +461,30 @@
                         //         `);
 
                         if (CPU > alertCpu) {
-                            console.log("Entrei no if da cpu");
                             alerta_P.innerHTML += `<P class="notificacaoCritico">SUA CPU ENTROU NO ALERTA</span>`
+                            cpuAlerta++
                             totalAlertas++
                         }
                         if (RAM > alertRam) {
                             alerta_P.innerHTML += `<P class="notificacaoCritico">SUA RAM ENTROU NO ALERTA</span>`
+                            ramAlerta++
                             totalAlertas++
                         }
                         if (DISCO > alertDisco) {
                             alerta_P.innerHTML += `<P class="notificacaoCritico">SEU DISCO ENTROU NO ALERTA</span>`
+                            discoAlerta++
                             totalAlertas++
                         }
 
-                        alertasMaquinaFunc.innerHTML = `${totalAlertas}`
                     }
 
 
-                    console.log(totalAlertas + " Total de alertas");
+                    inserirAlertas(cpuAlerta, ramAlerta, discoAlerta, totalAlertas, idEmpresa)
+                    totalAlertas = 0
+                    cpuAlerta = 0
+                    ramAlerta = 0
+                    discoAlerta = 0
+
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -493,15 +506,35 @@
                         var tarefasPendentes = resposta[i].tarefas_nao_concluidas;
                         var tarefasConcluidas = resposta[i].tarefas_concluidas;
 
-                        console.log(`
-                            dia: ${dia}
-                            concluidas: ${tarefasConcluidas}
-                            pendentes: ${tarefasPendentes}
-                        `);
-
-                        dadosTarefa.labels.push(dia);
+                        if (dia == 'Dom') {
                         dadosTarefa.datasets[0].data.push(tarefasPendentes)
                         dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+                        }
+                        if (dia == 'Seg') {
+                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
+                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+                        } 
+                        if (dia == 'Ter') {
+                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
+                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+                        }
+                        if (dia == 'Qua') {
+                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
+                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+                        } 
+                        if (dia == 'Qui') {
+                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
+                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+                        }
+                        if (dia == 'Sex') {
+                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
+                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+                        }
+                        if (dia == 'Sab') {
+                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
+                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
+                         }
+
 
                     }
                     chartTarefa.update()
@@ -514,6 +547,49 @@
         });
     }
 
+    function inserirAlertas(cpuAlerta, ramAlerta, discoAlerta, totalAlertas, idEmpresa) {
+        fetch("/funcionario/inserirAlertas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                cpuAlertaServer: cpuAlerta,
+                ramAlertaServer: ramAlerta,
+                discoAlertaServer: discoAlerta,
+                totalAlertasServer: totalAlertas,
+                idFuncionarioServer: idFuncionario,
+                idEmpresaServer: idEmpresa
+            })
+        })
+
+    }
+
+    function mostrarAlertas() {
+        var idFuncionario = sessionStorage.ID_FUNCIONARIO
+        fetch(`/funcionario/mostrarAlertas/${idFuncionario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+
+                    if (resposta.length > 0) {
+                        var totalAlertas = resposta[0].totalAlertas;
+                        if (resposta.length == null || totalAlertas == null || alertasMaquinaFunc.innerHTML == null) {
+                            alertasMaquinaFunc.innerHTML = "0"
+                        }
+
+                        alertasMaquinaFunc.innerHTML = `${totalAlertas}`
+                    }
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+
+    mostrarAlertas();
 
     // console.log("id do funcionario passado como parametro: " + idFuncionario);
     graficoCPU(idFuncionario);
@@ -526,6 +602,8 @@
         graficoRAM(idFuncionario);
         graficoDISCO(idFuncionario);
     }, 10000);
+
+    setInterval(mostrarAlertas, 3000);
 
 
 
@@ -584,12 +662,9 @@
     }
     janelasAbertas();
 
-    setInterval(janelasAbertas,10000);
-
-    setInterval(function () {
-        tarefasEntregues,
-        tarefasEntregues
-    }, 10000);
+    setInterval(janelasAbertas, 10000);
+    setInterval(tarefasEntregues, 3000);
+    setInterval(tarefasPendentes, 3000);
 
     function habilitarEditarPerfil() {
         perfil_nome.disabled = false;

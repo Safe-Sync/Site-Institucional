@@ -14,7 +14,25 @@ function editarInformacoes(nomeFuncionario, emailFuncionario, cargoFuncionario, 
     return database.executar(instrucao);
 }
 
+function inserirAlertas(qtdAlertasCpu, qtdAlertasRam, qtdAlertasDisco, qtdAlertas, idFuncionario, idEmpresa) {
+    var instrucao = `
+    INSERT INTO alertas (alertaCpu, alertaRam, alertaDisco, quantidadeAlertas, fkEmpresa, fkFuncionario) VALUES ('${qtdAlertasCpu}', '${qtdAlertasRam}', '${qtdAlertasDisco}', '${qtdAlertas}', '${idEmpresa}', '${idFuncionario}');
+    `;
+    return database.executar(instrucao);
+}
+
+function mostrarAlertas(idFuncionario) {
+    console.log(`${idFuncionario} no models mostrarAlertas`);
+    var instrucao = `
+    SELECT sum(quantidadeAlertas) AS totalAlertas
+    FROM alertas
+    WHERE fkFuncionario = ${idFuncionario};
+    `;
+    return database.executar(instrucao);
+}
 module.exports = {
     entrar,
     editarInformacoes,
+    inserirAlertas,
+    mostrarAlertas,
 };

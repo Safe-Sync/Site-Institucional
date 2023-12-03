@@ -123,6 +123,25 @@ function atualizarNaoIniciado(req, res){
         );
     }
 }
+
+function deletarTarefa(req, res){
+    var idTarefa = req.body.idTarefaServer;
+    if(idTarefa == undefined){
+        res.status(400).send("id da tarefa está undefined");
+    }else{
+        tarefaModel.deletarTarefa(idTarefa)
+        .then(
+            function (tarefa) {
+                res.json(tarefa);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
 module.exports = {
     adicionarTarefa,
     pegarTarefa,
@@ -130,4 +149,5 @@ module.exports = {
     atualizarTarefaEmAndamento,
     atualizarTarefaConcluido,
     atualizarNaoIniciado,
+    deletarTarefa,
 }

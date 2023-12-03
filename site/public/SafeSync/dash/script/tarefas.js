@@ -37,7 +37,29 @@ function drop(ev) {
         } else if (newProgress == 'tarefas') {
 
             atualizarNaoIniciado(taskId)
-        }
+        }else if (newProgress == 'lixo'){
+            swal({
+                title: "Tem certeza que deseja Deletar está tarefa?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  swal("Tarefa deletada", {
+                    icon: "success",
+                  });
+
+                  deletarTarefa(taskId)
+                  setTimeout(function() {
+                    location.reload();
+                  }, 1000);
+                } else {
+                  swal("Sua tarefa está segura");
+                }
+              });
+                }
     }
 }
 
@@ -62,7 +84,7 @@ function addTask() {
 
         var diaDaSemanaNumero = dataAtual.getDay();
 
-        var diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+        var diasDaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
         var diaDaSemanaNome = diasDaSemana[diaDaSemanaNumero];
 
         console.log('Dia da semana: ' + diaDaSemanaNome);
@@ -85,6 +107,12 @@ function addTask() {
 
         var tarefasContent = document.getElementById('tarefasContent');
         tarefasContent.appendChild(newTask); // inseri a div(newtask) dentro da tarefaContent
+        swal({
+            title: "Tarefa criada!",
+            text: "",
+            icon: "success",
+            button: "Concluir",
+          });
         taskInput.value = "";
         taskData.value = "";
     } else {
@@ -142,7 +170,9 @@ function mostarTarefas(tarefas) {
             var tarefasContent = document.getElementById('tarefasContent');
             tarefasContent.appendChild(newTask);
         }
+        // if(){
 
+        // }
     }
 }
 
@@ -210,3 +240,15 @@ function atualizarNaoIniciado(id) {
     })
 }
 
+function deletarTarefa(id){
+    console.log("id no deletar" + id);
+    fetch("/tarefa/deletarTarefa", {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idTarefaServer: id,
+        })
+    })
+}

@@ -27,4 +27,8 @@ router.put("/atualizarNaoIniciado", function (req, res){
     tarefaController.atualizarNaoIniciado(req,res);
 })
 
+router.delete("/deletarTarefa", function (req, res){
+    tarefaController.deletarTarefa(req,res);
+})
+
 module.exports = router;

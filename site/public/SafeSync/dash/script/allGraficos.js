@@ -187,7 +187,7 @@ var dadosRam = {
 
     var labelTarefa = [];
     var dadosTarefa = {
-        labels: labelTarefa,
+        labels: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
         datasets: [{
             label: 'Tarefas Atribuidas',
             data: [],
