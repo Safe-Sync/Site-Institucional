@@ -76,30 +76,6 @@ cadFunc.addEventListener('click', mostrarCadFunc);
 // document.addEventListener('DOMContentLoaded', mostrarFunc);
 
 
-
-// Referência ao modal e à div de notificação
-document.addEventListener("DOMContentLoaded", function() {
-    var modal = document.querySelector(".notificacaoModal");
-    var notificacao = document.querySelector("#notificacao");
-    var closeBtn = document.querySelector(".closeNotificacao");
-
-    notificacao.addEventListener("click", function() {
-        modal.style.display = "block";
-    });
-
-    closeBtn.addEventListener("click", function() {
-        modal.style.display = "none";
-    });
-
-    window.addEventListener("click", function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    });
-});
-
-// area modal usuario
-
 document.addEventListener("DOMContentLoaded", function() {
     var modal = document.querySelector(".usuarioModal");
     var usuario = document.querySelector("#usuario");

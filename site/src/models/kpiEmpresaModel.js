@@ -50,6 +50,18 @@ function limiteMaquinas(idEmpresa) {
     return database.executar(instrucao);
 }
 
+
+function limiteMaquinasQtd(idEmpresa) {
+    var instrucao = `
+    SELECT COUNT(DISTINCT alertas.fkFuncionario) as quantidadeMaquinas
+    FROM alertas
+    LEFT JOIN limitador ON alertas.fkEmpresa = limitador.fkEmpresa
+    WHERE alertas.fkEmpresa = ${idEmpresa};
+    
+    `;
+    return database.executar(instrucao);
+}
+
 function qtdMaquinas(idEmpresa) {
 
     var instrucao = `
@@ -67,4 +79,5 @@ module.exports = {
     tarefasPendentesMes,
     limiteMaquinas,
     qtdMaquinas,
+    limiteMaquinasQtd,
 };

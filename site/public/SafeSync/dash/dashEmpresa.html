@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../assets/css/styleDashEmpresa.css" />
     <link rel="stylesheet" href="tarefas.css" />
     <link rel="stylesheet" href="../assets/css/styleGerFunc.css" />
+
     <title>Dashboard</title>
 </head>
 
@@ -92,13 +93,13 @@
                     <h3 id="nome_empresa"></h3>
                 </div>
                 <section class="opcoesTopo">
-                    <div id="notificacao">
+                    <!-- <div id="notificacao">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1.4em" viewBox="0 0 448 512">
-                            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            ! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. 
                             <path
                                 d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
                         </svg>
-                    </div>
+                    </div> -->
                     <div id="usuario">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1.4em" viewBox="0 0 448 512">
                             <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -113,29 +114,29 @@
                 <div class="kpiIniciais">
                     <div class="kpiInfo">
                         <p>Funcionários Ativos na <span id="infoEmpresa" style="font-size: 15px;"></span></p>
-                        <span id="kpi1">18</span>
+                        <span id="kpi1"></span>
                     </div>
                     <div class="kpiInfo">
                         <p>N° de Tarefas Entregues - mês</p>
-                        <span id="kpi2">310</span>
+                        <span id="kpi2"></span>
                     </div>
                     <div class="kpiInfo">
                         <p>N° de Tarefas pendentes - mês</p>
-                        <span id="kpi3">28</span>
+                        <span id="kpi3"></span>
                     </div>
                     <div class="kpiInfo">
                         <p>N° de Alertas das máquinas - dia</p>
-                        <span id="kpi4">18</span>
+                        <span id="kpi4"></span>
                     </div>
                 </div>
                 <div class="kpiMaquinas">
                     <div class="maquinasInfo">
                         <div class="divisaoInfo">
                             <div class="legendaMaquinas">
-                                <p>% de máquinas que passaram do limite de Ram:</p>
+                                <p>Máquinas que passaram do limite de Ram:</p>
                             </div>
                             <div id="kpiMaquina1">
-                                <span>55%</span>
+                                <span id="valorKpi1"></span>
                             </div>
                         </div>
                         <!-- <p class="limiteAlerta">Limite alerta: 60 - 70% de uso</p> -->
@@ -143,10 +144,10 @@
                     <div class="maquinasInfo">
                         <div class="divisaoInfo">
                             <div class="legendaMaquinas">
-                                <p>% de máquinas que passaram do limite de disco:</p>
+                                <p>Máquinas que passaram do limite de disco:</p>
                             </div>
                             <div id="kpiMaquina2">
-                                <span>55%</span>
+                                <span id="valorKpi2"></span>
                             </div>
                         </div>
                         <!-- <p class="limiteAlerta">Limite alerta: 60 - 70% de uso</p> -->
@@ -154,10 +155,10 @@
                     <div class="maquinasInfo">
                         <div class="divisaoInfo">
                             <div class="legendaMaquinas">
-                                <p>% de máquinas que passaram do limite de CPU:</p>
+                                <p>Máquinas que passaram do limite de CPU:</p>
                             </div>
                             <div id="kpiMaquina3">
-                                <span>73%</span>
+                                <span id="valorKpi3"></span>
                             </div>
                         </div>
                         <!-- <p class="limiteAlerta">Limite alerta: 71%+ de uso</p> -->
@@ -177,6 +178,7 @@
                                 </tr>
                             </thead>
                             <tbody id="rank_funcionarios">
+
                             </tbody>
                         </table>
                     </div>
@@ -310,7 +312,8 @@
                                 <input type="email" class="campoPerfil" id="perfil_emailEmpresa"></p>
                                 <p class="legendaPerfil">CNPJ</p>
                                 <input class="campoPerfil" id="perfil_cnpj"></p>
-                                <p id="EnviarEdicaoPerfil" onclick="enviarEdicaoPerfil()">Enviar</p>
+                                <p id="EnviarEdicaoPerfil" style="display: none;" onclick="enviarEdicaoPerfil()">Enviar
+                                </p>
                             </div>
                         </article>
                     </section>
@@ -453,18 +456,18 @@
             });
     }
     tarefasPendentesMes()
-    
+
     // SELECT COUNT(idHardware) AS quantidadeHardwares
     // FROM hardwares where fkEmpresa = ${idEmpresa};
 
     var alertasTotais = 0
     var maquinasDisco = 0
-    function limiteMaquinas(){ 
-        fetch(`/kpiEmpresa/limiteMaquinas/${idEmpresa}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-
-                    if(resposta.length > 0){
+    function limiteMaquinas() {
+        fetch(`/kpiEmpresa/limiteMaquinas/${idEmpresa}`)
+    .then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                if(resposta.length > 0){
                         var alertasCpu = resposta[0].alertasCpu;
                         var alertasRam = resposta[0].alertasRam;
                         var alertasDisco = resposta[0].alertasDisco;
@@ -477,14 +480,13 @@
                         alertasDisco: ${alertasDisco}
                         `);
 
-                        kpi4.innerHTML = `${alertasTotais}`
+                        kpi4.innerHTML = `${alertasTotais}`}
+            });
+        } else {
+            console.error('Nenhuma informação encontrada ou erro na API');
+        }
+    })
 
-                    }
-                });
-            } else {
-                console.error('Nenhuma informação encontrada ou erro na API');
-            }
-        })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados: ${error.message}`);
             });
@@ -493,7 +495,7 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
 
-                    if(resposta.length > 0){
+                    if (resposta.length > 0) {
                         var quantidadeHardwares = resposta[0].quantidade_hardwares;
 
                         console.log(`
@@ -505,18 +507,65 @@
                 console.error('Nenhuma informação encontrada ou erro na API');
             }
         }).catch(function (error) {
-                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
 
 
-        
-
-        if(alertasDisco > 0){
-            maquinasDisco++
-        }
 
     }
+    var quantidadeMaquinas = 0;
+
+function limiteMaquinasQtd() {
+    fetch(`/kpiEmpresa/limiteMaquinasQtd/${idEmpresa}`)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    if (resposta.length > 0) {
+                        // Remova 'var' para referenciar a variável externa
+                        quantidadeMaquinas = resposta[0].quantidadeMaquinas || 0;
+
+                        var kpiMaquinas = document.getElementById("kpi4");
+
+                          var kpiRam = document.getElementById("valorKpi1");
+                        var kpiDisco = document.getElementById("valorKpi2");
+                        var kpiCpu = document.getElementById("valorKpi3");
+
+                        kpiCpu.innerHTML = quantidadeMaquinas;
+                        kpiRam.innerHTML = quantidadeMaquinas;
+                        kpiDisco.innerHTML = quantidadeMaquinas;
+
+                        if (kpiMaquinas) {
+                            kpiMaquinas.innerHTML = quantidadeMaquinas;
+
+                            console.log(`
+                                Quantidade de Máquinas que Ultrapassaram o Limite: ${quantidadeMaquinas}
+                            `);
+                        } else {
+                            console.log('Elemento HTML não encontrado');
+                        }
+                    }
+                });
+            } else {
+                console.error('Nenhuma informação encontrada ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+}
+
+
+setInterval(function () {
+    limiteMaquinasQtd(idEmpresa);
+    }, 10000);
+    limiteMaquinasQtd()
+
+    setInterval(function () {
+        limiteMaquinas(idEmpresa);
+    }, 10000);
     limiteMaquinas()
+
+
     console.log(sessionStorage.ID_EMPRESA);
 
     function validar1() {
@@ -709,25 +758,25 @@
                             novoFunc.innerHTML = `
             
                             <div class="task-input" style="display: none; id="taskInput-${idFuncionario}">
-                                                <input type="text" id="taskInput-${idFuncionario}" placeholder="Digite uma nova tarefa">
-                                                    <label for="taskDate-${idFuncionario}">Data de Entrega:</label>
-                                                    <input type="date" id="taskDate-${idFuncionario}">
-                                                <button onclick="addTaskFuncionario(${idFuncionario})">Adicionar Tarefa</button>
-                                                </div>
-                                                <p class="labelFuncionario nomeFuncionario">${nomeFuncionario}</p>
-                                                <div class="labelFuncionario cargo">
-                                                    Cargo: <input id="editarCargo-${idFuncionario}" value="${cargoFuncionario}" onfocusout="salvarEdicaoCargo(${idFuncionario})" disabled>
-                                                    <span onclick="editarCargoFuncionario(${idFuncionario})">
-                                                        <svg style="display: none" class="iconeEditar" id="editarCargo"  xmlns="http://www.w3.org/2000/svg" width="16"
-                                                        height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                    </svg>
-                                                    </span>
-                                                    
-                                                </div>
+                                <input type="text" id="taskInput-${idFuncionario}" placeholder="Digite uma nova tarefa">
+                                <label for="taskDate-${idFuncionario}">Data de Entrega:</label>
+                                <input type="date" id="taskDate-${idFuncionario}">
+                            <button onclick="addTaskFuncionario(${idFuncionario})">Adicionar Tarefa</button>
+                            </div>
+                            <p class="labelFuncionario nomeFuncionario">${nomeFuncionario}</p>
+                            <div class="labelFuncionario cargo">
+                            <div class='cargoEstilo'>
+                                Cargo: <input id="editarCargo-${idFuncionario}" value="${cargoFuncionario}" onfocusout="salvarEdicaoCargo(${idFuncionario})" disabled></div>
+                                <span onclick="editarCargoFuncionario(${idFuncionario})">
+                                    <svg style="display: none" class="iconeEditar" id="editarCargo"  xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path
+                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd"
+                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                    </svg>
+                                </span>
+                            </div>
                                                 <p class="labelFuncionario tarefasAtribuidas">
                                                     Tarefas atribuidas: <span id="tarefasAtribuidas"> ${tarefasAtribuidas} </span>
                                                 </p>
@@ -751,15 +800,82 @@
             })
     }
     function habilitarEditarPerfil() {
+
+        var perfil_nomeEmpresa = document.getElementById("perfil_nomeEmpresa");
+        var perfil_emailEmpresa = document.getElementById("perfil_emailEmpresa");
+        var perfil_cnpj = document.getElementById("perfil_cnpj");
+
+        var btn_EnviarEdicaoPerfil = document.getElementById("EnviarEdicaoPerfil");
+
+        btn_EnviarEdicaoPerfil.style.display = "block";
+
+
         perfil_nomeEmpresa.disabled = false;
         perfil_emailEmpresa.disabled = false;
         perfil_cnpj.disabled = false;
+
+
+
+        if (perfil_nomeEmpresa.classList.contains("editando")) {
+            // Se a classe editando estiver presente, remova-a e redefina os estilos
+            perfil_nomeEmpresa.classList.remove("editando");
+            perfil_nomeEmpresa.style.border = "none";
+
+        } else {
+            // Se a classe editando não estiver presente, adicione-a e defina os estilos
+            perfil_nomeEmpresa.classList.add("editando");
+            perfil_nomeEmpresa.style.border = "1px solid gray";
+            perfil_nomeEmpresa.style.borderRadius = "10px";
+            perfil_nomeEmpresa.style.padding = " 5px 10px";
+        }
+
+        if (perfil_emailEmpresa.classList.contains("editando")) {
+            perfil_emailEmpresa.classList.remove("editando");
+            perfil_emailEmpresa.style.border = "none";
+        } else {
+            perfil_emailEmpresa.classList.add("editando");
+            perfil_emailEmpresa.style.border = "1px solid gray";
+            perfil_emailEmpresa.style.borderRadius = "10px";
+            perfil_emailEmpresa.style.padding = " 5px 10px";
+        }
+
+        if (perfil_cnpj.classList.contains("editando")) {
+            perfil_cnpj.classList.remove("editando");
+            perfil_cnpj.style.border = "none";
+        } else {
+            perfil_cnpj.classList.add("editando");
+            perfil_cnpj.style.border = "1px solid gray";
+            perfil_cnpjEmpresa.style.borderRadius = "10px";
+            perfil_cnpjEmpresa.style.padding = " 5px 10px";
+        }
     }
+
+
 
     function enviarEdicaoPerfil() {
         var nomeEmpresaEditado = perfil_nomeEmpresa.value;
         var emailEmpresaEditado = perfil_emailEmpresa.value;
         var cnpjEmpresaEditado = perfil_cnpj.value;
+
+        var btn_EnviarEdicaoPerfil = document.getElementById("EnviarEdicaoPerfil");
+
+        btn_EnviarEdicaoPerfil.style.display = "none";
+
+        if (perfil_nomeEmpresa.classList.contains("editando")) {
+            // Se a classe editando estiver presente, remova-a e redefina os estilos
+            perfil_nomeEmpresa.classList.remove("editando");
+            perfil_nomeEmpresa.style.border = "none";
+        }
+
+        if (perfil_emailEmpresa.classList.contains("editando")) {
+            perfil_emailEmpresa.classList.remove("editando");
+            perfil_emailEmpresa.style.border = "none";
+        }
+
+        if (perfil_cnpj.classList.contains("editando")) {
+            perfil_cnpj.classList.remove("editando");
+            perfil_cnpj.style.border = "none";
+        }
 
         if (nomeEmpresaEditado == undefined || nomeEmpresaEditado == '') {
             console.log("if 1")
@@ -801,6 +917,9 @@
     function editarCargoFuncionario(idFuncionario) {
         var editar = document.getElementById(`editarCargo-${idFuncionario}`);
         editar.disabled = false;
+
+        editar.style.border = "1px solid #ccc";
+        editar.style.backgroundClip = "blue";
     }
 
     function salvarEdicaoCargo(idFuncionario) {

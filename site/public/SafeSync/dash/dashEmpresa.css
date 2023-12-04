@@ -334,6 +334,7 @@ ul  #item-menu-sair{
     height: 90%;
     padding: 5px 20px 0px 50px;
     margin: auto;
+    margin-top: 5vh;
     /* overflow-y: auto; */
     /* scrollbar-width: thin; */
     box-shadow: #5050509c 5px 5px 10px ;
@@ -357,13 +358,13 @@ ul  #item-menu-sair{
     color: #102C57;
     /* text-shadow: 3px 3px 5px #4e4e4e85; */
     font-size: 2rem;
-    padding-top: 5vh;
+    /* padding-top: 5vh; */
     /* background-color: green; */
     margin-bottom: 0;
 }
 .usuarioModal-content section article #imgPerfil{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     background-color: #213f6d;
     border-radius: 50%;
 }
@@ -410,9 +411,34 @@ ul  #item-menu-sair{
     font-size: 1.1rem;
     font-weight: 500;
     margin: 0;
+    background-color: transparent;
+    border: none;
 }
 
+#EnviarEdicaoPerfil{
+    width: fit-content;
+    background-color: #213f6d;
+    padding: 2% 3%;
+    color: #D4E2F8;
+    border-radius: 15px;
+    cursor: pointer;
 
+    box-shadow: #313131 3px 3px 10px;
+}
+.editando {
+    border: 1px solid #ccc; /* Adicione o estilo de borda desejado */
+    padding: 5px; /* Adicione o estilo de preenchimento desejado */
+    /* Adicione outros estilos conforme necessário */
+}
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{
     min-width: 70px;
+}
+
+.cargoEstilo{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+.cargoEstilo input{
+    border: none;
 }

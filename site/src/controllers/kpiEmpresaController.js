@@ -83,6 +83,23 @@ function limiteMaquinas(req, res) {
     });
 }
 
+
+function limiteMaquinasQtd(req, res) {
+    
+    var idEmpresa = req.params.idEmpresa;
+
+    kpiEmpresaModel.limiteMaquinasQtd(idEmpresa).then(function (tarefas) {
+        if (tarefas.length > 0) {
+            res.status(200).json(tarefas);
+        } else {
+            res.status(204).send("Nenhum funcionario encontrado")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function qtdMaquinas(req, res) {
     
     var idEmpresa = req.params.idEmpresa;
@@ -104,5 +121,6 @@ module.exports = {
     tarefasEntreguesMes,
     tarefasPendentesMes,
     limiteMaquinas,
+    limiteMaquinasQtd,
     qtdMaquinas,
 };
