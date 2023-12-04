@@ -565,31 +565,6 @@
 
     }
 
-    function mostrarAlertas() {
-        var idFuncionario = sessionStorage.ID_FUNCIONARIO
-        fetch(`/funcionario/mostrarAlertas/${idFuncionario}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-
-                    if (resposta.length > 0) {
-                        var totalAlertas = resposta[0].totalAlertas;
-                        if (resposta.length == null || totalAlertas == null || alertasMaquinaFunc.innerHTML == null) {
-                            alertasMaquinaFunc.innerHTML = "0"
-                        }
-
-                        alertasMaquinaFunc.innerHTML = `${totalAlertas}`
-                    }
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
-        });
-    }
-
-    mostrarAlertas();
 
     // console.log("id do funcionario passado como parametro: " + idFuncionario);
     graficoCPU(idFuncionario);
@@ -603,7 +578,6 @@
         graficoDISCO(idFuncionario);
     }, 10000);
 
-    setInterval(mostrarAlertas, 3000);
 
 
 
@@ -661,10 +635,40 @@
         });
     }
     janelasAbertas();
+    
+
+    function mostrarAlertas() {
+        var idFuncionario = sessionStorage.ID_FUNCIONARIO
+        fetch(`/funcionario/mostrarAlertas/${idFuncionario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+
+                    if (resposta.length > 0) {
+                        var totalAlertas = resposta[0].totalAlertas;
+                        if (totalAlertas === null) {
+                        alertasMaquinaFunc.innerHTML = "0";
+                    } else {
+                        alertasMaquinaFunc.innerHTML = `${totalAlertas}`;
+                    }
+                } else {
+                    // Handle the case when resposta is null or empty
+                    alertasMaquinaFunc.innerHTML = "0";
+                    }
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+    mostrarAlertas();
 
     setInterval(janelasAbertas, 10000);
     setInterval(tarefasEntregues, 3000);
     setInterval(tarefasPendentes, 3000);
+    setInterval(mostrarAlertas, 1000);
 
     function habilitarEditarPerfil() {
         perfil_nome.disabled = false;
