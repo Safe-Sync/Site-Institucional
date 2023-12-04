@@ -490,6 +490,7 @@ fetch(`/medidas/graficoTAREFA/${idFuncionario}`).then(function (response) {
                     dadosTarefa.datasets[1].data[diaIndex] = tarefasConcluidas;
                 }
 
+
             }
             chartTarefa.update()
          
@@ -521,7 +522,7 @@ fetch("/funcionario/inserirAlertas", {
 }
 
 
-<<<<<<< HEAD
+
     function mostrarAlertas() {
     var idFuncionario = sessionStorage.ID_FUNCIONARIO;
     fetch(`/funcionario/mostrarAlertas/${idFuncionario}`).then(function (response) {
@@ -551,8 +552,24 @@ fetch("/funcionario/inserirAlertas", {
 }
 
     mostrarAlertas();
-=======
->>>>>>> 70d9e9722952a584f1c0b945aaa3670a889f3672
+
+    function inserirAlertas(cpuAlerta, ramAlerta, discoAlerta, totalAlertas, idEmpresa) {
+        fetch("/funcionario/inserirAlertas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                cpuAlertaServer: cpuAlerta,
+                ramAlertaServer: ramAlerta,
+                discoAlertaServer: discoAlerta,
+                totalAlertasServer: totalAlertas,
+                idFuncionarioServer: idFuncionario,
+                idEmpresaServer: idEmpresa
+            })
+        })
+
+    }
 
     // console.log("id do funcionario passado como parametro: " + idFuncionario);
     graficoCPU(idFuncionario);
