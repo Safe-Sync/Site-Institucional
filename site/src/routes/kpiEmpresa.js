@@ -23,6 +23,9 @@ router.get("/tarefasPendentesMes/:idEmpresa", function (req, res) {
 router.get("/limiteMaquinas/:idEmpresa", function (req, res) {
     kpiEmpresaController.limiteMaquinas(req, res);
 });
+router.get("/limiteMaquinasQtd/:idEmpresa", function (req, res) {
+    kpiEmpresaController.limiteMaquinasQtd(req, res);
+});
 
 router.get("/qtdMaquinas/:idEmpresa", function (req, res) {
     kpiEmpresaController.qtdMaquinas(req, res);

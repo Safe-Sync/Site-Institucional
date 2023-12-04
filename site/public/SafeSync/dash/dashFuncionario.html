@@ -190,38 +190,8 @@
                     <!-- Seu conteúdo modal aqui... -->
                     <section>
                         <div id="alerta_P">
-                            <!-- <p alerta_span>Uso da CPU crítico, acima dos 90%</p> -->
 
                         </div>
-                        <!-- <div class="notificacaoBom">
-                            <p>Uso da CPU bom, abaixo dos 50%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
-                            <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
-                            <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
-                            <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
-                            <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
-                            <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
-                            <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div>
-                        <div class="notificacaoAlerta">
-                            <p>Uso da CPU em alerta, acima dos 70%</p>
-                        </div> -->
-                        <!-- <div class="notificacaoAlerta">
-                            <p onclick="window.location.href='./dashFuncionario.html'">Uso da CPU em alerta, acima dos
-                                70%</p>
-                        </div> -->
-
                     </section>
                 </div>
             </div>
@@ -232,9 +202,6 @@
                     <section>
                         <h1>Meu Perfil</h1>
                         <article>
-                            <!-- <div id="imgPerfil"> <img src="../assets/img/exemploModelo.svg" alt=""></div> -->
-
-
                             <div class="conteudoPerfil">
                                 <div class="iconeEditarPerfil" onclick="habilitarEditarPerfil()"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -248,7 +215,7 @@
                                 <input class="campoPerfil" id="perfil_cargo"></p>
                                 <p class="legendaPerfil">Email</p>
                                 <input type="email" class="campoPerfil" id="perfil_email"></p>
-                                <p id="EnviarEdicaoPerfil" onclick="enviarEdicaoPerfil()">Enviar</p>
+                                <p id="EnviarEdicaoPerfil" style="display: none;" onclick="enviarEdicaoPerfil()">Enviar</p>
                             </div>
                         </article>
                     </section>
@@ -401,193 +368,186 @@
     function dadosEmpresa(idFuncionario) {
 
 
-        fetch(`/medidas/dadosEmpresa/${idFuncionario}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
+fetch(`/medidas/dadosEmpresa/${idFuncionario}`).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
 
-                    if (resposta.length > 0) {
-                        var idEmpresa = resposta[0].idEmpresa;
-                        var nomeEmpresa = resposta[0].nomeFantasia;
+            if (resposta.length > 0) {
+                var idEmpresa = resposta[0].idEmpresa;
+                var nomeEmpresa = resposta[0].nomeFantasia;
 
-                        // console.log(`
-                        // id da empresa: ${idEmpresa}
-                        // nomeEmpresa: ${nomeEmpresa}
-                        // `);
-                        span_nome_empresa.innerHTML = `${nomeEmpresa}`
+                // console.log(`
+                // id da empresa: ${idEmpresa}
+                // nomeEmpresa: ${nomeEmpresa}
+                // `);
+                span_nome_empresa.innerHTML = `${nomeEmpresa}`
 
-                        setInterval(function () {
-                            dadosAlertas(idEmpresa);
-                        }, 10000);
-                    }
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+                setInterval(function () {
+                    dadosAlertas(idEmpresa);
+                }, 10000);
             }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
     }
-    dadosEmpresa(idFuncionario);
+}).catch(function (error) {
+    console.error(`Erro na obtenção dos dados: ${error.message}`);
+});
+}
+dadosEmpresa(idFuncionario);
 
-    var alertCpu = 0;
-    var alertRam = 0;
-    var alertDisco = 0;
-    function dadosAlertas(idEmpresa) {
-        fetch(`/medidas/alertas/${idEmpresa}/${idFuncionario}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (alertas) {
-
-
-                    if (alertas.length > 0) {
-
-                        var idLimitador = alertas[0].idLimitador;
-
-
-                        alertCpu = alertas[0].maxCpu;
-                        alertRam = alertas[0].maxRam;
-                        alertDisco = alertas[0].maxDisco;
-                        var CPU = parseInt(cpu);
-                        var RAM = parseInt(consumo);
-                        var DISCO = parseInt(discoUsado);
-
-                        // console.log(`
-                        //         idEmpresa = ${idEmpresa}
-                        //         alertaCpu = ${alertCpu}
-                        //         alertaRam = ${alertRam}
-                        //         alertaDisco = ${alertDisco}
-                        //         CPU = ${CPU}
-                        //         RAM = ${RAM}
-                        //         DISCO = ${DISCO}
-                        //         `);
-
-                        if (CPU > alertCpu) {
-                            alerta_P.innerHTML += `<P class="notificacaoCritico">SUA CPU ENTROU NO ALERTA</span>`
-                            cpuAlerta++
-                            totalAlertas++
-                        }
-                        if (RAM > alertRam) {
-                            alerta_P.innerHTML += `<P class="notificacaoCritico">SUA RAM ENTROU NO ALERTA</span>`
-                            ramAlerta++
-                            totalAlertas++
-                        }
-                        if (DISCO > alertDisco) {
-                            alerta_P.innerHTML += `<P class="notificacaoCritico">SEU DISCO ENTROU NO ALERTA</span>`
-                            discoAlerta++
-                            totalAlertas++
-                        }
-
-                    }
+var alertCpu = 0;
+var alertRam = 0;
+var alertDisco = 0;
+function dadosAlertas(idEmpresa) {
+fetch(`/medidas/alertas/${idEmpresa}/${idFuncionario}`).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (alertas) {
 
 
-                    inserirAlertas(cpuAlerta, ramAlerta, discoAlerta, totalAlertas, idEmpresa)
-                    totalAlertas = 0
-                    cpuAlerta = 0
-                    ramAlerta = 0
-                    discoAlerta = 0
+            if (alertas.length > 0) {
 
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+                var idLimitador = alertas[0].idLimitador;
+
+
+                alertCpu = alertas[0].maxCpu;
+                alertRam = alertas[0].maxRam;
+                alertDisco = alertas[0].maxDisco;
+                var CPU = parseInt(cpu);
+                var RAM = parseInt(consumo);
+                var DISCO = parseInt(discoUsado);
+
+                // console.log(`
+                //         idEmpresa = ${idEmpresa}
+                //         alertaCpu = ${alertCpu}
+                //         alertaRam = ${alertRam}
+                //         alertaDisco = ${alertDisco}
+                //         CPU = ${CPU}
+                //         RAM = ${RAM}
+                //         DISCO = ${DISCO}
+                //         `);
+
+                if (CPU > alertCpu) {
+                    alerta_P.innerHTML += `<P class="notificacaoCritico">SUA CPU PASSOU DO LIMITE ESTIPULADO</span>`
+                    cpuAlerta++
+                    totalAlertas++
+                }
+                if (RAM > alertRam) {
+                    alerta_P.innerHTML += `<P class="notificacaoCritico">SUA MEMÓRIA RAM PASSOU DO LIMITE ESTIPULADO</span>`
+                    ramAlerta++
+                    totalAlertas++
+                }
+                if (DISCO > alertDisco) {
+                    alerta_P.innerHTML += `<P class="notificacaoCritico">SEU DISCO PASSOU DO LIMITE ESTIPULADO</span>`
+                    discoAlerta++
+                    totalAlertas++
+                }
+
             }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
+
+
+            inserirAlertas(cpuAlerta, ramAlerta, discoAlerta, totalAlertas, idEmpresa)
+            totalAlertas = 0
+            cpuAlerta = 0
+            ramAlerta = 0
+            discoAlerta = 0
+
         });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
     }
+}).catch(function (error) {
+    console.error(`Erro na obtenção dos dados: ${error.message}`);
+});
+}
 
-    function graficoTAREFA(idFuncionario) {
+function graficoTAREFA(idFuncionario) {
 
-        fetch(`/medidas/graficoTAREFA/${idFuncionario}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
+fetch(`/medidas/graficoTAREFA/${idFuncionario}`).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
 
-                    // debugger
-                    for (i = 0; i < resposta.length; i++) {
-                        var dia = resposta[i].diaDaSemana;
-                        var tarefasPendentes = resposta[i].tarefas_nao_concluidas;
-                        var tarefasConcluidas = resposta[i].tarefas_concluidas;
+            // debugger
+            for (i = 0; i < resposta.length; i++) {
+                var dia = resposta[i].diaDaSemana;
+                var tarefasPendentes = resposta[i].tarefas_nao_concluidas;
+                var tarefasConcluidas = resposta[i].tarefas_concluidas;
 
-                        if (dia == 'Dom') {
-                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
-                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
-                        }
-                        if (dia == 'Seg') {
-                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
-                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
-                        } 
-                        if (dia == 'Ter') {
-                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
-                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
-                        }
-                        if (dia == 'Qua') {
-                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
-                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
-                        } 
-                        if (dia == 'Qui') {
-                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
-                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
-                        }
-                        if (dia == 'Sex') {
-                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
-                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
-                        }
-                        if (dia == 'Sab') {
-                        dadosTarefa.datasets[0].data.push(tarefasPendentes)
-                        dadosTarefa.datasets[1].data.push(tarefasConcluidas)
-                         }
+                // Mapping the day to an index
+                var diaIndex = {
+                    'Dom': 0,
+                    'Seg': 1,
+                    'Ter': 2,
+                    'Qua': 3,
+                    'Qui': 4,
+                    'Sex': 5,
+                    'Sab': 6
+                }[dia];
 
+                // Check if diaIndex is not undefined (valid day)
+                if (diaIndex !== undefined) {
+                    dadosTarefa.datasets[0].data[diaIndex] = tarefasPendentes;
+                    dadosTarefa.datasets[1].data[diaIndex] = tarefasConcluidas;
+                }
 
-                    }
-                    chartTarefa.update()
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
             }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
+            chartTarefa.update()
+         
         });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
     }
+}).catch(function (error) {
+    console.error(`Erro na obtenção dos dados: ${error.message}`);
+});
+}
 
-    function inserirAlertas(cpuAlerta, ramAlerta, discoAlerta, totalAlertas, idEmpresa) {
-        fetch("/funcionario/inserirAlertas", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                cpuAlertaServer: cpuAlerta,
-                ramAlertaServer: ramAlerta,
-                discoAlertaServer: discoAlerta,
-                totalAlertasServer: totalAlertas,
-                idFuncionarioServer: idFuncionario,
-                idEmpresaServer: idEmpresa
-            })
-        })
+function inserirAlertas(cpuAlerta, ramAlerta, discoAlerta, totalAlertas, idEmpresa) {
+fetch("/funcionario/inserirAlertas", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        cpuAlertaServer: cpuAlerta,
+        ramAlertaServer: ramAlerta,
+        discoAlertaServer: discoAlerta,
+        totalAlertasServer: totalAlertas,
+        idFuncionarioServer: idFuncionario,
+        idEmpresaServer: idEmpresa
+    })
+})
 
-    }
+}
+
 
     function mostrarAlertas() {
-        var idFuncionario = sessionStorage.ID_FUNCIONARIO
-        fetch(`/funcionario/mostrarAlertas/${idFuncionario}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
+    var idFuncionario = sessionStorage.ID_FUNCIONARIO;
+    fetch(`/funcionario/mostrarAlertas/${idFuncionario}`).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                // Check if resposta is not null and has a length greater than 0
+                if (resposta && resposta.length > 0) {
+                    var totalAlertas = resposta[0].totalAlertas;
 
-                    if (resposta.length > 0) {
-                        var totalAlertas = resposta[0].totalAlertas;
-                        if (resposta.length == null || totalAlertas == null || alertasMaquinaFunc.innerHTML == null) {
-                            alertasMaquinaFunc.innerHTML = "0"
-                        }
-
-                        alertasMaquinaFunc.innerHTML = `${totalAlertas}`
+                    // Check if totalAlertas is not null
+                    if (totalAlertas == null || alertasMaquinaFunc.innerHTML == null) {
+                        alertasMaquinaFunc.innerHTML = "0";
+                    } else {
+                        alertasMaquinaFunc.innerHTML = totalAlertas;
                     }
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
-        });
-    }
+                } else {
+                    // Handle the case where resposta is null or has length 0
+                    alertasMaquinaFunc.innerHTML = "0";
+                }
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    }).catch(function (error) {
+        console.error(`Erro na obtenção dos dados: ${error.message}`);
+    });
+}
 
     mostrarAlertas();
 
@@ -601,6 +561,7 @@
         graficoCPU(idFuncionario);
         graficoRAM(idFuncionario);
         graficoDISCO(idFuncionario);
+        graficoTAREFA(idFuncionario);
     }, 10000);
 
     setInterval(mostrarAlertas, 3000);
@@ -667,9 +628,50 @@
     setInterval(tarefasPendentes, 3000);
 
     function habilitarEditarPerfil() {
+        var perfil_nome = document.getElementById("perfil_nome");
+        var perfil_email = document.getElementById("perfil_email");
+        var perfil_cargo = document.getElementById("perfil_cargo");
+
+        var btn_EnviarEdicaoPerfil = document.getElementById("EnviarEdicaoPerfil");
+
+        btn_EnviarEdicaoPerfil.style.display = "block";
+
         perfil_nome.disabled = false;
         perfil_email.disabled = false;
         perfil_cargo.disabled = false;
+
+        if (perfil_nome.classList.contains("editando")) {
+            // Se a classe editando estiver presente, remova-a e redefina os estilos
+            perfil_nome.classList.remove("editando");
+            perfil_nome.style.border = "none";
+        } else {
+            // Se a classe editando não estiver presente, adicione-a e defina os estilos
+            perfil_nome.classList.add("editando");
+            perfil_nome.style.border = "1px solid gray";
+            perfil_nome.style.borderRadius = "10px"; 
+            perfil_nome.style.padding = " 5px 10px"; 
+        }
+
+        if (perfil_email.classList.contains("editando")) {
+            perfil_email.classList.remove("editando");
+            perfil_email.style.border = "none";
+            
+        } else {
+            perfil_email.classList.add("editando");
+            perfil_email.style.border = "1px solid gray";
+            perfil_email.style.borderRadius = "10px"; 
+            perfil_email.style.padding = " 5px 10px"; 
+        }
+
+        if (perfil_cargo.classList.contains("editando")) {
+            perfil_cargo.classList.remove("editando");
+            perfil_cargo.style.border = "none";
+        } else {
+            perfil_cargo.classList.add("editando");
+            perfil_cargo.style.border = "1px solid gray";
+            perfil_cargo.style.borderRadius = "10px"; 
+            perfil_cargo.style.padding = " 5px 10px"; 
+        }
     }
 
     function enviarEdicaoPerfil() {
@@ -677,6 +679,26 @@
         var nomeEditado = perfil_nome.value;
         var emailEditado = perfil_email.value;
         var cargoEditado = perfil_cargo.value;
+
+        var btn_EnviarEdicaoPerfil = document.getElementById("EnviarEdicaoPerfil");
+
+        btn_EnviarEdicaoPerfil.style.display = "none";
+
+        if (perfil_nome.classList.contains("editando")) {
+            // Se a classe editando estiver presente, remova-a e redefina os estilos
+            perfil_nome.classList.remove("editando");
+            perfil_nome.style.border = "none";
+        }
+
+        if (perfil_email.classList.contains("editando")) {
+            perfil_email.classList.remove("editando");
+            perfil_email.style.border = "none";
+        }
+
+        if (perfil_cargo.classList.contains("editando")) {
+            perfil_cargo.classList.remove("editando");
+            perfil_cargo.style.border = "none";
+        }
 
         if (nomeEditado == undefined || nomeEditado == '') {
             console.log("if 1")
